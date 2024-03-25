@@ -20,8 +20,11 @@ import javax.persistence.Id;
 public class MiEntidad {
 
 	@Id
+	@Column(name  = "id")
  	private Long id;
- 	private String name;
+
+	@Column(name = "nombre")
+	private String nombre;
 
 	// Constructor vacío (necesario para Hibernate)
 	public MiEntidad() {}
@@ -75,9 +78,9 @@ public class MiServicio {
     }
 	// Otros métodos de servicio según sea necesario
 
-    @Transactional
-    public void realizarOperacionesTransaccionales() {
+    // @Transactional
+    // public void realizarOperacionesTransaccionales() {
         // Aquí puedes realizar operaciones CRUD o personalizadas utilizando el repositorio
         // Todas estas operaciones se ejecutarán dentro de una transacción
-    }
+    // }
 }
