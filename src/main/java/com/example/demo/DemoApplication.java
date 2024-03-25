@@ -5,7 +5,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
-@EnableTransactionManagement
 public class MiAplicacion {
 
     public static void main(String[] args) {
@@ -13,69 +12,107 @@ public class MiAplicacion {
     }
 }
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
 @Entity
-public class MiEntidad {
-
+public class User {
 	@Id
-	@Column(name  = "id")
- 	private Long id;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long id;
+	private String username;
+	private String password;
 
-	@Column(name = "nombre")
-	private String nombre;
-
-	// Constructor vacío (necesario para Hibernate)
-	public MiEntidad() {}
-
-	// Constructor con parámetros
-	public MiEntidad(Long id, String name) {
-	    this.id = id;
-	    this.name = name;
-	}
-
-	// Getters y Setters
-	public Long getId() {
-	    return id;
-	}
-	public void setId(Long id) {
-	    this.id = id;
-	}
-
-	public String getName() {
-	    return name;
-	}
-
-   	public void setName(String name) {
-	    this.name = name;
-	}
+	// Constructores, getters, and setters
 }
-
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
 @Repository
-public interface MiEntidadRepository extends JpaRepository<MiEntidad, Long> {
-    // Aquí puedes agregar métodos adicionales de consulta si es necesario
+public interface UserRepository extends JpaRepository<User, Long>  {
+	User findByUsername(String username);
 }
 
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 @Service
-public class MiServicio {
+public class UserService {
+	@Autowired
+	private UserRepository userRepository;
 
-    @Autowired
-    private MiEntidadRepository miEntidadRepository;
+	public User findByUsername(String  username) {
+		return userRepository.findByUsername(username);
+}
 
-	public List<MiEntidad> obtenerTodasLasEntidades() {
-        return miEntidadRepository.findAll();
-    }
+public User saveUser(User user) {
+	return userRepository.save(user);
+}
 
-    public MiEntidad guardarMiEntidad(MiEntidad entidad) {
-        return miEntidadRepository.save(entidad);
-    }
+//aditional methods for password encoding, etc
+
+@RestController
+
+
+
+
+
+
+	// import javax.persistence.Entity;
+	// import javax.persistence.Id;
+
+	// @Entity
+	// public class MiEntidad {
+
+	// 	@Id
+	// 	@Column(name  = "id")
+	// 	private Long id;
+
+	// 	@Column(name = "nombre")
+	// 	private String nombre;
+
+	// 	// Constructor vacío (necesario para Hibernate)
+	// 	public MiEntidad() {}
+
+	// 	// Constructor con parámetros
+	// 	public MiEntidad(Long id, String name) {
+	// 		this.id = id;
+	// 		this.name = name;
+	// 	}
+
+	// 	// Getters y Setters
+	// 	public Long getId() {
+	// 		return id;
+	// 	}
+	// 	public void setId(Long id) {
+	// 		this.id = id;
+	// 	}
+
+	// 	public String getName() {
+	// 		return name;
+	// 	}
+
+	// 	public void setName(String name) {
+	// 		this.name = name;
+	// 	}
+	// }
+
+	// import org.springframework.data.jpa.repository.JpaRepository;
+	// import org.springframework.stereotype.Repository;
+
+	// @Repository
+	// public interface MiEntidadRepository extends JpaRepository<MiEntidad, Long> {
+	// 	// Aquí puedes agregar métodos adicionales de consulta si es necesario
+	// }
+
+	// import org.springframework.stereotype.Service;
+	// import org.springframework.transaction.annotation.Transactional;
+
+	// @Service
+	// public class MiServicio {
+
+	// 	@Autowired
+	// 	private MiEntidadRepository miEntidadRepository;
+
+	// 	public List<MiEntidad> obtenerTodasLasEntidades() {
+	// 		return miEntidadRepository.findAll();
+	// 	}
+
+	// 	public MiEntidad guardarMiEntidad(MiEntidad entidad) {
+	// 		return miEntidadRepository.save(entidad);
+	// 	}
 	// Otros métodos de servicio según sea necesario
 
     // @Transactional
