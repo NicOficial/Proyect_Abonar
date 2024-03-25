@@ -1,0 +1,69 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff; /* blanco */
+    color: #000; /* negro */
+    margin: 0;
+    padding: 0;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-form {
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #000; /* negro */
+    border-radius: 5px;
+    background-color: #fff; /* blanco */
+}
+
+h2 {
+    text-align: center;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #000; /* negro */
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #000; /* negro */
+    color: #fff; /* blanco */
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #222; /* negro más oscuro */
+}
+
+.signup-link {
+    text-align: center;
+}
+
+.signup-link a {
+    color: #000; /* negro */
+    text-decoration: none;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
