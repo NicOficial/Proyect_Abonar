@@ -44,11 +44,36 @@ public User saveUser(User user) {
 //aditional methods for password encoding, etc
 
 @RestController
+public class UserController {
+	@Autowired
+	private UserService userService;
 
+	@PostMapping("/login")
+	public ResponseEntity<?> login(@RequestBody Credentials credentials) {
+		User user = userService.findByUsername(credentials.getUsername());
 
+		if (user == null)
+			return ResponseEntity.notFound().build();
+	}
 
+	//Compare the provided password with the stored one, e.g. using BCrypt
 
+	//Password comparison
+	if (BCrypt.checkpw(credentials.getPassword(), user.getPassword())) {
+		// Autenticate user
+		// Return JWT token or other authentication artifact
+		return ResponseEntity.ok().build();
+	}
 
+	return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+}
+
+public class Credentials {
+	private String username;
+	private String password;
+
+	// Constructor, getters and setters...
+}
 
 	// import javax.persistence.Entity;
 	// import javax.persistence.Id;
@@ -117,7 +142,6 @@ public User saveUser(User user) {
 
     // @Transactional
     // public void realizarOperacionesTransaccionales() {
-        // Aquí puedes realizar operaciones CRUD o personalizadas utilizando el repositorio
-        // Todas estas operaciones se ejecutarán dentro de una transacción
+    //     Aquí puedes realizar operaciones CRUD o personalizadas utilizando el repositorio
+    //     Todas estas operaciones se ejecutarán dentro de una transacción
     // }
-}
