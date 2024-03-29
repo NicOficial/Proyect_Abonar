@@ -1,0 +1,79 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.contenedor{
+    width: 400px;
+    border: none;
+    border-radius: 15px;
+    padding: 15px;
+    background-color: #72b2c4;
+    margin: 0 auto;
+}
+.contenedor label{
+    font-size: 1rem;
+    padding: 5px 0;
+    color: #fff;
+}
+.boton{
+    text-align: center;
+}
+.boton-enviar{
+    margin-top: 15px;
+    padding: 10px 30px;
+}
+.contenedor h1{
+    font-size: 30px;
+    margin-top: 15px;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+}
+@media screen and (max-width: 480px) {
+    .contenedor{
+        width: 300px;
+    }
+}
+
+.alert-danger{
+    color: #721c24;
+    background: #f0b1b6;
+    border:1px solid white;
+    border-radius: 5px;
+    text-align: center;
+    margin: 5px;
+}
+.container-error-message{
+    padding: 3px;
+}
+
+.password{
+    position: relative;
+}
+.password i{
+    position: absolute;
+    top: 2px;
+    left: 340px;
+}
+.password i{
+    cursor: pointer;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+input.ng-valid{
+    border: solid green;
+}
+input.ng-invalid.ng-touched{
+    border: solid red;
+}
+select.ng-valid{
+    border: solid green;
+}
+select.ng-invalid.ng-touched{
+    border: solid red;
+}
+

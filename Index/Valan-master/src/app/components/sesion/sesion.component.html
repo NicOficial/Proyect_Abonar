@@ -1,0 +1,55 @@
+<div class="raios">
+
+    <div class="login">
+        <img src="../assets/img/logoLogin.png" class="card-img-top imgLogo" alt="...">
+        <div class="contenedorSesion">
+            <h5 class="card-title TituloSesion ">Login</h5>
+
+            <form [formGroup]="Sesion" (ngSubmit)="Login()">
+                <div class="BordeLogin">
+                    <div class="bor mb-3">
+                        <span class="icon" id="basic-addon1"><i class="fa-solid fa-user-astronaut icolog"></i></span>
+                        <input type="text" class="form-control bor" formControlName="Correo" placeholder="Usuario" aria-label="Username" aria-describedby="basic-addon1" required maxlength="20" minlength="5"/>
+                        
+                         <div *ngIf="Sesion.get('Correo')?.errors && Sesion.get('Correo')?.touched">
+                            
+                            <p *ngIf="Sesion.get('Correo')?.hasError('required')" class="text-danger">Completar Campo</p>
+                            <p *ngIf="Sesion.get('Correo')?.hasError('minlength')" class="text-danger">7 números como mínimo</p>
+                            <p *ngIf="Sesion.get('Correo')?.hasError('maxlength')" class="text-danger">8 números como máximo</p>
+                        </div>
+                    </div>
+                    <div class="bor mb-3">
+                        <i class="fa-solid fa-key icolog"></i>
+                        <input type="password" class="form-control bor" formControlName="Contraseña" placeholder="Contraseña" aria-label="Contraseña" aria-describedby="basic-addon1" required minlength="8">
+                         <div *ngIf="Sesion.get('Contraseña')?.errors && Sesion.get('Contraseña')?.touched">
+                            <p *ngIf="Sesion.get('Contraseña')?.hasError('required')" class="text-danger">
+                                Por favor ingrese su contraseña
+                            </p> 
+                            
+                        </div>
+                    </div>
+
+                </div>
+                <div class="mb-3 form-check OlvContr">
+                    <div class="cont1 text">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Recordar mi Correo</label>
+                    </div>
+                    <div class="cont2">
+                        <a href="#" class="link">Olvidé mi contraseña</a>
+                    </div>
+                </div>
+                <div class="boton">
+                    <button type="submit" class="botonRe botonR">Ingresar</button>
+                    <br>
+                </div>
+                <div class="registro text">
+                    <p>¿Aún no tienes cuenta? <a routerLink="registro" class="registrolink">Registrarme</a> </p>
+                </div>
+
+
+            </form>
+
+        </div>
+    </div>
+</div>

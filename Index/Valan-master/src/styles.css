@@ -1,0 +1,252 @@
+    /* You can add global styles to this file, and also import other style files */
+    
+    body {
+        background-color: rgb(255, 255, 255);
+        color: rgb(27, 23, 23) !important;
+        height: 100%;
+        margin: 0;
+    }
+    
+    hr {
+        border-color: white;
+    }
+    
+    .puntero {
+        cursor: pointer;
+    }
+    
+    .img-circle {
+        border-radius: 100%;
+        width: 150px;
+    }
+    
+    .card-title,
+    .card-text {
+        color: black;
+    }
+    
+    .badge {
+        margin-left: 5px;
+    }
+    
+    .btn-outline-success {
+        margin-left: 5px;
+    }
+    
+    .img-thumb {
+        width: 50px;
+        height: 50px;
+    }
+    /* Animaciones */
+    
+    .animated {
+        -webkit-animation-duration: 1s;
+        animation-duration: 1s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+    }
+    
+    .fast {
+        -webkit-animation-duration: 0.4s;
+        animation-duration: 0.4s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+    }
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    
+    .fadeIn {
+        animation-name: fadeIn;
+    }
+    
+    .col-md-6 {
+        width: 100%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    #centrador {
+        text-align: center;
+        width: 400px;
+        height: auto;
+        background-color: rgb(221, 212, 212);
+    }
+    
+    #imagen {
+        width: 1000px;
+    }
+
+    
+    .texto {
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        text-align: center;
+    }
+    
+    .derecha {
+        justify-content: flex-end;
+    }
+    
+    .logoMonedas {
+        border-radius: 100%;
+        width: 150px;
+    }
+    /* .hdYpro {
+        display: flex;
+        flex-flow: column wrap;
+        -webkit-box-pack: justify;
+        max-width: 117rem;
+        padding: 0px 2rem;
+        margin: 0px auto;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    
+    @media screen and (min-width: 992px) {
+        .kCogd {
+            width: 50%;
+            margin: 0px auto;
+        }
+    }
+    
+    @media screen and (min-width: 768px) {
+        .fpdENk {
+            width: 50%;
+            margin: 0px auto;
+        }
+    } */
+    
+    .wrapper {
+        display: flex;
+        flex-flow: row wrap;
+        font-weight: bold;
+        text-align: center;
+    }
+    
+    .wrapper>* {
+        padding: 10px;
+        flex: 1 100%;
+    }
+    
+    .minh-100 {
+        height: 100vh;
+    }
+    
+    .centrar-texto {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #fff;
+    }
+    
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+    
+    .centrar {
+        text-align: center;
+    }
+    
+    .boton-registro {
+        text-align: center;
+        margin-top: 30px;
+    }
+    /* .iqrUHq {
+        position: absolute;
+        top: 6vw;
+        left: 6vw;
+        width: 1351px px;
+        height: 590px;
+        transform: rotate( -31deg);
+        z-index: -1;
+        background: rgb(52, 51, 72);
+        border-radius: 400px;
+    } */
+    /* .jKPYKI {
+        margin: 0px 0px 1rem;
+        font-size: 1.2rem;
+        color: rgb(52, 51, 72);
+        text-align: center;
+        font-family: proxima-nova, sans-serif;
+        font-weight: 900;
+        font-style: normal;
+    }
+    
+    @media screen and (min-width: 992px) {
+        .jKPYKI {
+            margin: 0px 0px 1rem;
+            font-size: 1.7rem;
+            text-align: left;
+        }
+    } */
+    /* .hCDXlO {
+        display: block;
+        margin: 0px 0px 0.8rem;
+        font-size: 0.6rem;
+        letter-spacing: 1.18px;
+        color: rgb(106, 117, 135);
+    } */
+    /* .jEObfa {
+        width: 300px;
+        bottom: 40px;
+        max-width: initial;
+    } */
+    /* .fpdENk {
+        width: 50%;
+        margin: 0px auto;
+    }
+    
+    .cPEkng {
+        margin: 0px 0px 5rem;
+        font-size: 0.5rem;
+        letter-spacing: 1px;
+        text-align: center;
+        color: rgb(106, 117, 135);
+    } */
+    /* @media screen and (min-width: 992px) {
+        .cPEkng {
+            font-size: 0.7rem;
+            text-align: left;
+        }
+    }
+    
+    .cPEkng {
+        margin: 0px 0px 3rem;
+        font-size: 0.5rem;
+        letter-spacing: 1px;
+        text-align: center;
+        color: rgb(106, 117, 135);
+    }
+     */
+    /* .hsmPs {
+        display: flex;
+        flex-wrap: wrap;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+        max-width: 30rem;
+        margin: 0px auto 6rem;
+    }
+     */
+    /* .gyCxwS {
+        width: 7rem;
+        height: auto;
+    } */
+    /* .hdKmNU {
+        width: 7rem;
+        height: auto;
+    } */
+    /* html,
+    body {
+        height: 100%;
+    } */
+    /* body {
+        margin: 0;
+        font-family: Roboto, "Helvetica Neue", sans-serif;
+    }
+     */

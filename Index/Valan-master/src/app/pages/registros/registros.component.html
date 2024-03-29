@@ -1,0 +1,53 @@
+<div class="row">
+    <div class="col text-end">
+        <button routerLink="/foro/nuevo" class="btn btn-primary "> 
+            <i class="fa fa-plus"></i>
+            Agregar comentario
+        </button>
+    </div>
+</div>
+
+<table *ngIf="!cargando && comentarios.length>0" class="table mt-3 table-striped animated fadeIn faster">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Comentarios</th>
+            <!-- <th scope="col">Apellido</th>
+            <th scope="col">comentario</th>
+            <th scope="col">Tools</th> -->
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let comentario of comentarios; let i =index">
+            <th scope="row">{{i+1}}</th>
+            <td>
+                <label class="badge rounded-pill bg-info text-dark">{{comentario.nombre}}</label>
+                <br> {{comentario.apellido}}
+            </td>
+
+        </tr>
+
+    </tbody>
+</table>
+
+<div *ngIf="cargando" class="alert alert-info text-center mt-3 animated fadeIn faster">
+    <h4 class="alert-heading ">Cargando</h4>
+    <p>
+        <i class="fa fa-sync-alt fa-spin fa-2x"></i>
+    </p>
+
+</div>
+<div *ngIf="!cargando && comentarios.length===0" class="alert alert-warning text-center mt-3 animated fadeIn faster">
+    <h4 class="alert-heading ">No hay registros</h4>
+    <p>
+        <i class="fa  fa-exclamation fa-2x"></i>
+    </p>
+    <p class="mb-0">
+        Espere por favor
+    </p>
+
+
+
+
+</div>

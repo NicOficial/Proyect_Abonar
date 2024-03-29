@@ -1,0 +1,91 @@
+
+body{
+    background-color: rgb(194, 238, 224);
+}
+.bghero{
+    background-color: rgb(243, 82, 7);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+
+}
+.textinner{
+    padding-left: 50px;
+    padding-top: 50px;
+    color: white;
+    
+}
+.btndown{
+    width: 150px;
+   font-size: small;
+    color: white;
+    padding: 10px;
+    background-color: black;
+    border: none;
+    border-radius: 5px;
+}
+
+.btndown:hover{
+    background-color: rgb(0, 47, 255);
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+.textmobile{
+    font-size: 50px;
+    color: rgb(9, 175, 175);
+    -webkit-text-stroke: 2px rgb(31, 25, 25);
+
+}
+.qrimg{
+    height: 200px;
+    width: 200px;
+}
+.onecolor{
+    color: rgb(243, 82, 7);
+}
+.bgneeds {
+    padding: 25px;
+    background-color:rgb(149, 196, 196);
+    border-radius: 10px;
+}
+.letsfinanceh1{
+    margin-top: 100px;
+}
+.btn2{
+    width: 130px;
+    border: none;
+    background-color:rgb(243, 82, 7) ;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: 500;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+   
+}
+.btn2:hover{
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    background-color: rgb(240, 78, 2) ;
+}
+.companyimg{
+    border-radius: 20px;
+    padding-right: 10px;
+}
+.logo{
+    width: 50px;
+    height: 50px;
+}
+/* Media query */
+
+@media(max-width: 763px){
+   
+    
+    
+    .bghero{
+
+        justify-content: center;
+        display: flex;
+        margin-top: 10px;
+
+    }
+
+}

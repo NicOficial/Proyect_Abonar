@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./trasferecia.css">
+    <title>Transferencia</title>
+</head>
+<body>
+    <header>
+        <h1>Transferencia de Dinero</h1>
+    </header>
+
+    <main>
+        <form>
+            <label for="recibe">Nombre del que Recibe:</label>
+            <input type="text" id="recibe" required>
+
+            <label for="accountFrom">Cuenta de Origen:</label>
+            <input type="text" id="account_From" name="accountFrom" required>
+
+            <label for="accountTo">Cuenta de Destino:</label>
+            <input type="text" id="account_To" name="accountTo" required>
+
+            <label for="amount">Cantidad a Transferir:</label>
+            <input type="number" id="amount" name="amount" required>
+
+            <button type="submit" id="good">Transferir</button>
+                
+        </form>
+    </main>
+    <p id="warning"></p>
+
+    <script src="./transferencia.js"></script>
+</body>
+</html>

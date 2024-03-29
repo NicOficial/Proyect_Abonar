@@ -1,0 +1,149 @@
+h2,
+h1 {
+    font-family: proxima-nova, sans-serif;
+    font-weight: 900;
+    font-style: normal;
+}
+
+h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+body {
+    background: white;
+    font-style: normal;
+    font-family: acumin-pro, BlinkMacSystemFont, sans-serif, Monserrat, sans-serif;
+    font-weight: 400;
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
+html {
+    max-width: 100%;
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+
+.bcJmhM {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+.ibHuzQ {
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+    flex: 1 1 0%;
+}
+
+.hdYpro {
+    display: flex;
+    flex-flow: column wrap;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    max-width: 117rem;
+    padding: 0px 2rem;
+    margin: 0px auto;
+}
+
+@media screen and (min-width: 992px) {
+    .hdYpro {
+        flex-direction: row;
+        padding: 0px 1.5rem;
+    }
+}
+
+.iuAwuj {
+    display: none;
+    padding: 4rem 0px;
+}
+
+@media screen and (min-width: 992px) {
+    .iuAwuj {
+        padding: 11rem 0px;
+        display: block;
+    }
+}
+
+.hdYpro {
+    display: flex;
+    flex-flow: column wrap;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    max-width: 117rem;
+    padding: 0px 2rem;
+    margin: 0px auto;
+}
+
+@media screen and (min-width: 992px) {
+    .hdYpro {
+        flex-direction: row;
+        padding: 0px 1.5rem;
+    }
+}
+
+.blGqRa {
+    display: flex;
+    flex: 0 0 100%;
+    -webkit-box-align: center;
+    align-items: center;
+    margin: 4rem 0px 0px;
+}
+
+.bqHJwZ:not(:last-child) {
+    margin-bottom: 4rem;
+}
+
+.blGqRa>ul:first-child li {
+    position: relative;
+    padding-right: 1rem;
+}
+
+.hPqihs {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 52rem;
+    margin: 0px auto;
+}
+
+.hPqihs h2 {
+    text-align: center;
+}
+
+.gvMVUy {
+    font-size: 3.6rem;
+    text-align: left;
+}
+
+.yeqSw {
+    font-size: 1.6rem;
+    letter-spacing: -0.13px;
+    line-height: 1.7;
+    text-align: center;
+    color: rgb(106, 117, 135);
+}
+
+@media screen and (min-width: 992px) {
+    .yeqSw {
+        font-size: 1.8rem;
+        text-align: left;
+    }
+}
+
+.hPqihs p {
+    text-align: center;
+}

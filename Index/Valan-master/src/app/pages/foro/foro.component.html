@@ -1,0 +1,62 @@
+<h1> Tu opinión nos importa, <small>¡déjanos un comentario!</small></h1>
+<div class="row ">
+    <div class="col text-end">
+        <button class="btn btn-danger" routerLink="/registros">
+            
+            <i class="fa fa-arrow-left"></i>
+        Ver comentarios
+    </button>
+    </div>
+
+    <div class="row animated fadeIn faster">
+
+        <div class="col">
+            <form (ngSubmit)="guardar(f)" #f="ngForm">
+
+                <!-- <div class="form-group">
+                    <label>Firebase ID</label>
+                    <input type="text" [(ngModel)]="conen.idCliente" name="id" class="form-control " disabled="disabled" placeholder="Firebase ID">
+                    <small class="form-text text-muted">Este campo es autogenerado</small>
+                </div> -->
+
+                <div class="form-group">
+                    <label>Nombre</label>
+                    <input type="text" [(ngModel)]="conen.nombre" class="form-control" placeholder="escribe tu nombre" name="Nombre" required>
+
+                </div>
+
+                <div class="form-group">
+                    <label>Comentario</label>
+                    <input type="text" [(ngModel)]="conen.apellido" class="form-control" name="Apellido" placeholder="escribí un comentario">
+
+                </div>
+
+                <!-- <div class="form-group">
+                    <label>Estado</label>
+                    <br>
+                    <button *ngIf="foro.conforme" (click)="foro.conforme=false" class="btn btn-outline-success w-50" type="button">
+
+                    <i class="fa fa-smile-wink "></i>
+                    Conforme
+                </button>
+                </div>
+
+
+                <button *ngIf="!foro.conforme" (click)="foro.conforme=true" class="btn btn-outline-danger w-50" type="button">
+
+                    <i class="fa fa-dizzy "></i>
+                   No conforme
+                </button> -->
+
+                <hr>
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-primary w-25">
+                <i class="fa fa-save"></i>   
+                Enviar
+                </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

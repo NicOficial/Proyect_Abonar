@@ -1,0 +1,25 @@
+.contenedor{
+
+}
+.saldo{
+    width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: #2fa4ff;
+}
+.saldo h3{
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;    
+}
+.saldo p{
+    color: #fff;
+    text-align: center;
+} 
+@media screen and (max-width: 480px) {
+    .saldo{
+        width: 200px;
+        height: 200px;
+    }
+}

@@ -1,0 +1,33 @@
+<mat-toolbar>
+    <div fxHide.gt-xs>
+        <button mat-icon-button (click)="onToggleSidenav()">
+            <mat-icon>menu</mat-icon>
+        </button>
+    </div>
+    <div>
+        <a routerLink="homSe">
+            <img class="LogoNB" src="../assets/img/logoicon2.png" alt="" width="40" height="40">
+            <img src="../assets/img/nombrelogo.png" alt="" width="60" height="50">
+        </a>
+    </div>
+    <div fxFlex fxLayoutAlign="end" fxHide.xs>
+        <ul fxLayout fxLayoutGap="20px" class="navigation-items">
+            <li>
+                <a routerLink="somos">¿Quienes somos?</a>
+            </li>
+            <li>
+                <a routerLink="ayuda">Ayuda</a>
+            </li>
+            <li>
+                <a routerLink="registro">Registrarme</a>
+            </li>
+            <li>
+                
+                <a routerLink="sesion">Iniciar Sesion</a>
+            </li>
+        </ul>
+
+    </div>
+</mat-toolbar>
+
+

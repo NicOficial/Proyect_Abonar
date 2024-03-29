@@ -10,93 +10,36 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="styles.css">
     <title>Pennyeye - Registro</title>
+    
 </head>
 <body>
-    <div class="container-form register">
-        <div class="information">
-            <div class="info-childs">
-                <h2>Bienvenido</h2>
-                <p>Para unirte a nuestra comunidad por favor Inicia Sesión con tus datos</p>
-                <input type="button" value="Iniciar Sesión" id="sign-in">
+    <div class="form-structor">
+        <div class="signup">
+            <h2 class="form-title" id="signup"><span>or</span>Registrarse</h2>
+            <div class="form-holder">
+                <input type="text" class="input" placeholder="Usuario" />
+                <input type="email" class="input" placeholder="Email" />
+                <input type="password" class="input" placeholder="Contraseña" />
             </div>
+            <button class="submit-btn">Crear cuenta</button>
         </div>
-        <div class="form-information">
-            <div class="form-information-childs">
-                <h2>Crear una Cuenta</h2>
-                <div class="icons">
-                    <i class='bx bxl-google'></i>
-                    <i class='bx bxl-github'></i>
-                    <i class='bx bxl-linkedin' ></i>
+        <div class="login slide-up">
+            <div class="center">
+                <h2 class="form-title" id="login"><span></span>Iniciar Sesion</h2>
+                <div class="form-holder">
+                    <input type="email" class="input" placeholder="Email" />
+                    <input type="password" class="input" placeholder="Contraseña" />
                 </div>
-                <p>o usa tu email para registrarte</p>
-                <form class="form form-register" novalidate>
-                    <div>
-                        <label>
-                            <i class='bx bx-user' ></i>
-                            <input type="text" placeholder="Nombre Usuario" name="userName" >
-                        </label>
-                    </div>
-                    <div>
-                        <label >
-                            <i class='bx bx-envelope' ></i>
-                            <input type="email" placeholder="Correo Electronico" name="userEmail" >
-                        </label>
-                    </div>
-                   <div>
-                        <label>
-                            <i class='bx bx-lock-alt' ></i>
-                            <input type="password" placeholder="Contraseña" name="userPassword">
-                        </label>
-                   </div>
-                   
-                    <input type="submit" value="Registrarse">
-                    <div class="alerta-error">Todos los campos son obligatorios</div>
-                    <div class="alerta-exito">Te registraste correctamente</div>
-                </form>
+                <button class="submit-btn">Iniciar Sesion</button>
             </div>
         </div>
     </div>
+    <h3>Su seguridad es primordial <br> No se permiten contraseñas creadas, para generarla haz click <br><a href="C:\Users\Windows 10\Downloads\Penny-eye-1\Index\random-password-generator-in-javascript\index.html">aqui</a></h3></h3>
 
-
-    <div class="container-form login hide">
-        <div class="information">
-            <div class="info-childs">
-                <h2>¡¡Bienvenido nuevamente!!</h2>
-                <p>Para unirte a nuestra comunidad por favor Inicia Sesión con tus datos</p>
-                <input type="button" value="Registrarse" id="sign-up">
-            </div>
-        </div>
-        <div class="form-information">
-            <div class="form-information-childs">
-                <h2>Iniciar Sesión</h2>
-                <div class="icons">
-                    <i class='bx bxl-google'></i>
-                    <i class='bx bxl-github'></i>
-                    <i class='bx bxl-linkedin' ></i>
-                </div>
-                <p>o Iniciar Sesión con una cuenta</p>
-                <form class="form form-login"novalidate>
-                    <div>
-                        <label >
-                            <i class='bx bx-envelope' ></i>
-                            <input type="email" placeholder="Correo Electronico" name="userPassword">
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            <i class='bx bx-lock-alt' ></i>
-                            <input type="password" placeholder="Contraseña" name="userPassword">
-                        </label>
-                    </div>
-                    <input type="submit" value="Iniciar Sesión">
-                    <div class="alerta-error">Todos los campos son obligatorios</div>
-                    <div class="alerta-exito">Te registraste correctamente</div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <script src="js/script.js"></script>
-    <script src="js/register.js"></script>
-    <script src="js/login.js"></script>
+   
+   
+    <script src="login.js"></script>
+   
+    
 </body>
 </html>

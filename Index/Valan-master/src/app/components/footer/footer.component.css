@@ -1,0 +1,23 @@
+.contenedor-footer{
+    background-color: #1c224b;
+    opacity: 98%;
+    background-size: 100% ;
+    overflow: hidden;
+    margin-top: 30px;
+}
+.foot{
+    padding-top: 0px;
+    color: antiquewhite;
+    
+}
+.title{
+    font-weight: bolder;
+    font-size: 13px;
+}
+.redes{
+        font-size: 1.2rem;
+        color: #00ffdd;
+}
+.foLink{
+    color: #00ffdd;
+}
