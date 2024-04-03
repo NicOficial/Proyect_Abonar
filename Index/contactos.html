@@ -1,3 +1,5 @@
+
+
 <html lang="en">
    <head>
       <meta charset="utf-8">
@@ -69,27 +71,28 @@
         </div>
         
         <div class="contact-form">
-          <form action="" id="contact-form">
-            <h2>Envianos tu Mensaje</h2>
+          <form action="procesar_formulario.php" id="contact-form" method="post">
+            <h2>Envíanos tu Mensaje</h2>
             <div class="input-box">
-              <input type="text" required="true" name="">
+              <input type="text" required="true" name="usuario">
               <span>Usuario</span>
             </div>
             
             <div class="input-box">
-              <input type="email" required="true" name="">
+              <input type="email" required="true" name="email">
               <span>Email</span>
             </div>
             
             <div class="input-box">
-              <textarea required="true" name=""></textarea>
+              <textarea required="true" name="comentario"></textarea>
               <span>Comentario</span>
             </div>
             
             <div class="input-box">
-              <input type="submit" value="Send" name="">
+              <input type="submit" value="Send" name="submit">
             </div>
           </form>
+        </div>
         </div>
         
       </div>
