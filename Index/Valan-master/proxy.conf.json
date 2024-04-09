@@ -1,8 +1,0 @@
-
-{
-    "/Usuario/*": {
-        "target": "https://localhost:7247",
-        "secure": false,
-        "logLevel": "debug"
-    }
-}
