@@ -14,6 +14,10 @@
   padding: 10px 10%;
   overflow: hidden;
 }
+.NAV{
+  font-size: 100px;
+}
+
 nav{
   padding: 10px 0;
   display: flex;
@@ -21,7 +25,8 @@ nav{
   justify-content: space-between;
 }
 .logo{
-  width: 140px;
+  width: 150px;
+
 }
 nav ul li{
   display: inline-block;
