@@ -15,10 +15,11 @@ nav img{
   width: 7%;
   margin-top: 1%;
   margin-left: 2%;
+  margin-bottom: 1%;
 }
 
 #Encabezado{
   justify-content: space-between;
-  width: 50%;
+  display: flex;
+  align-items: center;
 }
-
