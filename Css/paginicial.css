@@ -25,6 +25,10 @@ nav a{
   font-weight: bold;
 }
 
+nav a:hover{
+  color: white;
+}
+
 #Encabezado{
   justify-content: space-around;
   display: flex;
@@ -37,8 +41,4 @@ nav a{
   display: flex;
   width: 30%;
   justify-content: space-around;
-}
-
-#Login a:hover{
-  color: white;
 }
