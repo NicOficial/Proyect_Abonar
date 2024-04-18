@@ -4,7 +4,7 @@ body{
 }
 
 nav{
-  background-color: aqua;
+  background-color: rgb(43, 255, 0);
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -18,8 +18,27 @@ nav img{
   margin-bottom: 1%;
 }
 
+nav a{
+  text-decoration: none;
+  color: black;
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
 #Encabezado{
-  justify-content: space-between;
+  justify-content: space-around;
   display: flex;
   align-items: center;
+  width: 50%;
+}
+
+#Login{
+  align-items: center;
+  display: flex;
+  width: 30%;
+  justify-content: space-around;
+}
+
+#Login a:hover{
+  color: white;
 }
