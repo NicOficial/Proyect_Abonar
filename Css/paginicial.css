@@ -69,7 +69,8 @@ footer{
   background-color: rgb(69, 69, 69);
   width: 100%;
   display: flex;
-  margin-top: 2%;
+  margin-top: 20.5%;
+  height: 500px;
   /* Footer a revisar como queda el diseño final */
 }
 
@@ -94,16 +95,15 @@ footer a{
   display: flex;
 }
 
-footer #Siguenos h3{
-  display: flex; 
+
+footer #Siguenos h3{ 
+  display: flex;
+  align-items: bottom;
+  justify-content: bottom;
 }
 
-footer #Siguenos h3{
+ footer #Siguenos a{ 
   display: flex;
-  align-items: end;
-  justify-content: end;
+  align-items: bottom;
+  
 }
-
-footer #Siguenos a{
-  display: flex;
-  justify-content: end;}
