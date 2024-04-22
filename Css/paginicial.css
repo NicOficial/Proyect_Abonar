@@ -68,10 +68,10 @@ nav a:hover{
 footer{
   background-color: rgb(69, 69, 69);
   width: 100%;
-  display: flex;
   margin-top: 20.5%;
   height: 500px;
-  /* Footer a revisar como queda el diseño final */
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
 }
 
 footer img{
@@ -82,7 +82,7 @@ footer img{
 }
 
 footer div{
-  align-items: self-end;
+  
   width: 100%;
   margin-top: 1%;
 }
@@ -92,18 +92,16 @@ footer a{
   color: white;
   font-size: 1.5em;
   font-weight: bold;
-  display: flex;
 }
 
 
 footer #Siguenos h3{ 
-  display: flex;
-  align-items: bottom;
-  justify-content: bottom;
+  margin-top: 75%;
 }
+ footer a:hover{ 
 
- footer #Siguenos a{ 
-  display: flex;
-  align-items: bottom;
+  color: blue;
+
+
   
 }
