@@ -2,53 +2,48 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #ccc; 
+    background-color: rgb(231, 230, 230); /* Color de fondo general */
 }
 
-
-
-.terminos{
-    color: hwb(237 0% 80%);
-    text-decoration: none;
-    transition: .1s cubic-bezier(.4,0,.2,1);
-    cursor: pointer;
+header {
+    display: flex;
+    
     align-items: center;
-    padding: 10px;
-    
-    
-    
-    
+    padding: 20px;
+     
 }
-
 
 .logo {
-    width: 100px;
-     
-    
-    
-     
+    width: 80px; 
 }
 
-.content {
-    display: flex;
-    justify-content: space-between;
-    max-width: 1200px; 
-    margin: 0 auto; 
-    padding: 20px;
+.terminos {
+    color: hwb(237 0% 80%);; 
+    text-decoration: none;
+    transition: color 0.3s ease; 
+    justify-content: left;
+    margin-left: 50px;
     
 }
+
+.terminos:hover {
+    color: #cceeff; /* Cambia el color al pasar el cursor */
+}   
+
 
 .contenido {
-    width: 60%; 
-    padding: 20px;
-    background-color: #fff; 
-    border: 1px solid #fff; 
+    width: 35%;
+    padding: 50px;
+    margin-top: 60px;
+    margin-left: 20px;
+    background-color: #fff;
+    border: 2px outset black;
     border-radius: 5px;
-    border-color: black;
+    
 }
 
 .margen {
-    text-align: center; 
+    text-align: center;
 }
 
 input, button {
@@ -61,21 +56,21 @@ input, button {
 }
 
 button {
-    background-color: #007bff; 
-    color: #fff; 
+    background-color: #007bff;
+    color: #fff;
     border: none;
     cursor: pointer;
 }
 
 a {
     text-decoration: none;
-    color: #007bff; 
+    color: #007bff;
 }
 
 a:hover {
     text-decoration: underline;
 }
 
-div h2, div h3{
+div h2, div h3 {
     text-align: left;
 }
