@@ -9,7 +9,7 @@ header {
     display: flex;
     
     align-items: center;
-    padding: 20px;
+    padding: 50px;
      
 }
 
@@ -27,19 +27,25 @@ header {
 }
 
 .terminos:hover {
-    color: #cceeff; /* Cambia el color al pasar el cursor */
+    color: hwb(237 0% 10%);;  /* Cambia el color al pasar el cursor */
 }   
 
 
-.contenido {
-    width: 35%;
-    padding: 50px;
-    margin-top: 60px;
-    margin-left: 20px;
-    background-color: #fff;
-    border: 2px outset black;
-    border-radius: 5px;
+.content {
     
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.contenido {
+    width: 60%;
+    padding: 20px;
+    background-color: #fff;
+    border: 1.5px outset black;
+    border-radius: 5px;
 }
 
 .margen {
@@ -71,6 +77,8 @@ a:hover {
     text-decoration: underline;
 }
 
-div h2, div h3 {
-    text-align: left;
+.imagen {
+    width: 55%; /* Ancho deseado de la imagen */
+    margin-left: 20px; /* Espacio a la izquierda de la imagen */
+    align-self: flex-start; /* Alinea la imagen en la parte superior del contenedor */
 }
