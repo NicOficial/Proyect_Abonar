@@ -1,69 +1,81 @@
 body {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    background-color: #f0f0f0;
-    padding: 20px;
+    font-family: 'Arial', sans-serif;
     margin: 0;
+    padding: 0;
+    background-color: #ccc; 
 }
-header {
-    background-color: #f0f0f0;
+
+
+
+.terminos{
+    color: hwb(237 0% 80%);
+    text-decoration: none;
+    transition: .1s cubic-bezier(.4,0,.2,1);
+    cursor: pointer;
+    align-items: center;
+    padding: 10px;
     
-    padding: 10px 20px;
     
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
+    
+    
 }
-header img{
+
+
+.logo {
     width: 100px;
+     
     
+    
+     
 }
-.container {
-    width: 600px;
-    border: 1px solid black;
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px; 
+    margin: 0 auto; 
     padding: 20px;
-    box-sizing: border-box;
-    background-color: #ffffff;
-    border-radius: 8px;
-    margin-top: 50px;
-   
     
 }
-h2 {
-    text-align: left;
+
+.contenido {
+    width: 60%; 
+    padding: 20px;
+    background-color: #fff; 
+    border: 1px solid #fff; 
+    border-radius: 5px;
+    border-color: black;
 }
-h3 {
-    color: black;
+
+.margen {
+    text-align: center; 
 }
-input {
+
+input, button {
     width: 100%;
-    padding: 12px 20px;
-    margin-bottom: 10px;
+    padding: 12px;
+    margin-bottom: 15px;
     box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
+
 button {
-    width: 100%;
-    padding: 12px;
-    font-size: 16px;
-    background-color: #007bff;
-    color: #fff;
+    background-color: #007bff; 
+    color: #fff; 
     border: none;
-    border-radius: 4px;
     cursor: pointer;
 }
-a{
-    display: flex;
-    justify-content: center;
-}
-.mpno {
-    position: absolute;
-    top: 50%; 
-    right: 0; 
-    transform: translateY(-50%); 
-    width: 700px; 
-    height: auto; 
-    
 
+a {
+    text-decoration: none;
+    color: #007bff; 
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+div h2, div h3{
+    text-align: left;
 }
