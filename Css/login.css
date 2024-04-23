@@ -1,0 +1,48 @@
+body{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: 0%;
+    background-color: white;
+  }
+  
+  nav{
+    background-color:hwb(237 0% 80%);
+    display: flex;
+    width: 100%;
+  }
+  
+#abonarlogo{
+    height: 9%;
+    width: 9%;
+    margin-top: 1%;
+    margin-left: 5%;
+    margin-bottom: 1%;
+  }
+  
+
+#abonarpalabra{
+
+    height: 12%;
+    width: 12%;
+    margin-top: 2%;
+    margin-left: 1%;
+    margin-bottom: 1%;
+
+
+}
+
+  .container{
+    width: 40%;
+    border: 1px solid  hwb(0 100% 28%);
+    box-sizing: border-box;
+     background-color: #de0c0c;
+     margin-top: 11%;
+     margin-left: 50%;
+  }
+
+#ingresarmail{
+
+    margin-left: 0%;
+    margin-bottom: 12%;
+
+
+}
