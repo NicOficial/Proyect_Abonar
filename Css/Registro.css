@@ -2,7 +2,7 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: rgb(231, 230, 230); /* Color de fondo general */
+    background-color: white; /* Color de fondo general */
 }
 
 
@@ -11,7 +11,7 @@ body {
 }
 
 .terminos {
-    color: #007bff; 
+    color: hwb(237 0% 80%); 
     text-decoration: none;
     transition: color 0.3s ease; 
     font-size: 14px;
@@ -34,7 +34,7 @@ body {
     width: 60%;
     padding: 20px;
     background-color: #fff;
-    border: 1.5px outset black;
+    border: 2px solid lightgray;
     border-radius: 5px;
     
 }
@@ -53,7 +53,7 @@ input, button {
 }
 
 button {
-    background-color: #007bff;
+    background-color: hwb(237 0% 80%);
     color: #fff;
     border: none;
     cursor: pointer;
@@ -61,7 +61,7 @@ button {
 
 a {
     text-decoration: none;
-    color: #007bff;
+    color: hwb(237 0% 80%);
 }
 
 a:hover {
@@ -72,16 +72,14 @@ a:hover {
 h2{
     font-size: 48px;    
 }
-h3{
-   
-}
+
 .links{
     text-decoration: underline;
     color: black;
     
 }
 footer{
-    background-color: #dedede;
+    background-color: #e6e2e2;
 }
 .footer23{
     padding: 10px 0px;
@@ -90,12 +88,12 @@ footer{
     justify-content: center;
     gap:30px;
     padding-top: 40px;
-    background-color: #dedede;
+    background-color: #e6e2e2;
     
 }
 
 footer p{
-    background-color: #dedede;
+    background-color: #e6e2e2;
     
     display: flex;
     justify-content: center;
@@ -108,9 +106,20 @@ footer p{
 
 #checkbox{
     display: grid;
-    grid-template-columns: 20px 5fr;
+    grid-template-columns: 15px 5fr;
 } 
 .term{
     color: black;
     text-decoration: underline;
 }
+nav{
+    background-color:hwb(237 0% 80%);
+    display: flex;
+    padding: 10px 20px; 
+    height: 70px; 
+    
+  }
+  
+  .checkeo{
+    margin-top: 25px;
+  }
