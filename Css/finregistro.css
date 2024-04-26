@@ -32,25 +32,24 @@ body{
 }
 
   .container{
-    width: 45%;
-     background-color: red;
-     margin-top: 1%;
-     margin-left: 25%;
-     padding: 55px;
-     font-size: 15px;
+     margin-left: 20%;
+     margin-top: 27.5px;
+
   }
 
   .adentro{
 
-    display: flex;
-    justify-content: center;
-    font-size: 24px;
+    font-size: 32px;
+    margin-right: 125px;
+    
+
   }
 
   #imagencentro{
-    padding-left: 165px;
+
+    margin-left: 255px;
+    background-color: hwb(237 0% 80%);;
 
   }
 
-/* :hwb(237 0% 80%); */
-
+ 
