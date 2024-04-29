@@ -1,0 +1,55 @@
+body{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 0%;
+    background-color: white;
+    font-size: 16px;
+  }
+  
+  nav{
+    background-color:hwb(237 0% 80%);
+    display: flex;
+    width: 100%;
+  }
+  
+#abonarlogo{
+    height: 9%;
+    width: 9%;
+    margin-top: 1%;
+    margin-left: 5%;
+    margin-bottom: 1%;
+  }
+  
+
+#abonarpalabra{
+
+    height: 12%;
+    width: 12%;
+    margin-top: 2%;
+    margin-left: 1%;
+    margin-bottom: 1%;
+
+
+}
+
+  .container{
+     margin-left: 20%;
+     margin-top: 27.5px;
+
+  }
+
+  .adentro{
+
+    font-size: 32px;
+    margin-right: 125px;
+    
+
+  }
+
+  #imagencentro{
+
+    margin-left: 255px;
+    background-color: hwb(237 0% 80%);;
+
+  }
+
+ 
