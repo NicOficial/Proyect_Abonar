@@ -5,7 +5,7 @@ body{
 }
 
 nav{
-  background-color: cadetblue;
+  background-color:  hwb(237 0% 80%); 
   display: flex;
   width: 100%;
 }
@@ -20,7 +20,7 @@ nav img{
 
 nav a{
   text-decoration: none;
-  color: black;
+  color: white;
   font-size: 1.5em;
   font-weight: bold;
 }
@@ -95,13 +95,43 @@ footer a{
 }
 
 
-footer #Siguenos h3{ 
-  margin-top: 75%;
+#Siguenos { 
+  margin-left: 129px ;
+  margin-top: 129px;
+  font-size: 24px; 
+}
+
+.logos{
+
+    display: flex;
+    justify-content: space-between;
+
+}
+footer #Siguenos h3{
+
+  font-size: 18px;
+  margin-left: 30px;
+
 }
  footer a:hover{ 
 
   color: blue;
 
+}
 
+.palabrasfooter{
+
+  font-size: 12.5px;
+
+}
+
+footer p{
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  color: #555;
+  font-size: 11px;
   
+  
+
 }
