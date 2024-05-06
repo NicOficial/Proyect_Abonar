@@ -1,0 +1,46 @@
+nav{
+    background-color:hwb(237 0% 80%);
+    display: flex;
+    width: 100%;
+  }
+  
+#abonarlogo{
+    height: 9%;
+    width: 9%;
+    margin-top: 1%;
+    margin-left: 5%;
+    margin-bottom: 1%;
+  }
+  
+
+#abonarpalabra{
+
+    height: 12%;
+    width: 12%;
+    margin-top: 2%;
+    margin-left: 1%;
+    margin-bottom: 1%;
+
+
+}
+h2{
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    font-family: 'SamsungSharpSans',arial,sans-serif;
+    font-weight: bold;
+    line-height: 1.2;
+    overflow: visible;
+    word-break: keep-all;
+    text-align: center;
+    text-overflow: clip;
+    margin-top: 20px;
+}
+body{
+    background-color: #ffffff;
+}
+.general{
+    background-color: rgb(133, 131, 131);
+    width: 300px;
+    height: 200px;
+}

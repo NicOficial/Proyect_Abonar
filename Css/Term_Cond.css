@@ -1,0 +1,43 @@
+nav{
+    background-color:hwb(237 0% 80%);
+    display: flex;
+    width: 100%;
+  }
+  
+#abonarlogo{
+    height: 9%;
+    width: 9%;
+    margin-top: 1%;
+    margin-left: 5%;
+    margin-bottom: 1%;
+  }
+  
+
+#abonarpalabra{
+
+    height: 12%;
+    width: 12%;
+    margin-top: 2%;
+    margin-left: 1%;
+    margin-bottom: 1%;
+
+
+}
+body{
+    background-color: #cfcefd;
+}
+.Term{
+    background-color: rgb(235, 235, 235);
+    width: 50%;
+    font-size: 16px;
+    font-weight: 400;
+    margin-left: 30%;
+    border: 1px solid #f3f3f3;
+    border-radius: 10px;
+    margin-top: 20px;
+    font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+  padding: 20px;
+    
+}
