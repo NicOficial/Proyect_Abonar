@@ -58,7 +58,7 @@ body{
 }
 
 #botoncontinuar{
-  background-color:hwb(237 0% 80%);
+  background-color:hwb(237 0% 80%);   
   color: #fff;
   width: 20%;
   padding: 1.9%;
@@ -68,10 +68,11 @@ body{
   font-size: 15px;
   border: none; 
   color: white; 
-
   cursor: pointer; 
   border-radius: 5px; 
 }
+
+
 
 #botoncreatucuenta{
 
