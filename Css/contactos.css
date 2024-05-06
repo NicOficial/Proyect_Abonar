@@ -1,0 +1,71 @@
+nav{
+    background-color:hwb(237 0% 80%);
+    display: flex;
+    width: 100%;
+    
+
+   
+  }
+  
+#abonarlogo{
+    height: 9%;
+    width: 9%;
+    margin-top: 1%;
+    margin-left: 5%;
+    margin-bottom: 1%;
+    
+  }
+  
+
+#abonarpalabra{
+
+    height: 12%;
+    width: 12%;
+    margin-top: 2%;
+    margin-left: 1%;
+    margin-bottom: 1%;
+
+
+}
+h2{
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    font-family: 'SamsungSharpSans',arial,sans-serif;
+    font-weight: bold;
+    line-height: 1.2;
+    overflow: visible;
+    word-break: keep-all;
+    text-align: center;
+    text-overflow: clip;
+    margin-top: 20px;
+}
+body{
+    background-color: white;
+    margin: 0;
+}
+.general{
+    background-color: #f7f7f7 ;
+    width: 350px;
+    height: 200px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    padding-bottom: 50px;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'SamsungSharpSans',arial,sans-serif;
+    margin-left: 200px;
+    margin-top: 100px;
+    text-align: center;
+}
+.preguntas{
+    
+    
+    padding: 10px;
+    border: dashed 1.5px black;
+    font-size: 16px;
+    border-radius: 25px;
+    margin-bottom: 200px;
+
+}
