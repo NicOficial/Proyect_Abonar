@@ -1,0 +1,63 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: rgb(236, 235, 235);
+    
+}
+nav{
+    background-color:hwb(237 0% 80%);
+    display: flex;
+    width: 100%;
+    
+
+   
+  }
+  
+#abonarlogo{
+    height: 9%;
+    width: 9%;
+    margin-top: 1%;
+    margin-left: 5%;
+    margin-bottom: 1%;
+    
+  }
+  
+
+#abonarpalabra{
+
+    height: 12%;
+    width: 12%;
+    margin-top: 2%;
+    margin-left: 1%;
+    margin-bottom: 1%;
+
+
+}   
+footer{
+    background-color: #e6e2e2;
+}
+.footer23{
+    padding: 10px 0px;
+    margin-top: 100%;
+    display: flex;
+    justify-content: center;
+    gap:30px;
+    padding-top: 40px;
+    background-color: #e6e2e2;
+    
+}
+
+footer p{
+    background-color: #e6e2e2;
+    
+    display: flex;
+    justify-content: center;
+    color: #555;
+    font-size: 11px;
+    padding-bottom: 30px;
+    
+
+}
+h1{
+    color: #3a3a3a;
+}
