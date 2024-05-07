@@ -1,7 +1,7 @@
 body{
     margin: 0;
     padding: 0;
-    background-color: rgb(236, 235, 235);
+    background-color: white;
     
 }
 nav{
@@ -60,4 +60,46 @@ footer p{
 }
 h1{
     color: #3a3a3a;
+    margin-top: 100px;
+    margin-left: 20px;
+    width: 100%;
+    font-size: 3.052rem;
+    line-height: 120%;
 }
+.imagen{
+    margin-left: 400px;
+    margin-top: 50px;
+    
+    width: 20%;
+}
+.contenido{
+    display: flex;
+    
+}
+.priv{
+    color: #888889;
+    font-size: 1.3125rem;
+    line-height: 150%;
+    margin-top: 0.5rem;
+    padding: 20px;
+}
+h2{
+    color: #3a3a3a;
+    font-size: 2.441rem;
+    line-height: 120%;
+    padding: 20px;
+}
+.recolectados{
+    color: #888889;
+    font-size: 1.3125rem;
+    line-height: 150%;
+    margin-top: 0.5rem;
+    padding: 20px;
+}
+.personales{
+color: #888889;
+    font-size: 1.3125rem;
+    line-height: 150%;
+    margin-top: 0.5rem;
+    padding: 20px;
+} 
