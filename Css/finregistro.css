@@ -11,12 +11,11 @@ body{
     width: 100%;
   }
   
-#abonarlogo{
-    height: 9%;
-    width: 9%;
-    margin-top: 1%;
-    margin-left: 5%;
-    margin-bottom: 1%;
+  #abonarlogo{
+    margin-top: 11%;
+    margin-left: 59%;
+    margin-bottom: 8.5%;
+    height: 80px;
   }
   
 
@@ -24,13 +23,11 @@ body{
 
     height: 12%;
     width: 12%;
-    margin-top: 2%;
-    margin-left: 1%;
+    margin-top: 1.6%;
+    margin-left: 5.8%;
     margin-bottom: 1%;
 
-
 }
-
   .container{
      margin-left: 20%;
      margin-top: 27.5px;
@@ -47,7 +44,7 @@ body{
 
   #imagencentro{
 
-    margin-left: 255px;
+    margin-left: 320px;
     background-color: hwb(237 0% 80%);;
 
   }
