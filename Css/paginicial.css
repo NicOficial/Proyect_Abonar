@@ -3,7 +3,23 @@ body{
   margin: 0%;
   background-color: white;
 }
+#abonarlogo{
+  margin-top: 11%;
+  margin-left: 59%;
+  margin-bottom: 8.5%;
+  height: 80px;
+}
 
+
+#abonarpalabra{
+
+  height: 12%;
+  width: 12%;
+  margin-top: 1.6%;
+  margin-left: 5.8%;
+  margin-bottom: 1%;
+
+}
 nav{
   background-color:  hwb(237 0% 80%); 
   display: flex;
