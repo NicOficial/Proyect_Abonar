@@ -1,9 +1,10 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
+    margin: 0,0,0,0;
+    padding: 0;
     
     text-align: center;
-    height: 100%;
+    
 }
 
 h1 {
@@ -89,7 +90,7 @@ footer p{
     justify-content: center;
     color: #555;
     font-size: 11px;
-    padding-bottom: 30px;
-    
+    margin-bottom: 0;
+    margin-top: 100%;
 
 }
