@@ -4,13 +4,13 @@ body{
   background-color: white;
   
 }
+
 #abonarlogo{
-  margin-top: 1px;
-  margin-left: 101px;
+  margin-top: 11%;
+  margin-left: 59%;
   margin-bottom: 8.5%;
   height: 80px;
 }
-
 
 #abonarpalabra{
 
@@ -21,18 +21,11 @@ body{
   margin-bottom: 1%;
 
 }
+
 nav{
   background-color:  hwb(237 0% 80%); 
   display: flex;
   width: 100%;
-}
-
-nav img{
-  height: 9%;
-  width: 9%;
-  margin-top: 1%;
-  margin-left: 5%;
-  margin-bottom: 1%;
 }
 
 nav a{
