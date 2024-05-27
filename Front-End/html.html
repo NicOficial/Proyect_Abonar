@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="icon" href="../Img/Abonarlogo.png">
+    <link rel="stylesheet" href="../Css/sanciro.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  </head>
+  <body>
+    <section class="container">
+      <header>Registration Form</header>
+      <form action="#" class="form">
+        <div class="input-box">
+          <label>Nombre</label>
+          <input type="text" placeholder="Ingresá tu nombre" required />
+        </div>
+
+        <div class="input-box">
+            <label>Apellido</label>
+            <input type="text" placeholder="Ingresá tu apellido" required />
+          </div>
+
+        <div class="input-box">
+          <label>Correo electrónico</label>
+          <input type="text" placeholder="Ingresá tu correo electrónico" required />
+        </div>
+        
+        <div class="input-box">
+            <label>Contraseña</label>
+            <input type="password" class="pass" id="pass" placeholder="Creá tu contraseña" required />
+            <i class="bx bx-show-alt"></i>
+          </div>
+
+        <div class="input-box">
+            <label>Teléfono</label>
+            <input type="number" placeholder="Ingresá tu número de teléfono" required />
+          </div>
+          
+        <div class="input-box address">
+          <label>Domicilio</label>
+          <input type="text" placeholder="Ingresá tu domicilio" required />
+          <div class="input-box">
+            <label>Código postal</label>
+            <input type="number" placeholder="Ingresá tu código postal" required />
+          </div>
+        </div>
+        <button>Crear cuenta</button>
+      </form>
+    </section>
+    <script>
+        const pass = document.getElementById("pass"),
+            icon = document.querySelector(".bx");
+            icon.addEventListener("click", e => {
+                if(pass.type === "password"){
+                    pass.type = "text";
+                    icon.classList.remove('bx-show-alt')
+                    icon.classList.add('bx-hide')
+                } else{
+
+                    pass.type = "password";
+                    icon.classList.add('bx-show-alt')
+                    icon.classList.remove('bx-hide')
+                }
+            })
+    </script>
+  </body>
+</html>
