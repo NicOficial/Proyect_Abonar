@@ -12,6 +12,22 @@
 
     $query = "INSERT INTO `users` (`name`, `surname`, `email`, `password`, `address`, `phone`, `postal`) VALUES ('$name', '$surname', '$email', '$password', '$address', '$phone', '$postal')";
 
-    mysqli_query($conexion, $query);
+    $ejecutar = mysqli_query($conexion, $query);
+
+    if ($ejecutar) {
+        echo '
+            <script>
+                alert("Se ha registrado correctamente");
+                window.location.href="../Front-End/abonar.html";
+            </script>
+        ';
+    } else {
+        echo '
+            <script>
+                alert("Error al registrar");
+                window.location.href="../Front-End/abonar.html";
+            </script>
+        ';
+    }
 
 ?>
