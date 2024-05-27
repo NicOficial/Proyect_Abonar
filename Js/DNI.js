@@ -1,21 +1,36 @@
-document.getElementById('uploadForm').addEventListener('submit', async function(event) {
+document.getElementById('dniForm').addEventListener('submit', function(event) {
     event.preventDefault();
     
-    const formData = new FormData();
-    const files = document.getElementById('fileInput').files;
-    
-    for (let i = 0; i < files.length; i++) {
-        formData.append('files', files[i]);
+    const dniFront = document.getElementById('dniFront').files[0];
+    const dniBack = document.getElementById('dniBack').files[0];
+
+    if (!dniFront || !dniBack) {
+        alert('Por favor, sube ambos lados del DNI.');
+        return;
     }
 
-    try {
-        const response = await fetch('/upload', {
-            method: 'POST',
-            body: formData
-        });
-        const data = await response.json();
-        document.getElementById('response').DNI.html = `<p>${data.message}</p>`;
-    } catch (error) {
+    const formData = new FormData();
+    formData.append('file_front', dniFront);
+    formData.append('file_back', dniBack);
+
+    // Enviar datos a la API de ID Analyzer (reemplaza con tu API Key)
+    fetch('https://api.idanalyzer.com', {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'Authorization': 'Bearer YOUR_ID_ANALYZER_API_KEY'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data && data.result) {
+            alert('DNI validado con éxito!');
+        } else {
+            alert('El DNI no es válido.');
+        }
+    })
+    .catch(error => {
         console.error('Error:', error);
-    }
+        alert('Hubo un error al validar el DNI.');
+    });
 });
