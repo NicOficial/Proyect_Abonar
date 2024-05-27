@@ -1,44 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <link rel="stylesheet" href="../Css/contactos.css">
-  <link rel="icon" href="../Img/Abonarlogo.png">
-  <title>Soporte | Abonar</title>
-</head>
-<body>
-  <header>
-    <nav>
-      <a href="abonar.html">
-      <img src="/Img/highestiqmomento.png" height="69px" width="123px" alt=""  id="abonarlogo">
-      </a>
-      <img src="/Img/abonar palabra.png" id="abonarpalabra">
-      
-
-  </nav>
-     </header>
-     <h2>Selecciona segun el tipo de consulta</h2>
-     
-     <div class="contenedor">
-      <div class="general">
-      <h3>Asistencia General</h3>
-      
-      <p>Responderemos a las preguntas generales sobre como trabajamos, la Politica de garantia de Abonar, etc.</p>
-      <br>
-      <br>
-      <br>
-      <a href="preguntas.html" class="preguntas" target="_blank">Preguntas</a>
-      
-     </div>
-     <div class="tecnica">
-      <h3>Asistencia Tecnica</h3>
-
-      <p>Responderemos a las preguntas sobre el uso y funcionamiento de Abonar, actualizaciones, transacciones, etc.</p>
-      <br>
-      <br>
-      <br>
-      <a href="tecnica.html" class="tecnicas" target="_blank">Preguntas</a>
-     </div>
-     </div>
-     
-</body>
+<!-- Created By CodingNepal -->
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>Contactos | Abonar</title>
+      <link rel="stylesheet" href="../Css/contactos.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+   <body>
+    <div class="container">
+        <div class="text">Contáctanos</div>
+        <form action="https://formspree.io/f/mqkrojld" method="POST">
+            <div class="form-row">
+                <div class="input-data">
+                    <input type="text" name="nombre" required>
+                    <div class="underline"></div>
+                    <label for="">Nombre</label>
+                </div>
+                <div class="input-data">
+                    <input type="text" name="apellido" required>
+                    <div class="underline"></div>
+                    <label for="">Apellido</label>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="input-data">
+                    <input type="text" name="correo" required>
+                    <div class="underline"></div>
+                    <label for="">Correo Electronico</label>
+                </div>
+                <div class="input-data textarea">
+                    <textarea name="mensaje" rows="8" cols="80" required></textarea>
+                    <br />
+                    <div class="underline"></div>
+                    <label for="">Mensaje</label>
+                </div>
+            </div>
+            <div class="form-row submit-btn">
+                <div class="input-data">
+                    <div class="inner"></div>
+                    <input type="submit" value="Enviar">
+                </div>
+            </div>
+        </form>
+    </div>
+   </body>
 </html>
