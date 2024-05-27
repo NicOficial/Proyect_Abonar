@@ -1,44 +1,28 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Validacion de identidad | Abonar</title>
-    <link rel="icon" href="/Img/Abonarlogo.png">
+    <title>Subir DNI | Abonar</title>
     <link rel="stylesheet" href="../Css/DNI.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="abonar.html">
-            <img src="../Img/highestiqmomento.png" height="69px" width="123px" alt=""  id="abonarlogo">
-            </a>
-            <img src="../Img/abonar palabra.png" id="abonarpalabra">
-            
-    
-        </nav>
-         </header>
-    <h1>Adjuntar DNI</h1>
-    <form id="uploadForm" enctype="multipart/form-data">
-        <input type="file" name="file" id="fileInput" multiple>
-        <a href="validacion.html">
-        <button type="button">Subir Archivos</button>
-        </a>
-        
-    </form>
-    <div id="response"></div>
-    <footer>
-        <div class="footer23">
-            <a href="Term_Cond.html" class="terminos" target="_blank">Términos y Condiciones</a>
-            <a href="contactos.html" class="terminos" target="_blank">Contactanos</a>
-            <a href="privacidad.html" class="terminos" target="_blank">Politicas de Privacidad</a>
-        </div>
-              
-        <p class="copy">© 2024, Abonar.com, Inc. o sus afiliados</p>
-
-
-
-    </footer>
-    <script src="/Js/DNI.js"></script>
+    <div class="container">
+        <header>
+            <h1>Subir Frente y Dorso del DNI</h1>
+        </header>
+        <form id="dniForm">
+            <div class="upload-container">
+                <label for="dniFront">Frente del DNI:</label>
+                <input type="file" id="dniFront" accept="image/*" required>
+            </div>
+            <div class="upload-container">
+                <label for="dniBack">Dorso del DNI:</label>
+                <input type="file" id="dniBack" accept="image/*" required>
+            </div>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+    <script src="../Js/DNI.js"></script>
 </body>
 </html>
