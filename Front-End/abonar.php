@@ -15,6 +15,9 @@
 
 ?>
 
+<!-- Pagina Oficial de Abonar con la billetera -->
+<!-- Pagina de ejemplo -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

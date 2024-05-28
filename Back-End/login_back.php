@@ -2,6 +2,10 @@
 
 session_start();
 
+if(isset($_SESSION['email'])){
+    header("Location: abonar.php");
+}
+
 include 'con_db.php';
 
 $email = $_POST['email'];
