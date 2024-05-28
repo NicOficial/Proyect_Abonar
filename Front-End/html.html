@@ -9,41 +9,53 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   </head>
   <body>
+    <header>
+      <nav>
+          <a href="abonar.html">
+          <img src="../Img/highestiqmomento.png" height="69px" width="123px" alt=""  id="abonarlogo">
+          </a>
+          <img src="../Img/abonar palabra.png" id="abonarpalabra">
+      </nav>
+   </header>
+   
     <section class="container">
       <header>Registration Form</header>
       <form action="#" class="form">
-        <div class="input-box">
+
+        <div class="column">
+          <div class="input-box">
           <label>Nombre</label>
-          <input type="text" placeholder="Ingresá tu nombre" required />
-        </div>
-
-        <div class="input-box">
-            <label>Apellido</label>
-            <input type="text" placeholder="Ingresá tu apellido" required />
+          <input type="text" placeholder="Ingresá tu nombre" name="name" required>
           </div>
-
+        
+          <div class="input-box">
+            <label>Apellido</label>
+            <input type="text" placeholder="Ingresá tu apellido" name="surname" required>
+          </div>
+        </div>
         <div class="input-box">
           <label>Correo electrónico</label>
-          <input type="text" placeholder="Ingresá tu correo electrónico" required />
+          <input type="email" placeholder="Ingresá tu correo electrónico" name="email" required>
         </div>
-        
-        <div class="input-box">
-            <label>Contraseña</label>
-            <input type="password" class="pass" id="pass" placeholder="Creá tu contraseña" required />
-            <i class="bx bx-show-alt"></i>
-          </div>
 
-        <div class="input-box">
-            <label>Teléfono</label>
-            <input type="number" placeholder="Ingresá tu número de teléfono" required />
+       
+        
+        <div class="column">
+         <div class="input-box">
+            <label>Contraseña</label>
+            <input type="password" class="pass" id="pass" placeholder="Creá tu contraseña" name="password" required />
           </div>
-          
-        <div class="input-box address">
+          <i class="bx bx-show-alt"></i>
+        </div>
+
+
+
+        <div class="input-box address" id=" mipene">
           <label>Domicilio</label>
-          <input type="text" placeholder="Ingresá tu domicilio" required />
+          <input type="text" placeholder="Ingresá tu domicilio" name="address" required>
           <div class="input-box">
             <label>Código postal</label>
-            <input type="number" placeholder="Ingresá tu código postal" required />
+            <input type="number" placeholder="Ingresá tu código Postal" name="postal" required>
           </div>
         </div>
         <button>Crear cuenta</button>

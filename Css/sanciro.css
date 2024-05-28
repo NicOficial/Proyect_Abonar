@@ -8,42 +8,55 @@
 }
 body {
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  background: red;
+  background: white;
+  margin: 0%;
+  font-size: 16px;
 }
+nav{
+  background-color:hwb(237 0% 80%);
+  display: flex;
+  width: 100%;
+}
+
 #abonarlogo{
-    margin-top: 11%;
-    margin-left: 59%;
-    margin-bottom: 8.5%;
-    height: 80px;
-  }
-  
+  margin-top: 11%;
+  margin-left: 59%;
+  margin-bottom: 8.5%;
+  height: 80px;
+}
+
 
 #abonarpalabra{
 
-    height: 12%;
-    width: 12%;
-    margin-top: 1.6%;
-    margin-left: 5.8%;
-    margin-bottom: 1%;
+  height: 12%;
+  width: 12%;
+  margin-top: 1.6%;
+  margin-left: 5.8%;
+  margin-bottom: 1%;
 
 }
 
 .bx{
+  padding-top: 63px;
+  font-size: 30px;
+  cursor: pointer;
+  transform: translateX(-55px);
+}
 
-    font-size: 30px;
-    cursor: pointer;
-    margin-left: 610px;
-    transform: translateY(-40px);
+#pass{
+
+  width: 545px;
+
 }
 
 .container {
+  margin-top: 45px;
+  margin-bottom: 100px;
+  border: 1px solid  hwb(0 100% 28%);
   position: relative;
-  max-width: 700px;
-  width: 100%;
+  max-width: 600px;
+  margin-left: 30%;
+  width: 900px;
   background: white;
   padding: 25px;
   border-radius: 8px;
@@ -52,8 +65,13 @@ body {
 .container header {
   font-size: 1.5rem;
   color: #333;
-  font-weight: 500;
+  font-weight: 500px;
   text-align: center;
+}
+.form .input-box addr{
+
+background-color: blue;
+
 }
 .container .form {
   margin-top: 30px;
@@ -62,6 +80,9 @@ body {
   width: 100%;
   margin-top: 20px;
 }
+
+
+
 .input-box label {
   color: #333;
 }
@@ -80,6 +101,7 @@ body {
 .input-box input:focus {
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
 }
+
 
 .address :where(input, .select-box) {
   margin-top: 15px;
@@ -112,4 +134,9 @@ body {
   .form .column {
     flex-wrap: wrap;
   }
+}
+
+.form .column {
+  display: flex;
+  column-gap: 15px;
 }
