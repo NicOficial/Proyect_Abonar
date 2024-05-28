@@ -1,46 +1,40 @@
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: "Arial", sans-serif;
     margin: 0;
     padding: 0;
     background-color: white; /* Color de fondo general */
     margin-bottom: 0;
 }
 
-nav{
-    background-color:hwb(237 0% 80%);
+nav {
+    background-color: hwb(237 0% 80%);
     display: flex;
     width: 100%;
-    
-  }
+}
 
- #abonarlogo{
+#abonarlogo {
     margin-top: 11%;
     margin-left: 59%;
     margin-bottom: 8.5%;
     height: 80px;
-  }
-  
+}
 
-#abonarpalabra{
-
+#abonarpalabra {
     height: 12%;
     width: 12%;
     margin-top: 1.6%;
     margin-left: 5.8%;
     margin-bottom: 1%;
-
 }
 
 .terminos {
-    color: hwb(237 0% 80%); 
+    color: hwb(237 0% 80%);
     text-decoration: none;
-    transition: color 0.3s ease; 
+    transition: color 0.3s ease;
     font-size: 14px;
-    
 }
 
 .content {
-    
     display: flex;
     max-width: 700px;
     margin: 0 auto;
@@ -54,14 +48,14 @@ nav{
     background-color: #fff;
     border: 2px solid lightgray;
     border-radius: 5px;
-    
 }
 
 .margen {
     text-align: center;
 }
 
-input, button {
+input,
+button {
     width: 100%;
     padding: 12px;
     margin-bottom: 15px;
@@ -86,52 +80,46 @@ a:hover {
     text-decoration: underline;
 }
 
-
-h2{
-    font-size: 48px;    
+h2 {
+    font-size: 48px;
 }
 
-.links{
+.links {
     text-decoration: underline;
     color: black;
-    
 }
-footer{
+footer {
     background-color: #e6e2e2;
 }
-.footer23{
+.footer23 {
     padding: 10px 0px;
     margin-top: 80px;
     display: flex;
     justify-content: center;
-    gap:30px;
+    gap: 30px;
     padding-top: 40px;
     background-color: #e6e2e2;
-    
 }
 
-footer p{
+footer p {
     background-color: #e6e2e2;
-    
+
     display: flex;
     justify-content: center;
     color: #555;
     font-size: 11px;
     padding-bottom: 30px;
-    
-
 }
 
-#checkbox{
+#checkbox {
     display: grid;
     grid-template-columns: 15px 5fr;
-} 
-.term{
+}
+.term {
     color: black;
     text-decoration: underline;
 }
 
-  
-  .checkeo{
+.checkeo {
     margin-top: 25px;
-  }
+}

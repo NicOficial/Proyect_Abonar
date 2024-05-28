@@ -1,59 +1,50 @@
-nav{
-    background-color:hwb(237 0% 80%);
+nav {
+    background-color: hwb(237 0% 80%);
     display: flex;
     width: 100%;
-    
+}
 
-   
-  }
-  
-  #abonarlogo{
+#abonarlogo {
     margin-top: 11%;
     margin-left: 59%;
     margin-bottom: 8.5%;
     height: 80px;
-    
-  }
-  
+}
 
-#abonarpalabra{
-
+#abonarpalabra {
     height: 12%;
     width: 12%;
     margin-top: 1.6%;
     margin-left: 5.8%;
     margin-bottom: 1%;
-
 }
-body{
+body {
     margin: 0;
 }
-h1{
+h1 {
     text-align: left;
 }
-h2{
+h2 {
     font-weight: 600;
     font-size: 1.2rem;
     line-height: 1.6rem;
     color: #000;
     cursor: default;
 }
-p{
+p {
     font-weight: 400;
-    font-size: .9rem;
+    font-size: 0.9rem;
     line-height: 1.4rem;
     color: #888;
     cursor: default;
 }
-hr{
+hr {
     margin-top: 1rem;
     margin-bottom: 1rem;
     border: 0;
-    border-top: 1px solid rgba(0, 0, 0, .1);
-    
-
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
-.preguntas{
+.preguntas {
     position: relative;
     width: 50%;
     min-height: 1px;

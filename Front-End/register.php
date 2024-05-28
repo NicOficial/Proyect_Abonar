@@ -15,7 +15,7 @@
             <div class="margen">
                 <h2>Registrarse</h2>
                 <h3>Crea tu cuenta</h3>
-                <form action="../Back-End/registrar_back.php" method="POST">          
+                <form action="../Back-End/registrar_back.php" method="POST">
                     <input type="text" placeholder="Nombre" name="nombre" required>
                     <input type="text" placeholder="Apellido" name="surname" required>
                     <input type="email" placeholder="Correo electrónico" name="email" required>

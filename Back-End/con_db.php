@@ -12,5 +12,3 @@ $conexion = new mysqli($server, $user, $password, $db);
 // } else {
 //     echo "Conexion exitosa";
 // }
-
-?>

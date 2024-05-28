@@ -1,32 +1,28 @@
-nav{
-    background-color:hwb(237 0% 80%);
+nav {
+    background-color: hwb(237 0% 80%);
     display: flex;
     width: 100%;
-  }
-  
-  #abonarlogo{
+}
+
+#abonarlogo {
     margin-top: 11%;
     margin-left: 59%;
     margin-bottom: 8.5%;
     height: 80px;
-  }
-  
+}
 
-#abonarpalabra{
-
+#abonarpalabra {
     height: 12%;
     width: 12%;
     margin-top: 1.6%;
     margin-left: 5.8%;
     margin-bottom: 1%;
-
-
 }
-body{
+body {
     background-color: #cfcefd;
     margin: 0;
 }
-.Term{
+.Term {
     background-color: rgb(235, 235, 235);
     width: 50%;
     font-size: 16px;
@@ -36,8 +32,7 @@ body{
     border-radius: 10px;
     margin-top: 20px;
     font-family: "Poppins", sans-serif;
-  font-weight: 200;
-  font-style: normal;
-  padding: 20px;
-    
+    font-weight: 200;
+    font-style: normal;
+    padding: 20px;
 }
