@@ -21,7 +21,7 @@
         <form action="../Back-End/login_back.php" method="POST" class="adentro">
             
             <p id="palabramail">Escribí tu mail o documento</p> 
-            <!-- mejor h3 y solo documento o mail, no cualquiera -->
+            <!-- Mejor h3 y solo documento o mail, no cualquiera -->
             
             <input type="email" required id="ingresarmail" name="email" required>
             <!-- <input type="password" required id="" name="password" required> -->
