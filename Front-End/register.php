@@ -1,39 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link rel="icon" href="../Img/Abonarlogo.png" />
+        <link rel="stylesheet" href="../Css/sanciro.css" />
+        <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+        <title>Registro | Abonar</title>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <a href="abonar.html">
+                    <img
+                        src="../Img/highestiqmomento.png"
+                        height="69px"
+                        width="123px"
+                        alt=""
+                        id="abonarlogo"
+                    />
+                </a>
+                <img src="../Img/abonar palabra.png" id="abonarpalabra" />
+            </nav>
+        </header>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../Img/Abonarlogo.png">
-    <link rel="stylesheet" href="../Css/Registro.css">
-    <title>Registro | Abonar</title>
-</head>
-
-<body>
-    <div class="content">
-        <div class="contenido">
-            <div class="margen">
-                <h2>Registrarse</h2>
-                <h3>Crea tu cuenta</h3>
-                <form action="../Back-End/registrar_back.php" method="POST">
-                    <input type="text" placeholder="Nombre" name="nombre" required>
-                    <input type="text" placeholder="Apellido" name="surname" required>
-                    <input type="email" placeholder="Correo electrónico" name="email" required>
-                    <input type="password" placeholder="Contraseña" name="password" required>
-                    <input type="text" placeholder="Domicilio" name="address" required>
-                    <input type="tel" placeholder="Teléfono" name="phone" required>
-                    <input type="text" placeholder="Codigo Postal" name="postal" required>
-                    <div id="checkbox">
-                        <input id="checkbox" type="checkbox">
-                        <p class="checkeo">Al crear tu cuenta, acepta <a href="Term_Cond.html" class="term" target="_blank">los terminos de servicio</a> y <a href="privacidad.html" class="term" target="_blank">las politicas de privacidad</a> de Abonar</p>
+        <section class="container">
+            <header>Registration Form</header>
+            <form action="../Back-End/registrar_back.php" method="POST" class="form">
+                <div class="column">
+                    <div class="input-box">
+                        <label>Nombre</label>
+                        <input
+                            type="text"
+                            placeholder="Ingresá tu nombre"
+                            name="name"
+                            required
+                        />
                     </div>
-                    <button type="submit">Crear cuenta</button>
-                </form>
 
-                <a href="Login.html">¿Ya tienes una cuenta? Inicia sesión</a>
-            </div>
-        </div>
-    </div>
-</body>
+                    <div class="input-box">
+                        <label>Apellido</label>
+                        <input
+                            type="text"
+                            placeholder="Ingresá tu apellido"
+                            name="surname"
+                            required
+                        />
+                    </div>
+                </div>
+                <div class="input-box">
+                    <label>Correo electrónico</label>
+                    <input type="email" placeholder="Ingresá tu correo electrónico" name="email" required/> 
+                </div>
 
+                <div class="column">
+                    <div class="input-box">
+                        <label>Contraseña</label>
+                        <input
+                            type="password"
+                            class="pass"
+                            id="pass"
+                            placeholder="Creá tu contraseña"
+                            name="password"
+                            required
+                        />
+                    </div>
+                    <i class="bx bx-show-alt"></i>
+                </div>
+
+                <div class="input-box address" id=" mipene">
+                    <label>Domicilio</label>
+                    <input
+                        type="text"
+                        placeholder="Ingresá tu domicilio"
+                        name="address"
+                        required
+                    />
+                    <div class="input-box">
+                        <label>Código postal</label>
+                        <input
+                            type="number"
+                            placeholder="Ingresá tu código Postal"
+                            name="postal"
+                            required
+                        />
+                    </div>
+                </div>
+                <button>Crear cuenta</button>
+            </form>
+        </section>
+        <script>
+            const pass = document.getElementById("pass"),
+                icon = document.querySelector(".bx");
+            icon.addEventListener("click", (e) => {
+                if (pass.type === "password") {
+                    pass.type = "text";
+                    icon.classList.remove("bx-show-alt");
+                    icon.classList.add("bx-hide");
+                } else {
+                    pass.type = "password";
+                    icon.classList.add("bx-show-alt");
+                    icon.classList.remove("bx-hide");
+                }
+            });
+        </script>
+    </body>
 </html>
