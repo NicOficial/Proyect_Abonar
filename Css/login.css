@@ -13,18 +13,18 @@ body {
     font-size: 16px;
 }
 nav {
-    background-color: hwb(237 0% 80%);
+    background-color: #1667a8;
     display: flex;
     width: 100%;
     height: 100px;
 }
 
 #abonarlogo {
-    margin-top: 12%;
-    margin-left: 57%;
+    margin-top: 9%;
+    margin-left: 75%;
     margin-bottom: 8.5%;
-    height: 72px;
-    width: 112px;
+    height: 85px;
+    width: 90px;
 }
 
 #abonarpalabra {
@@ -99,7 +99,7 @@ nav {
 
 .form button {
     height: 55px;
-    width: 100%;
+    width: 75%;
     color: #fff;
     font-size: 1rem;
     font-weight: 400;
@@ -108,6 +108,7 @@ nav {
     cursor: pointer;
     transition: all 0.2s ease;
     background: rgb(130, 106, 251);
+    margin-bottom: 75px;
 }
 .form button:hover {
     background: rgb(88, 56, 250);
