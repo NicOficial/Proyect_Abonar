@@ -1,10 +1,9 @@
-/* Import Google font - Poppins */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+    font-family: "Binance PLEX";
 }
 body {
     min-height: 100vh;
@@ -12,6 +11,7 @@ body {
     margin: 0%;
     font-size: 16px;
 }
+
 nav {
     background-color: #1667a8;
     display: flex;
@@ -36,7 +36,7 @@ nav {
 }
 
 .bx {
-    padding-top: 63px;
+    padding-top: 60px;
     font-size: 30px;
     cursor: pointer;
     transform: translateX(-60px);
@@ -52,27 +52,27 @@ nav {
     border: 1px solid hwb(0 100% 28%);
     position: relative;
     max-width: 600px;
-    margin-left: 30%;
-    width: 900px;
+    margin-left: 33%;
+    width: 450px;
     background: white;
     padding: 25px;
-    border-radius: 8px;
+    border-radius: 15px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 .container header {
-    font-size: 1.5rem;
+    font-size: 2.0rem;
+    margin-left: 35px;
     color: #333;
-    font-weight: 500px;
-    text-align: center;
+    font-weight: 600;
 }
 
 .container .form {
     margin-top: 30px;
 }
 .form .input-box {
-    width: 60%;
+    width: 83%;
     margin-top: 20px;
-    margin-left: 15%;
+    margin-left: 9%;
 }
 .input-box label {
     color: #333;
@@ -86,7 +86,7 @@ nav {
     color: #707070;
     margin-top: 8px;
     border: 1px solid #ddd;
-    border-radius: 6px;
+    border-radius: 11px;
     padding: 0 15px;
 }
 .input-box input:focus {
@@ -99,20 +99,21 @@ nav {
 
 .form button {
     height: 55px;
-    width: 60%;
+    width: 82%;
     color: #fff;
     font-size: 1rem;
     font-weight: 400;
-    margin-top: 30px;
-    margin-left: 15%;
-    border: none;
+    margin-top: 40px;
+    margin-left: 8.7%;
+    border-radius: 11px;
+    border:none;
     cursor: pointer;
     transition: all 0.2s ease;
-    background: rgb(130, 106, 251);
-    margin-bottom: 75px;
+    background:#1667a8;
+    margin-bottom: 15px;
 }
 .form button:hover {
-    background: rgb(88, 56, 250);
+    background: #06416a;
 }
 /*Responsive*/
 @media screen and (max-width: 500px) {
