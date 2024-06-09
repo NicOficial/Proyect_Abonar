@@ -2,21 +2,20 @@
 
 session_start();
 
-if(isset($_SESSION['email'])){
+if (isset($_SESSION['email'])) {
     header("Location: abonar.php");
 }
 
 include 'con_db.php';
 
-$name = $_POST["nombre"];
+$name = $_POST["name"];
 $surname = $_POST['surname'];
 $email = $_POST['email'];
 $password = $_POST['password'];
 $address = $_POST['address'];
-$phone = $_POST['phone'];
 $postal = $_POST['postal'];
 
-$query = "INSERT INTO `users` (`name`, `surname`, `email`, `password`, `address`, `phone`, `postal`) VALUES ('$name', '$surname', '$email', '$password', '$address', '$phone', '$postal')";
+$query = "INSERT INTO `users` (`name`, `surname`, `email`, `password`, `address`, `postal`) VALUES ('$name', '$surname', '$email', '$password', '$address', '$postal')";
 
 $ejecutar = mysqli_query($conexion, $query);
 
