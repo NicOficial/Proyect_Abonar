@@ -34,4 +34,12 @@
 2. Click derecho
 3. PHP Server: Serve Proyect
 
-La primera vez te va a dejar la segunda te va a decir que el servidor esta en ejecucion por eso 
+La primera vez te va a dejar la segunda te va a decir que el servidor esta en ejecucion por eso vas a tener que hacer es...
+
+1. Click derecho
+2. PHP Server: Reload Proyecto (o algo así pero la segunda opción)
+
+## Datos Almacenados
+
+1. Abrir el phpMyAdmin
+2. Dentro de la base de datos entrar a la tabla *users*
