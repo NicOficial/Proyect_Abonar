@@ -37,13 +37,6 @@ CREATE TABLE `users` (
   `postal` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Volcado de datos para la tabla `users`
---
-
-INSERT INTO `users` (`id_users`, `name`, `surname`, `email`, `password`, `address`, `postal`) VALUES
-(1, 'Nicolas', 'Primo', 'neque.primo@gmail.com', '123', 'Flora 984', 1706),
-(2, 'Valentin', 'Peluzo', 'panchoflencho@gmail.com', '123', 'monseñor de pancho 66', 1706);
 
 -- --------------------------------------------------------
 
@@ -99,6 +92,7 @@ ALTER TABLE `wallets`
 --
 -- Filtros para la tabla `wallets`
 --
+
 ALTER TABLE `wallets`
   ADD CONSTRAINT `wallets_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_users`);
 COMMIT;
