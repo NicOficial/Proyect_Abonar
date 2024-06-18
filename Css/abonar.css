@@ -345,3 +345,12 @@ main.min-main{
 #pepe{
     color: white;
 }
+/* Clase para el estado activo de los botones */
+.barra-lateral .navegacion a.activo {
+    background-color: rgb(238,238,238); /* Cambia esto al color que desees */
+    color: rgb(0,0,0); /* Cambia esto al color que desees */
+}
+#inicio{
+    text-align: center;
+    color: white;
+}
