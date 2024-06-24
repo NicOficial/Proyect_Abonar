@@ -64,9 +64,9 @@
           </div>
 
           <li>
-            <a href="#terminos">
+            <a href="#historial">
               <ion-icon name="document-lock-outline"></ion-icon>
-              <span>Términos y Condiciones</span>
+              <span>Historial</span>
             </a>
           </li>
           <li></li>
@@ -126,8 +126,8 @@
         <h1>Transferencias</h1>
         <p>Realiza transferencias de dinero de manera rápida y segura.</p>
       </section>
-      <section id="terminos" style="display:none;">
-        <h1>Términos y Condiciones</h1>
+      <section id="historial" style="display:none;">
+        <h1>Historial</h1>
         <p>Lee los términos y condiciones para usar nuestro servicio.</p>
       </section>
       <section id="soporte" style="display:none;">
