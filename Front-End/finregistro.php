@@ -7,7 +7,7 @@
   <title>¡Bienvenido! ‎ | ‎ Abonar</title>
   <link rel="icon" href="../Img/abonar logo nuevo sin fondo.jpg.png" />
   <link rel="stylesheet" href="../Css/finregistro.css" />
-  <link rel="stylesheet" href="../Css/nav.css" />
+  <link rel="stylesheet" href="../nav.css" />
   <link href="https://db.onlinewebfonts.com/c/d05c19ccecf7003d248c60ffd6b5e8f7?family=Binance+PLEX" rel="stylesheet" type="text/css" />
 
 </head>

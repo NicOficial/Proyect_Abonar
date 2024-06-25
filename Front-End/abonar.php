@@ -115,8 +115,11 @@
 
     <main>
       <section id="inicio">
-        <h1>Inicio</h1>
-        <p>Bienvenido a Abonar. Aquí puedes gestionar tus finanzas de manera sencilla y segura.</p>
+        <h1 id="pepes">Inicio</h1>
+        
+        <p id="saldo">Tu saldo</p>
+
+        <a href="#perfil" id="saldi"><span>button</span></a>
       </section>
       <section id="perfil" style="display:none;">
         <h1>Perfil</h1>

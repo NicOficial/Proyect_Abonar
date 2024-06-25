@@ -351,6 +351,21 @@ main.min-main{
     color: rgb(0,0,0); /* Cambia esto al color que desees */
 }
 #inicio{
-    text-align: center;
-    color: white;
+    margin-left: 10px;
+}
+#saldo{
+    margin-top: 30px;
+    font-size: 40px;    
+
+}
+#saldi{
+    
+    background: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 8em;
+    
+}
+#pepes{
+    font-size: 50px;
 }
