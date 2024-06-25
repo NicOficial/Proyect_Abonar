@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Terminos y Condiciones | Abonar</title>
+    <title>Terminos y Condiciones‎ | ‎Abonar</title>
     <link rel="stylesheet" type="text/css" href="../Css/Term_Cond.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -10,6 +10,7 @@
       rel="stylesheet"
       type="text/css"
     />
+    <link rel="icon" href="../Img/abonar logo nuevo sin fondo.jpg.png" />
   </head>
   <body>
     <div class="wrapper flex_align_justify">

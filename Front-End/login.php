@@ -10,12 +10,13 @@
     <link rel="stylesheet" href="../Css/nav.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <link href="https://db.onlinewebfonts.com/c/d05c19ccecf7003d248c60ffd6b5e8f7?family=Binance+PLEX" rel="stylesheet" type="text/css" />
+    <title>Abonar‎ |‎ Iniciá sesión</title>
 </head>
 
 <body>
     <header>
         <nav>
-            <a href="abonar.html">
+            <a href="abonar.php">
                 <img src="../Img/abonar logo nuevo sin fondo.jpg.png" id="abonarlogo" />
             </a>
             <img src="../Img/unnamed.jpg" height="69px" width="123px" id="abonarpalabra" />

@@ -10,14 +10,14 @@
     <link rel="stylesheet" href="../Css/nav.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <link href="https://db.onlinewebfonts.com/c/d05c19ccecf7003d248c60ffd6b5e8f7?family=Binance+PLEX" rel="stylesheet" type="text/css" />
-
-    <title>Registro | Abonar</title>
+    <link rel="icon" href="../Img/abonar logo nuevo sin fondo.jpg.png" />
+    <title>Registro‎ | ‎Abonar</title>
 </head>
 
 <body>
     <header>
         <nav>
-            <a href="abonar.html">
+            <a href="abonar.php">
                 <img src="../Img/abonar logo nuevo sin fondo.jpg.png" height="69px" width="123px" alt="" id="abonarlogo" />
             </a>
             <!-- <img src="../Img/abonar palabra.png" id="abonarpalabra" /> -->
@@ -58,6 +58,7 @@
                     <label>Código postal</label>
                     <input type="number" placeholder="Ingresá tu código Postal" name="postal" required />
                 </div>
+            
             </div>
             <button>Crear cuenta</button>
         </form>

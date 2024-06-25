@@ -20,7 +20,9 @@
       rel="stylesheet"
       type="text/css"
     />
-    <title>Abonar</title>
+    <title>Abonar‎ | ‎Hacé más con tu plata</title>
+    <link rel="icon" href="../Img/abonar logo nuevo sin fondo.jpg.png" />
+    
   </head>
   <body>
     <div class="menu">
@@ -32,7 +34,7 @@
       <div>
         <div class="nombre-pagina">
           <ion-icon id="cloud" name="filter-outline"></ion-icon>
-          <span>Abonar</span>
+          <span>‎ ‎ Abonar</span>
         </div>
       </div>
 

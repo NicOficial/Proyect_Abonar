@@ -11,13 +11,13 @@
       rel="stylesheet"
       type="text/css"
     />
-
-    <title>Bienvenido | Abonar</title>
+    <link rel="icon" href="../Img/abonar logo nuevo sin fondo.jpg.png" />
+    <title>Bienvenido‎ | ‎Abonar</title>
   </head>
   <body>
     <header>
       <nav>
-        <a href="abonar.html">
+        <a href="abonar.php">
           <img
             src="../Img/abonar logo nuevo sin fondo.jpg.png"
             height="69px"
