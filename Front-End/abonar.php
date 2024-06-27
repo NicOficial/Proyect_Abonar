@@ -42,7 +42,7 @@
         <ul>
           <div class="tab">
             <li class="boton1">
-              <a id="boton1" href="#">
+              <a id="boton1" href="#inicio">
                 <ion-icon name="home-outline"></ion-icon>
                 <span>Inicio</span>
               </a>
@@ -51,7 +51,7 @@
 
           <div class="tab">
             <li>
-              <a href="#" id="mostrar-perfil">
+              <a href="#perfil" id="mostrar-perfil">
                 <ion-icon name="person-circle-outline"></ion-icon>
                 <span>Perfil</span>
               </a>
@@ -60,7 +60,7 @@
 
           <div class="tab">
             <li>
-              <a href="#">
+              <a href="#transferencias">
                 <ion-icon name="cash-outline"></ion-icon>
                 <span>Transferencias</span>
               </a>
@@ -68,14 +68,14 @@
           </div>
 
           <li>
-            <a href="#">
+            <a href="#historial">
               <ion-icon name="document-lock-outline"></ion-icon>
-              <span>Terminos y Condiciones</span>
+              <span>Historial</span>
             </a>
           </li>
           <li></li>
           <li>
-            <a href="#">
+            <a href="#soporte">
               <ion-icon name="chatbox-ellipses-outline"></ion-icon>
               <span>Soporte</span>
             </a>
@@ -117,6 +117,32 @@
       </div>
     </div>
 
+    <main>
+      <section id="inicio">
+        <h1>Inicio</h1>
+        <p>Bienvenido a Abonar. Aquí puedes gestionar tus finanzas de manera sencilla y segura.</p>
+        <h1 id="pepes">Inicio</h1>
+        
+        <p id="saldo">Tu saldo</p>
+        <a href="#perfil" id="saldi"><span>button</span></a>
+      </section>
+      <section id="perfil" style="display:none;">
+        <h1>Perfil</h1>
+        <p>Aquí puedes actualizar tu información personal y preferencias.</p>
+      </section>
+      <section id="transferencias" style="display:none;">
+        <h1>Transferencias</h1>
+        <p>Realiza transferencias de dinero de manera rápida y segura.</p>
+      </section>
+      <section id="historial" style="display:none;">
+        <h1>Historial</h1>
+        <p>Lee los términos y condiciones para usar nuestro servicio.</p>
+      </section>
+      <section id="soporte" style="display:none;">
+        <h1>Soporte</h1>
+        <p>¿Necesitas ayuda? Contacta a nuestro equipo de soporte.</p>
+      </section>
+    </main>
     <script
       type="module"
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
@@ -132,8 +158,6 @@
       const palanca = document.querySelector(".switch");
       const circulo = document.querySelector(".circulo");
       const menu = document.querySelector(".menu");
-      const main = document.querySelector("main");
-
       menu.addEventListener("click", () => {
         barraLateral.classList.toggle("max-barra-lateral");
         if (barraLateral.classList.contains("max-barra-lateral")) {
@@ -151,19 +175,50 @@
           });
         }
       });
-
       palanca.addEventListener("click", () => {
         let body = document.body;
         body.classList.toggle("dark-mode");
-
         circulo.classList.toggle("prendido");
       });
-
       cloud.addEventListener("click", () => {
         barraLateral.classList.toggle("mini-barra-lateral");
         main.classList.toggle("min-main");
         spans.forEach((span) => {
           span.classList.toggle("oculto");
+        });
+      });
+      // Función para mostrar la sección correspondiente y ocultar las demás
+      function mostrarSeccion(id) {
+        const secciones = document.querySelectorAll("main > section");
+        secciones.forEach((seccion) => {
+          if (seccion.id === id) {
+            seccion.style.display = "block";
+          } else {
+            seccion.style.display = "none";
+          }
+        });
+      }
+      // Asignar evento click a los enlaces de navegación
+      document.querySelectorAll(".navegacion a").forEach((enlace) => {
+        enlace.addEventListener("click", (event) => {
+          event.preventDefault();
+          const id = enlace.getAttribute("href").substring(1);
+          mostrarSeccion(id);
+        });
+      });
+      // Mostrar la sección de inicio por defecto
+      mostrarSeccion("inicio");
+      document.querySelectorAll(".navegacion a").forEach((enlace) => {
+        enlace.addEventListener("click", (event) => {
+          event.preventDefault();
+          const id = enlace.getAttribute("href").substring(1);
+          mostrarSeccion(id);
+          // Elimina la clase activa de todos los enlaces
+          document.querySelectorAll(".navegacion a").forEach((link) => {
+            link.classList.remove("activo");
+          });
+          // Añade la clase activa al enlace clicado
+          enlace.classList.add("activo");
         });
       });
     </script>
