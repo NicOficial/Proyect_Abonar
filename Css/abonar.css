@@ -183,3 +183,12 @@ body {
     border-bottom: 1px solid #ccc;
   }
   
+  /* Colores personalizados */
+  .barra-lateral {
+    background-color: #00008b; /* Cambié el color de fondo de la barra lateral a azul oscuro */
+  }
+  
+  .navegacion a:hover {
+    background-color: #4169e1; /* Cambié el color de fondo al hacer hover en los enlaces de navegación a azul más claro */
+  }
+  
