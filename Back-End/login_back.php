@@ -15,7 +15,7 @@ $validar_login = mysqli_query($conexion, "SELECT * FROM users WHERE email = '$em
 
 if (mysqli_num_rows($validar_login) > 0) {
     $_SESSION['email'] = $email;
-    header("location: ../Front-End/abonar.html");
+    header("location: ../Front-End/abonar.php");
     exit;
 } else {
     echo '

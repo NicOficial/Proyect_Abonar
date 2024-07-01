@@ -1,3 +1,12 @@
+<?php
+
+session_start();
+
+$name = $_SESSION['name'];
+$email = $_SESSION['email'];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -106,8 +115,8 @@
           <img src="../Img/unnamed.jpg" alt="" />
           <div class="info-usuario">
             <div class="nombre-email">
-              <span class="nombre">Jhampier</span>
-              <span class="email">jhampier@gmail.com</span>
+              <span class="nombre"><?php echo $name?></span>
+              <span class="email"><?php echo $email; ?></span>
             </div>
           </div>
         </div>
