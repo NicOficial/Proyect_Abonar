@@ -1,6 +1,3 @@
-<!-- Pagina Oficial de Abonar con la billetera -->
-<!-- Pagina de ejemplo -->
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -14,16 +11,15 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="../Css/abonar.css" />
     <link
       href="https://db.onlinewebfonts.com/c/d05c19ccecf7003d248c60ffd6b5e8f7?family=Binance+PLEX"
       rel="stylesheet"
       type="text/css"
     />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../Css/abonar.css" />
     <title>Abonar‎ | ‎Hacé más con tu plata</title>
     <link rel="icon" href="../Img/abonar logo nuevo sin fondo.jpg.png" />
-    
   </head>
   <body>
     <div class="menu">
@@ -97,7 +93,7 @@
         <div class="modo-oscuro">
           <div class="info">
             <ion-icon name="moon-outline"></ion-icon>
-            <span>Dark Mode</span>
+            <span>Modo oscuro</span>
           </div>
           <div class="switch">
             <div class="base">
@@ -120,29 +116,79 @@
 
     <main>
       <section id="inicio">
-        
-       
-        
-        
-       
+        <h1 class="bienvenido">Bienvenido, <span id="nombre-usuario">Jhampier</span></h1>
+        <p id="saldo">Saldo: $<span id="saldo-usuario">10,000</span></p>
+        <div class="features">
+          <div class="feature">
+            <ion-icon name="wallet-outline"></ion-icon>
+            <h3>Balance en Tiempo Real</h3>
+            <p>Consulta tu balance y transacciones al instante</p>
+          </div>
+          <div class="feature">
+            <ion-icon name="swap-horizontal-outline"></ion-icon>
+            <h3>Transferencias Rápidas</h3>
+            <p>Envía y recibe dinero rápidamente</p>
+          </div>
+          <div class="feature">
+            <ion-icon name="shield-checkmark-outline"></ion-icon>
+            <h3>Seguridad Garantizada</h3>
+            <p>Tus datos están protegidos con nosotros</p>
+          </div>
       </section>
       <section id="perfil" style="display:none;">
         <h1>Perfil</h1>
-        <p>Aquí puedes actualizar tu información personal y preferencias.</p>
+        <p>Aquí puedes visualizar tu información personal y preferencias.</p>
+        <form>
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <div class="cuadro-texto">
+              Jhampier
+            </div>
+          </div>
+          <label for="nombre" class="form-label">Correo Electronico</label>
+          <div class="cuadro-texto">
+            jhampier@gmail.com
+          </div>
+          
+        </form>
       </section>
       <section id="transferencias" style="display:none;">
         <h1>Transferencias</h1>
         <p>Realiza transferencias de dinero de manera rápida y segura.</p>
+        <form>
+          <div class="mb-3">
+            <label for="destinatario" class="form-label">Destinatario</label>
+            <input type="text" class="form-control" id="destinatario" placeholder="Nombre del destinatario">
+          </div>
+          <div class="mb-3">
+            <label for="monto" class="form-label">Monto</label>
+            <input type="number" class="form-control" id="monto" placeholder="Monto a transferir">
+          </div>
+          <button type="submit" class="btn btn-primary">Transferir</button>
+        </form>
       </section>
       <section id="historial" style="display:none;">
         <h1>Historial</h1>
-        <p>Lee los términos y condiciones para usar nuestro servicio.</p>
+        <ul id="lista-transacciones">
+          <li>Compra en Amazon - $50</li>
+          <li>Pago de servicio de Internet - $30</li>
+          <li>Transferencia recibida - $200</li>
+          <li>Compra en MercadoLibre - $75</li>
+        </ul>
       </section>
       <section id="soporte" style="display:none;">
         <h1>Soporte</h1>
         <p>¿Necesitas ayuda? Contacta a nuestro equipo de soporte.</p>
+        <form>
+          <div class="mb-3">
+            <label for="consulta" class="form-label">Consulta</label>
+            <textarea class="form-control" id="consulta" rows="3"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
       </section>
     </main>
+
     <script
       type="module"
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
@@ -189,38 +235,24 @@
       });
       // Función para mostrar la sección correspondiente y ocultar las demás
       function mostrarSeccion(id) {
-        const secciones = document.querySelectorAll("main > section");
-        secciones.forEach((seccion) => {
-          if (seccion.id === id) {
-            seccion.style.display = "block";
-          } else {
-            seccion.style.display = "none";
-          }
+        const secciones = document.querySelectorAll('section');
+        secciones.forEach(seccion => {
+          seccion.style.display = 'none';
         });
+        document.querySelector(id).style.display = 'block';
       }
-      // Asignar evento click a los enlaces de navegación
-      document.querySelectorAll(".navegacion a").forEach((enlace) => {
-        enlace.addEventListener("click", (event) => {
+
+      // Añadir event listeners a los enlaces de navegación
+      document.querySelectorAll('.navegacion a').forEach(enlace => {
+        enlace.addEventListener('click', function(event) {
           event.preventDefault();
-          const id = enlace.getAttribute("href").substring(1);
+          const id = this.getAttribute('href');
           mostrarSeccion(id);
         });
       });
-      // Mostrar la sección de inicio por defecto
-      mostrarSeccion("inicio");
-      document.querySelectorAll(".navegacion a").forEach((enlace) => {
-        enlace.addEventListener("click", (event) => {
-          event.preventDefault();
-          const id = enlace.getAttribute("href").substring(1);
-          mostrarSeccion(id);
-          // Elimina la clase activa de todos los enlaces
-          document.querySelectorAll(".navegacion a").forEach((link) => {
-            link.classList.remove("activo");
-          });
-          // Añade la clase activa al enlace clicado
-          enlace.classList.add("activo");
-        });
-      });
+
+      // Inicializar mostrando la sección de inicio
+      mostrarSeccion('#inicio');
     </script>
   </body>
 </html>
