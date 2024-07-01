@@ -102,7 +102,7 @@ $email = $_SESSION['email'];
         <div class="modo-oscuro">
           <div class="info">
             <ion-icon name="moon-outline"></ion-icon>
-            <span>Dark Mode</span>
+            <span>Modo oscuro</span>
           </div>
           <div class="switch">
             <div class="base">
@@ -127,20 +127,38 @@ $email = $_SESSION['email'];
       <section id="inicio">
         <h1 class="bienvenido">Bienvenido, <span id="nombre-usuario">Jhampier</span></h1>
         <p id="saldo">Saldo: $<span id="saldo-usuario">10,000</span></p>
+        <div class="features">
+          <div class="feature">
+            <ion-icon name="wallet-outline"></ion-icon>
+            <h3>Balance en Tiempo Real</h3>
+            <p>Consulta tu balance y transacciones al instante</p>
+          </div>
+          <div class="feature">
+            <ion-icon name="swap-horizontal-outline"></ion-icon>
+            <h3>Transferencias Rápidas</h3>
+            <p>Envía y recibe dinero rápidamente</p>
+          </div>
+          <div class="feature">
+            <ion-icon name="shield-checkmark-outline"></ion-icon>
+            <h3>Seguridad Garantizada</h3>
+            <p>Tus datos están protegidos con nosotros</p>
+          </div>
       </section>
       <section id="perfil" style="display:none;">
         <h1>Perfil</h1>
-        <p>Aquí puedes actualizar tu información personal y preferencias.</p>
+        <p>Aquí puedes visualizar tu información personal y preferencias.</p>
         <form>
           <div class="mb-3">
             <label for="nombre" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="nombre" value="Jhampier">
+            <div class="cuadro-texto">
+              Jhampier
+            </div>
           </div>
-          <div class="mb-3">
-            <label for="email" class="form-label">Correo Electrónico</label>
-            <input type="email" class="form-control" id="email" value="jhampier@gmail.com">
+          <label for="nombre" class="form-label">Correo Electronico</label>
+          <div class="cuadro-texto">
+            jhampier@gmail.com
           </div>
-          <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+          
         </form>
       </section>
       <section id="transferencias" style="display:none;">
@@ -244,19 +262,6 @@ $email = $_SESSION['email'];
 
       // Inicializar mostrando la sección de inicio
       mostrarSeccion('#inicio');
-      // Evento para cambiar el color del icono y el texto al hacer hover
-      const botones = document.querySelectorAll('.tab a');
-      botones.forEach(boton => {
-        boton.addEventListener('mouseenter', () => {
-          boton.querySelector('ion-icon').style.color = '#ffc107';
-          boton.querySelector('span').style.color = '#ffc107';
-        });
-        boton.addEventListener('mouseleave', () => {
-          boton.querySelector('ion-icon').style.color = '';
-          boton.querySelector('span').style.color = '';
-        });
-      });
     </script>
   </body>
 </html>
-
