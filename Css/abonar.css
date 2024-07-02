@@ -15,30 +15,27 @@ body {
   
   /* Barra lateral */
   .barra-lateral {
-    width: 250px;
+    width: 230px;
     background-color: #000000;
     color: #ffffff;
     position: fixed;
     height: 100%;
     padding-top: 20px;
-    transition: width 0.3s;
+    transition: width 0.4s
   }
-  
-  .barra-lateral.max-barra-lateral {
-    width: 60px;
-  }
-  
+
   .barra-lateral.mini-barra-lateral {
     width: 60px;
   }
   
   .navegacion ul {
     list-style: none;
-    padding: 0;
+    padding-left: 6px;
+    padding-right: 10px;
   }
   
   .navegacion li {
-    margin: 30px 0;
+    margin: 25px 0;
   }
   
   .navegacion a {
@@ -51,75 +48,26 @@ body {
   
   .navegacion a span {
     margin-left: 10px;
+    margin-bottom: 2.4px;
   }
   
+
   .navegacion a:hover {
     background-color: #575757;
-    padding: 15px;
+    padding: 6px;
     border-radius: 5px;
-  }
-  
-  /* Modo oscuro */
-  .modo-oscuro {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 5px;
-    font-size: 20px;
-    
-  }
- 
-  
-  .modo-oscuro .info {
-    display: flex;
-    align-items: center;
-  }
-  
-  .modo-oscuro .info ion-icon {
-    margin-right: 10px;
-  }
-  
-  .switch {
-    display: flex;
-    align-items: center;
-  }
-  
-  .switch .base {
-    width: 40px;
-    height: 20px;
-    background-color: #ccc;
-    border-radius: 10px;
-    position: relative;
-    cursor: pointer;
-  }
-  
-  .switch .circulo {
-    width: 20px;
-    height: 20px;
-    background-color: #fff;
-    border-radius: 50%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transition: left 0.3s;
-  }
-  
-  .switch .circulo.prendido {
-    left: 20px;
+    transition: 0.2S
   }
   
   .usuario {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    margin-top: 100%;
+    padding-left: 9px;
+    margin-top: 73%;
   }
   
   .usuario img {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    margin-right: 10px;
   }
   
   .info-usuario {

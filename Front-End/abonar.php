@@ -108,18 +108,6 @@ $amount = $info_user['$amount'];
       <div>
         <div class="linea"></div>
 
-        <div class="modo-oscuro">
-          <div class="info">
-            <ion-icon name="moon-outline"></ion-icon>
-            <span>Modo oscuro</span>
-          </div>
-          <div class="switch">
-            <div class="base">
-              <div class="circulo"></div>
-            </div>
-          </div>
-        </div>
-
         <div class="usuario">
           <img src="../Img/unnamed.jpg" alt="" />
           <div class="info-usuario">
