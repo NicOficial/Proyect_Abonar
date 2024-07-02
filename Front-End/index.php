@@ -1,81 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abonar | A partir de ahora, hace que tu unico problema sea como gastar. </title>
-    <link rel="stylesheet" href="../Css/paginicial.css">
-    <link rel="icon" href="../Img/Abonarlogo.png">
-    <script src="https://kit.fontawesome.com/c1eac3d9cf.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <link rel="stylesheet" href="../Css/index.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
-
 <body>
-    <header>
-        <nav>
-            <div>
-                <a href="abonar.html">
-                    <img src="../Img/highestiqmomento.png" height="69px" width="123px" alt="" id="abonarlogo">
-                </a>
-                <img src="../Img/abonar palabra.png" id="abonarpalabra">
-            </div>
+    <header class="header">
+        <a href="#" class="logo">Abonar</a>
+
+        <box-icon name='menu' id="menu-icon"></box-icon>
+        <nav class="navbar">
+            <a href="#home" class="active">Inicial</a>
+            <a href="#about">Sobre nosotros</a>
+            <a href="#services">Servicios</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#contact">Contactanos</a>
 
 
-            <div id="Encabezado">
-                <a href="#footer">Redes</a>
-                <a href="contactanos.html">Soporte</a>
-                <!-- <a href="#Creadores">Creadores</a> -->
-            </div>
-
-
-            <div id="Login">
-                <a href="register.php">Abrí tu cuenta</a>
-                <a href="login.php">Iniciar Sesión</a>
-            </div>
 
         </nav>
     </header>
+    <section class="home" id="home">
+        <div class="home-content">
+            <h3>Hola, somos</h3>
+            <h1>Abonar</h1>
+            <h3>Y somos una <span>Wallet</span></h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem mollitia error laborum ut hic tenetur reiciendis rerum.</p>
+            <div class="social-media">
+                <a href="#"><box-icon type='logo' name='instagram'></box-icon></a>
+                <a href="#"><box-icon name='youtube' type='logo' ></box-icon></a>
+                <a href="#"><box-icon type='logo' name='twitter'></box-icon></a>
+            </div>
+            <a href="#" class="btn">Crear Cuenta</a>
+            <a href="#" class="btn">Iniciar sesion</a>
 
-    <div id="center">
-        <center>
-            <h1 id="frasegrandecentro">A partir de ahora, que tu único problema sea como gastar.</h1>
-        </center>
-        <center>
-            <p>Abonar se encarga , una amigable interfaz grafica y un apartado para que estes al tanto de todo.</p>
-        </center>
-        <center><a id="masabajodelafrase" href="#Creators">Conocé más</a></center>
-    </div>
-
-    <footer>
-        <div>
-            <img src="../Img/abonar palabra.png" alt="">
         </div>
 
-        <div>
-            <h2>Quienes Somos</h2> <br>
-            <a href="creadores.html" target="_blank">Grupo abonar</a>
-            <br>
-            <a href="Term_Cond.html" target="_blank">Como cuidamos tu privacidad</a>
-            <br>
+        <div class="home-img">
+            <img src="../Img/abonar logo nuevo sin fondo.jpg.png" alt="logo">
         </div>
-
-        <div>
-            <h2>Acerca de</h2>
-            <a href="contactos.html" target="_blank">Ayuda</a>
-            <br><br>
-            <a href="Term_Cond.html" target="_blank">Terminos y condiciones</a>
-            <br><br>
-            <a href="Term_Cond.html" target="_blank">Uso de cookies</a>
-            <br><br>
-        </div>
-
-        <div id="Siguenos">
-            <h3>Siguenos</h3>
-            <a href="https://www.instagram.com/abonar.oficial/"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://www.youtube.com/@abonaroficial"><i class="fa-brands fa-youtube"></i></a>
-            <a href="https://twitter.com/abonaroficial"><i class="fa-brands fa-twitter"></i></a>
-            <div>
-    </footer>
+    </section>
 </body>
-
 </html>
