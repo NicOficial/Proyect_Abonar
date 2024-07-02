@@ -20,6 +20,7 @@ $query = "INSERT INTO `users` (`name`, `surname`, `email`, `password`, `address`
 $ejecutar = mysqli_query($conexion, $query);
 
 if ($ejecutar) {
+    $_SESSION['email'] = $email;
     echo '
             <script>
                 alert("Se ha registrado correctamente");

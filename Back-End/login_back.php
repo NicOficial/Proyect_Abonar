@@ -2,9 +2,9 @@
 
 session_start();
 
-if (isset($_SESSION['email'])) {
-    header("Location: abonar.php");
-}
+// if (isset($_SESSION['email'])) {
+//     header("Location: abonar.php");
+// }
 
 include 'con_db.php';
 
