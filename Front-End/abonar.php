@@ -2,8 +2,17 @@
 
 session_start();
 
-$name = $_SESSION['name'];
+include 'con_db.php';
+
 $email = $_SESSION['email'];
+$info_user = mysqli_query($conexion, "SELECT * FROM users WHERE email = '$email'");
+
+$name = $info_user['name'];
+$surname = $info_user['surname'];
+$password = $info_user['password'];
+$address = $info_user['$address'];
+$postal = $info_user['$postal'];
+$amount = $info_user['$amount'];
 
 ?>
 
@@ -115,23 +124,26 @@ $email = $_SESSION['email'];
           <img src="../Img/unnamed.jpg" alt="" />
           <div class="info-usuario">
             <div class="nombre-email">
-              <span class="nombre"><?php echo $name?></span>
-              <span class="email"><?php echo $email; ?></span>
+              <span class="nombre"><?php echo $name;?></span>
+              <span class="email"><?php echo $email;?></span>
             </div>
           </div>
         </div>
       </div>
     </div>
 
+    <!-- -------------------------------------------------------------------------------------------------------------------------------- -->
+
     <main>
       <section id="inicio">
-        <h1 class="bienvenido">Bienvenido, <span id="nombre-usuario">Jhampier</span></h1>
-        <p id="saldo">Saldo: $<span id="saldo-usuario">10,000</span></p>
+        <h1 class="bienvenido">Bienvenido, <span id="nombre-usuario"><?php echo $name;?></span></h1>
+        <p id="saldo">Saldo: $<span id="saldo-usuario"><?php echo $amount;?></span></p>
         <div class="features">
           <div class="feature">
             <ion-icon name="wallet-outline"></ion-icon>
             <h3>Balance en Tiempo Real</h3>
             <p>Consulta tu balance y transacciones al instante</p>
+            <a href="../Back-End/close_session.php">Cerrar Sesion</a>
           </div>
           <div class="feature">
             <ion-icon name="swap-horizontal-outline"></ion-icon>
@@ -151,12 +163,12 @@ $email = $_SESSION['email'];
           <div class="mb-3">
             <label for="nombre" class="form-label">Nombre</label>
             <div class="cuadro-texto">
-              Jhampier
+              <?php echo $name;?>
             </div>
           </div>
           <label for="nombre" class="form-label">Correo Electronico</label>
           <div class="cuadro-texto">
-            jhampier@gmail.com
+            <?php echo $email;?>
           </div>
           
         </form>
@@ -171,6 +183,7 @@ $email = $_SESSION['email'];
           </div>
           <div class="mb-3">
             <label for="monto" class="form-label">Monto</label>
+            <label for="monto" class="form-label">Monto Disponible <?php echo $amount;?></label>
             <input type="number" class="form-control" id="monto" placeholder="Monto a transferir">
           </div>
           <button type="submit" class="btn btn-primary">Transferir</button>
