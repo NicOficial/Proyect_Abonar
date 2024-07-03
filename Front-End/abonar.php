@@ -14,7 +14,7 @@ $address = $info_user['$address'];
 $postal = $info_user['$postal'];
 $amount = $info_user['$amount'];
 
-?>
+?>  
 
 <!DOCTYPE html>
 <html lang="en">
@@ -46,11 +46,9 @@ $amount = $info_user['$amount'];
     </div>
 
     <div class="barra-lateral">
-      <div>
-        <div class="nombre-pagina">
-          <ion-icon id="cloud" name="filter-outline"></ion-icon>
-          <span>‎ ‎ Abonar</span>
-        </div>
+      <div class="nombre-pagina">
+        <span>Abonar</span>
+        <img src="../Img/abonar logo nuevo sin fondo.jpg.png" height="50px" alt="">
       </div>
 
       <nav class="navegacion">
@@ -88,7 +86,7 @@ $amount = $info_user['$amount'];
               <span>Historial</span>
             </a>
           </li>
-          <li></li>
+          
           <li>
             <a href="#soporte">
               <ion-icon name="chatbox-ellipses-outline"></ion-icon>
@@ -97,7 +95,7 @@ $amount = $info_user['$amount'];
           </li>
 
           <li class="cerrar-sesion">
-            <a href="#">
+            <a href="../Back-End/close_session.php">
               <ion-icon name="exit-outline"></ion-icon>
               <span>Cerrar Sesion</span>
             </a>
@@ -131,7 +129,6 @@ $amount = $info_user['$amount'];
             <ion-icon name="wallet-outline"></ion-icon>
             <h3>Balance en Tiempo Real</h3>
             <p>Consulta tu balance y transacciones al instante</p>
-            <a href="../Back-End/close_session.php">Cerrar Sesion</a>
           </div>
           <div class="feature">
             <ion-icon name="swap-horizontal-outline"></ion-icon>
@@ -207,42 +204,7 @@ $amount = $info_user['$amount'];
       nomodule
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
     ></script>
-    <script>
-      const cloud = document.getElementById("cloud");
-      const barraLateral = document.querySelector(".barra-lateral");
-      const spans = document.querySelectorAll("span");
-      const palanca = document.querySelector(".switch");
-      const circulo = document.querySelector(".circulo");
-      const menu = document.querySelector(".menu");
-      menu.addEventListener("click", () => {
-        barraLateral.classList.toggle("max-barra-lateral");
-        if (barraLateral.classList.contains("max-barra-lateral")) {
-          menu.children[0].style.display = "none";
-          menu.children[1].style.display = "block";
-        } else {
-          menu.children[0].style.display = "block";
-          menu.children[1].style.display = "none";
-        }
-        if (window.innerWidth <= 320) {
-          barraLateral.classList.add("mini-barra-lateral");
-          main.classList.add("min-main");
-          spans.forEach((span) => {
-            span.classList.add("oculto");
-          });
-        }
-      });
-      palanca.addEventListener("click", () => {
-        let body = document.body;
-        body.classList.toggle("dark-mode");
-        circulo.classList.toggle("prendido");
-      });
-      cloud.addEventListener("click", () => {
-        barraLateral.classList.toggle("mini-barra-lateral");
-        main.classList.toggle("min-main");
-        spans.forEach((span) => {
-          span.classList.toggle("oculto");
-        });
-      });
+    <script>  
       // Función para mostrar la sección correspondiente y ocultar las demás
       function mostrarSeccion(id) {
         const secciones = document.querySelectorAll('section');

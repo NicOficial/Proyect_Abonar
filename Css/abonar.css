@@ -16,7 +16,7 @@ body {
   /* Barra lateral */
   .barra-lateral {
     width: 230px;
-    background-color: #000000;
+    background-color: #06416a;
     color: #ffffff;
     position: fixed;
     height: 100%;
@@ -24,8 +24,10 @@ body {
     transition: width 0.4s
   }
 
-  .barra-lateral.mini-barra-lateral {
-    width: 60px;
+  .nombre-pagina{
+    font-size: 25px;
+    font-weight: bold;
+    padding-left: 10px;
   }
   
   .navegacion ul {
@@ -176,7 +178,5 @@ body {
     width: 100%; /* Ancho del cuadro de texto */
     text-align: center; /* Alineación del texto */
   }
-.nombre-pagina{
-    font-size: 20px;
-}
+
   
