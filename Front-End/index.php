@@ -80,6 +80,7 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam ex debitis amet magnam, excepturi
                     tempora ratione ullam quasi dicta laborum.</p>
                     <a href="#" class="btn">Read More</a>
+            </div>
                     <div class="services-box">
                         <i class="bx bx-bar-chart-alt"></i>
                         <h3>Digital Marketing</h3>
