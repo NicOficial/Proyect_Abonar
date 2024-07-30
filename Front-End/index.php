@@ -91,6 +91,19 @@
             
         </div>
     </section>
+    <section class="portfolio" id="portfolio">
+        <h2 class="heading">Latest <span>Project</span></h2>
+        <div class="portfolio-container">
+            <div class="portfolio-box">
+                <img src="../Img/portfolio1.jpg" alt="img1">
+                <div class="portfolio-layer">
+                    <h4>Web design</h4>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad, qui!</p>
+                    <a href="#"><i class="bx bx-link-external"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
 
 </html>
