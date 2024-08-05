@@ -97,7 +97,47 @@
             <div class="portfolio-box">
                 <img src="../Img/portfolio1.jpg" alt="img1">
                 <div class="portfolio-layer">
-                    <h4>Web design</h4>
+                    <h4>Web Design</h4>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad, qui!</p>
+                    <a href="#"><i class="bx bx-link-external"></i></a>
+                </div>
+            </div>
+            <div class="portfolio-box">
+                <img src="../Img/portfolio2.jpg" alt="img2">
+                <div class="portfolio-layer">
+                    <h4>Web Design</h4>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad, qui!</p>
+                    <a href="#"><i class="bx bx-link-external"></i></a>
+                </div>
+            </div>
+            <div class="portfolio-box">
+                <img src="../Img/portfolio3.jpg" alt="img3">
+                <div class="portfolio-layer">
+                    <h4>Web Design</h4>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad, qui!</p>
+                    <a href="#"><i class="bx bx-link-external"></i></a>
+                </div>
+            </div>
+            <div class="portfolio-box">
+                <img src="../Img/portfolio4.jpg" alt="img4">
+                <div class="portfolio-layer">
+                    <h4>Web Design</h4>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad, qui!</p>
+                    <a href="#"><i class="bx bx-link-external"></i></a>
+                </div>
+            </div>
+            <div class="portfolio-box">
+                <img src="../Img/portfolio5.jpg" alt="img5">
+                <div class="portfolio-layer">
+                    <h4>Web Design</h4>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad, qui!</p>
+                    <a href="#"><i class="bx bx-link-external"></i></a>
+                </div>
+            </div>
+            <div class="portfolio-box">
+                <img src="../Img/portfolio6.jpg" alt="img6">
+                <div class="portfolio-layer">
+                    <h4>Web Design</h4>
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad, qui!</p>
                     <a href="#"><i class="bx bx-link-external"></i></a>
                 </div>
