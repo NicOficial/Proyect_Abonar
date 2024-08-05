@@ -2,10 +2,6 @@
 
 session_start();
 
-// if (isset($_SESSION['email'])) {
-//     header("Location: abonar.php");
-// }
-
 include 'con_db.php';
 
 $email = $_POST['email'];
@@ -23,5 +19,9 @@ if (mysqli_num_rows($validar_login) > 0) {
                 alert("Usuario no encontrado, vuelva a intentarlo");
                 window.location = "../Front-End/login.php";
             </script>
-        ';
+            ';
 }
+
+mysqli_close($conexion);
+
+?>

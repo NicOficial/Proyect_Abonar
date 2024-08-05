@@ -19,7 +19,6 @@
             <a href="abonar.php">
                 <img src="../Img/abonar logo nuevo sin fondo.jpg.png" id="abonarlogo" />
             </a>
-            <img src="../Img/unnamed.jpg" height="69px" width="123px" id="abonarpalabra" />
         </nav>
     </header>
 
