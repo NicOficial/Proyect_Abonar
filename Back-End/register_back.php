@@ -39,7 +39,6 @@ try {
             window.location.href="../Front-End/abonar.php";
         </script>
     ';
-3
 } catch (Exception $e) {
     mysqli_rollback($conexion);
     echo '

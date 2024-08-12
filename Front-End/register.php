@@ -26,7 +26,7 @@
 
     <section class="container">
         <header>Registro</header>
-        <form action="../Back-End/registrar_back.php" method="POST" class="form">
+        <form action="../Back-End/register_back.php" method="POST" class="form">
             <div class="column">
                 <div class="input-box">
                     <label>Nombre</label>

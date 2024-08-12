@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 
 session_start();
 
@@ -7,26 +7,25 @@ include '../Back-End/con_db.php';
 $email = $_SESSION['email'];
 $info_user_query = mysqli_query($conexion, "SELECT users.id_users, users.name, users.surname, users.email, users.password, users.address, users.postal, wallets.amount FROM users JOIN wallets ON users.id_users = wallets.id_user WHERE users.email = '$email';");
 
-if ($info_user_query) {
-    $info_user = mysqli_fetch_assoc($info_user_query);
+if ($info_user && mysqli_num_rows($info_user) > 0) {
+    $row = mysqli_fetch_assoc($info_user);
 
-    if ($info_user) {
-        $name = $info_user['name'];
-        $surname = $info_user['surname'];
-        $password = $info_user['password'];
-        $address = $info_user['address'];
-        $postal = $info_user['postal'];
-        $amount = $info_user['amount'];
-    } else {
-        echo "No se encontraron datos para el usuario.";
-    }
+    $id_users = $row['id_users'];
+    $name = $row['name'];
+    $surname = $row['surname'];
+    $email = $row['email'];
+    $password = $row['password'];
+    $address = $row['address'];
+    $postal = $row['postal'];
+    $amount = $row['amount'];
+    
 } else {
-    echo "Error en la consulta: " . mysqli_error($conexion);
+    echo "No se encontraron datos para el email proporcionado.";
 }
 
 mysqli_close($conexion);
 
-?>
+?> -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -35,6 +34,7 @@ mysqli_close($conexion);
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <link href="https://db.onlinewebfonts.com/c/d05c19ccecf7003d248c60ffd6b5e8f7?family=Binance+PLEX" rel="stylesheet" type="text/css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -207,15 +207,136 @@ mysqli_close($conexion);
         </section>
         <section id="soporte" style="display:none;">
             <h1>Soporte</h1>
-            <p>¿Necesitas ayuda? Contacta a nuestro equipo de soporte.</p>
-            <form>
-                <div class="mb-3">
-                    <label for="consulta" class="form-label">Consulta</label>
-                    <textarea class="form-control" id="consulta" rows="3"></textarea>
+            <p>¿Necesitas ayuda? 
+            </p>
+            <!DOCTYPE html>
+            <html lang="es">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Ayuda Mercado Libre</title>
+                <style>
+                    body {
+                        font-family: sans-serif;
+                        background-color: #f5f5f5;
+                        margin: 0;
+                    }
+            
+                    .container {
+                        max-width: 800px;
+                        margin: 0 auto;
+                        padding: 20px;
+                        background-color: #fff;
+                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                    }
+            
+                    h1 {
+                        text-align: center;
+                        margin-bottom: 20px;
+                    }
+            
+                    .search-box {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        margin-bottom: 20px;
+                    }
+            
+                    .search-input {
+                        flex: 1;
+                        padding: 10px;
+                        border: 1px solid #ccc;
+                        border-radius: 5px;
+                    }
+            
+                    .search-button {
+                        padding: 10px 20px;
+                        background-color: #007bff;
+                        color: #fff;
+                        border: none;
+                        border-radius: 5px;
+                        cursor: pointer;
+                    }
+            
+                    .options {
+                        display: flex;
+                        flex-direction: column;
+                    }
+            
+                    .option {
+                        padding: 15px;
+                        border: 1px solid #ccc;
+                        border-radius: 5px;
+                        margin-bottom: 10px;
+                        display: flex;
+                        align-items: center;
+                    }
+            
+                    .option-icon {
+                        margin-right: 15px;
+                        width: 30px;
+                        height: 30px;
+                        background-color: #eee;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        border-radius: 50%;
+                    }
+            
+                    .option-icon i {
+                        font-size: 1.5em;
+                    }
+            
+                    .option-text {
+                        flex: 1;
+                    }
+            
+                    .option-text h3 {
+                        margin-bottom: 5px;
+                    }
+            
+                    .option-text p {
+                        margin-bottom: 0;
+                        font-size: 0.9em;
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="container">
+                    <h1>¿Con qué podemos ayudarte?</h1>
+            
+                    <div class="options">
+                        <div class="option">    
+                            <div class="option-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <div class="option-text">
+                                <h3>Seguridad y acceso a la cuenta</h3>
+                                <p>Problemas y configuración.</p>
+                            </div>
+                        </div>
+                        <div class="option">
+                            <div class="option-icon">
+                                <i class="fas fa-credit-card"></i>
+                            </div>
+                            <div class="option-text">
+                                <h3>Cuenta Abonar</h3>
+                                <p>Ingresos, transferencias.</p>
+                            </div>
+                        </div>
+                        <div class="option">
+                            <div class="option-icon">
+                                <i class="fas fa-money-bill-wave"></i>
+                            </div>
+                            <div class="option-text">
+                                <h3>Pagos</h3>
+                                <p>Compras y pagos de servicios. </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Enviar</button>
-            </form>
-        </section>
+            </body>
+            </html>        </section>
     </main>
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
