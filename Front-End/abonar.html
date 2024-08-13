@@ -94,13 +94,6 @@ mysqli_close($conexion);
                 </div>
 
                 <li>
-                    <a href="#historial">
-                        <ion-icon name="document-lock-outline"></ion-icon>
-                        <span>Historial</span>
-                    </a>
-                </li>
-
-                <li>
                     <a href="#soporte">
                         <ion-icon name="chatbox-ellipses-outline"></ion-icon>
                         <span>Soporte</span>
@@ -108,15 +101,19 @@ mysqli_close($conexion);
                 </li>
 
                 <li class="cerrar-sesion">
-                  <a href="../Back-End/close_session.php"></a>
-                    <a href="../Back-End/close_session.php">
+                    <a href="/Front-End/register.php">
                         <ion-icon name="exit-outline"></ion-icon>
-                        <span>Cerrar Sesion</span>
+                        <span>Cerrar Sesión</span>
                     </a>
                 </li>
             </ul>
         </nav>
-
+        <li class="cerrar-sesion">
+            <a href="/Front-End/register.php">
+                <ion-icon name="exit-outline"></ion-icon>
+                <span>Cerrar Sesión</span>
+            </a>
+        </li>
         <div>
             <div class="linea"></div>
 
@@ -195,15 +192,6 @@ mysqli_close($conexion);
                 </div>
                 <button type="submit" class="btn btn-primary">Transferir</button>
             </form>
-        </section>
-        <section id="historial" style="display:none;">
-            <h1>Historial</h1>
-            <ul id="lista-transacciones">
-                <li>Compra en Amazon - $50</li>
-                <li>Pago de servicio de Internet - $30</li>
-                <li>Transferencia recibida - $200</li>
-                <li>Compra en MercadoLibre - $75</li>
-            </ul>
         </section>
         <section id="soporte" style="display:none;">
             <h1>Soporte</h1>
@@ -286,7 +274,7 @@ mysqli_close($conexion);
                     .option-icon i {
                         font-size: 1.5em;
                     }
-            
+                    
                     .option-text {
                         flex: 1;
                     }

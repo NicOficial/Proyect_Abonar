@@ -4,9 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Abonar‎ | ‎Hacé más con tu plata</title>
     <link rel="stylesheet" href="../Css/index.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" href="../Img/abonar logo nuevo sin fondo.jpg.png" />
+
 
 </head>
 
@@ -29,14 +31,14 @@
     <section class="home" id="home">
         <div class="home-content">
             <h3>Hola, somos</h3>
-            <h1>Abonar</h1>
+            <h1>labersuit</h1>
             <h3>Y somos una <span>Wallet</span></h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem mollitia error laborum ut hic tenetur
                 reiciendis rerum.</p>
             <div class="social-media">
-                <a href="#"><i class="bx bxl-youtube"></i></a>
-                <a href="#"><i class="bx bxl-twitter"></i></a>
-                <a href="#"><i class="bx bxl-instagram-alt"></i></a>
+                <a href="https://www.youtube.com/@abonaroficial" target="_blank"><i class="bx bxl-youtube"></i></a>
+                <a href="https://x.com/abonaroficial" target="_blank"><i class="bx bxl-twitter" ></i></a>
+                <a href="https://www.instagram.com/abonar.oficial/" target="_blank"><i class="bx bxl-instagram-alt"></i></a>
 
             </div>
             <a href="#" class="btn">Crear Cuenta</a>
