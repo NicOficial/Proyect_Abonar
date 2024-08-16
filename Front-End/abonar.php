@@ -1,31 +1,24 @@
-<!-- <?php
+<?php
 
 session_start();
 
 include '../Back-End/con_db.php';
 
 $email = $_SESSION['email'];
-$info_user_query = mysqli_query($conexion, "SELECT users.id_users, users.name, users.surname, users.email, users.password, users.address, users.postal, wallets.amount FROM users JOIN wallets ON users.id_users = wallets.id_user WHERE users.email = '$email';");
+$info_user = mysqli_query($conexion, "SELECT users.id_users, users.name, users.surname, users.email, users.password, users.address, users.postal, wallets.amount FROM users JOIN wallets ON users.id_users = wallets.id_user WHERE users.email = '$email';");
 
-if ($info_user && mysqli_num_rows($info_user) > 0) {
-    $row = mysqli_fetch_assoc($info_user);
+$row = mysqli_fetch_assoc($info_user);
 
-    $id_users = $row['id_users'];
-    $name = $row['name'];
-    $surname = $row['surname'];
-    $email = $row['email'];
-    $password = $row['password'];
-    $address = $row['address'];
-    $postal = $row['postal'];
-    $amount = $row['amount'];
-    
-} else {
-    echo "No se encontraron datos para el email proporcionado.";
-}
+$name = $row['name'];
+$surname = $row['surname'];
+$password = $row['password'];
+$address = $row['address'];
+$postal = $row['postal'];
+$amount = $row['amount'];
 
 mysqli_close($conexion);
 
-?> -->
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -42,16 +35,11 @@ mysqli_close($conexion);
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link
-      href="https://db.onlinewebfonts.com/c/d05c19ccecf7003d248c60ffd6b5e8f7?family=Binance+PLEX"
-      rel="stylesheet"
-      type="text/css"
-    />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../Css/abonar.css" />
     <title>Abonar‎ | ‎Hacé más con tu plata</title>
     <link rel="icon" href="../Img/abonar logo nuevo sin fondo.jpg.png" />
-</head>
+</head> 
 <body>
     <div class="menu">
         <ion-icon name="menu-outline"></ion-icon>
@@ -100,19 +88,17 @@ mysqli_close($conexion);
                     </a>
                 </li>
 
-                <li class="cerrar-sesion">
-                    <a href="/Front-End/register.php">
-                        <ion-icon name="exit-outline"></ion-icon>
-                        <span>Cerrar Sesión</span>
-                    </a>
-                </li>
             </ul>
         </nav>
-        <li class="cerrar-sesion">
-            <a href="/Front-End/register.php">
-                <ion-icon name="exit-outline"></ion-icon>
-                <span>Cerrar Sesión</span>
-            </a>
+
+        <div class="cerrarsesion">
+        <a href="index.php">
+            <ion-icon name="exit-outline"></ion-icon>
+            <span>Cerrar Sesión</span>
+        </a>
+
+            </div>  
+        
         </li>
         <div>
             <div class="linea"></div>
@@ -159,7 +145,8 @@ mysqli_close($conexion);
                 <div class="mb-3">
                     <label for="nombre" class="form-label">Nombre</label>
                     <div class="cuadro-texto">
-                        <?php echo htmlspecialchars($name); ?>
+                    <?php echo htmlspecialchars($name); ?>
+                    <?php echo htmlspecialchars($surname); ?>
                     </div>
                 </div>
                 <div class="mb-3">
@@ -171,7 +158,7 @@ mysqli_close($conexion);
                 <div class="mb-3">
                     <label for="direccion-postal" class="form-label">Dirección y Postal</label>
                     <div class="cuadro-texto">
-                        <?php echo htmlspecialchars($address); ?><br>
+                        <?php echo htmlspecialchars($address); ?>
                         <?php echo htmlspecialchars($postal); ?>
                     </div>
                 </div>
@@ -203,91 +190,7 @@ mysqli_close($conexion);
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>Ayuda Mercado Libre</title>
-                <style>
-                    body {
-                        font-family: sans-serif;
-                        background-color: #f5f5f5;
-                        margin: 0;
-                    }
-            
-                    .container {
-                        max-width: 800px;
-                        margin: 0 auto;
-                        padding: 20px;
-                        background-color: #fff;
-                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-                    }
-            
-                    h1 {
-                        text-align: center;
-                        margin-bottom: 20px;
-                    }
-            
-                    .search-box {
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                        margin-bottom: 20px;
-                    }
-            
-                    .search-input {
-                        flex: 1;
-                        padding: 10px;
-                        border: 1px solid #ccc;
-                        border-radius: 5px;
-                    }
-            
-                    .search-button {
-                        padding: 10px 20px;
-                        background-color: #007bff;
-                        color: #fff;
-                        border: none;
-                        border-radius: 5px;
-                        cursor: pointer;
-                    }
-            
-                    .options {
-                        display: flex;
-                        flex-direction: column;
-                    }
-            
-                    .option {
-                        padding: 15px;
-                        border: 1px solid #ccc;
-                        border-radius: 5px;
-                        margin-bottom: 10px;
-                        display: flex;
-                        align-items: center;
-                    }
-            
-                    .option-icon {
-                        margin-right: 15px;
-                        width: 30px;
-                        height: 30px;
-                        background-color: #eee;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        border-radius: 50%;
-                    }
-            
-                    .option-icon i {
-                        font-size: 1.5em;
-                    }
-                    
-                    .option-text {
-                        flex: 1;
-                    }
-            
-                    .option-text h3 {
-                        margin-bottom: 5px;
-                    }
-            
-                    .option-text p {
-                        margin-bottom: 0;
-                        font-size: 0.9em;
-                    }
-                </style>
+               
             </head>
             <body>
                 <div class="container">

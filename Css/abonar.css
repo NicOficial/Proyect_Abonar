@@ -5,6 +5,13 @@
   
 }
 
+* {
+
+font-family: 'Binance PLEX', sans-serif;
+font-weight: 500;
+
+}
+
 #saldo {
   width: 330px;
 }
@@ -12,18 +19,17 @@
 .saldo{
   font-size: 1.5rem;
   width: 700px;
-
   margin-top: 14px;
 }
 
 /* Estilos generales */
 body {
-    font-family: 'Binance PLEX', sans-serif;
     margin: 0;
     padding: 0;
     display: flex;
     min-height: 100vh;
     transition: background-color 0.3s;
+    
   }
   
   body.dark-mode {
@@ -57,7 +63,8 @@ body {
   .navegacion li {
     margin: 25px 0;
   }
-  
+     
+
   .navegacion a {
     color: #ffffff;
     text-decoration: none;
@@ -182,7 +189,7 @@ body {
   .features {
     display: flex;
     justify-content: space-around;
-    margin-top: 150px;
+    margin-top: 75px;
 }
 
 .feature {
@@ -214,11 +221,95 @@ body {
     color: #666;
 }
 .cuadro-texto {
-    border: 1px solid #ccc; /* Borde del cuadro de texto */
+    border: 1.5px solid #9a9797; /* Borde del cuadro de texto */
     padding: 10px; /* Espaciado interno */
     font-size: 16px; /* Tamaño de fuente */
-    width: 100%; /* Ancho del cuadro de texto */
+    width: 30%; /* Ancho del cuadro de texto */
     text-align: center; /* Alineación del texto */
+    border-radius: 10px;
   }
 
+  body {
+      background-color: #f5f5f5;
+      margin: 0;
+
+  }
+
+  .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  h1 {
+      text-align: center;
+      margin-bottom: 20px;
+  }
+
+  .search-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+  }
+
+  .search-input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+  }
+
+  .search-button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+  }
+
+  .options {
+      display: flex;
+      flex-direction: column;
+  }
+
+  .option {
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+  }
+
+  .option-icon {
+      margin-right: 15px;
+      width: 30px;
+      height: 30px;
+      background-color: #eee;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+  }
+
+  .option-icon i {
+      font-size: 1.5em;
+  }
+  
+  .option-text {
+      flex: 1;
+  }
+
+  .option-text h3 {
+      margin-bottom: 5px;
+  }
+
+  .option-text p {
+      margin-bottom: 0;
+      font-size: 0.9em;
+  }
   
