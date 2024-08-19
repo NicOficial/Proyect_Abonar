@@ -20,8 +20,8 @@
         <nav class="navbar">
             <a href="#home" class="active">Inicial</a>
             <a href="#about">Sobre nosotros</a>
-            <a href="#services">Servicios</a>
-            <a href="#portfolio">Portfolio</a>
+            <a href="#services">Valores</a>
+            <a href="#portfolio">Fortalezas</a>
             <a href="#contact">Contactanos</a>
 
 
@@ -33,16 +33,15 @@
             <h3>Hola, somos</h3>
             <h1>Abonar</h1>
             <h3>Y somos una <span class="multiple-text"></span></h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem mollitia error laborum ut hic tenetur
-                reiciendis rerum.</p>
+            <p>Te presentamos la mejor Wallet de Argentina, con las mejores interfaces y una funcionalidad para todo publico</p>
             <div class="social-media">
                 <a href="https://www.youtube.com/@abonaroficial" target="_blank"><i class="bx bxl-youtube"></i></a>
                 <a href="https://x.com/abonaroficial" target="_blank"><i class="bx bxl-twitter" ></i></a>
                 <a href="https://www.instagram.com/abonar.oficial/" target="_blank"><i class="bx bxl-instagram-alt"></i></a>
 
             </div>
-            <a href="#" class="btn">Crear Cuenta</a>
-            <a href="#" class="btn">Iniciar sesion</a>
+            <a href="register.html" class="btn" target="_blank">Crear Cuenta</a>
+            <a href="login.html" class="btn" target="_blank">Iniciar sesion</a>
 
         </div>
 
@@ -58,109 +57,110 @@
         <div class="about-content">
             <h2 class="heading">Sobre <span>Nosotros</span></h2>
             <h3>Billetera Virtual</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex aperiam corrupti animi temporibus amet in
-                aliquam molestiae laborum officia commodi alias quidem nemo, voluptate sequi soluta quaerat debitis
-                consequatur, dolorum numquam! Minima ex doloribus quibusdam saepe aliquam, ut odio corporis quas,
-                nesciunt, eum rerum cupiditate. Dolor!</p>
-            <a href="#" class="btn">Leer Mas</a>
+            <p>Somos Abonar, una plataforma de pago digital creada para facilitar transacciones seguras y rápidas a personas que se encuentren en ámbitos escolares. <br>
+                Nuestra mision es diseñar interfaces modernas e interactivas; brindar seguridad y facilitar la gestión de dinero de los usuarios. <br>
+                Nos vemos como el mejor monedero digital de Argentina, con las mejores reseñas y publico. 
+                </p>
+            <a href="privacidad.html" class="btn" target="_blank">Leer Mas</a>
         </div>
     </section>
 
     <section class="services" id="services">
-        <h2 class="heading">Our <span>Services</span></h2>
+        <h2 class="heading">Nuestros <span>Valores</span></h2>
         <div class="services-container">
             <div class="services-box">
                 <i class="bx bx-code-alt"></i>
-                <h3>Web Development</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam ex debitis amet magnam, excepturi
-                    tempora ratione ullam quasi dicta laborum.</p>
-                    <a href="#" class="btn">Read More</a>
+                <h3>Simplicidad</h3>
+                <p>Hacemos que las transferencias digitales sean fáciles para todos.</p>
+                    <a href="privacidad.html" class="btn" target="_blank">Leer mas</a>
             </div>
             <div class="services-box">
                 <i class="bx bxs-paint"></i>
-                <h3>Graphic Design</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam ex debitis amet magnam, excepturi
-                    tempora ratione ullam quasi dicta laborum.</p>
-                    <a href="#" class="btn">Read More</a>
+                <h3>Seguridad</h3>
+                <p>Protegemos los datos y dinero de todos nuestros usuarios para que utilicen nuestra plataforma con total tranquilidad.</p>
+                    <a href="privacidad.html" class="btn" target="_blank">Leer mas</a>
             </div>
                     <div class="services-box">
                         <i class="bx bx-bar-chart-alt"></i>
-                        <h3>Digital Marketing</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam ex debitis amet magnam, excepturi
-                            tempora ratione ullam quasi dicta laborum.</p>
-                            <a href="#" class="btn">Read More</a>
+                        <h3>Innovacion</h3>
+                        <p>Buscamos mejorar nuestra plataforma en base a las reseñas de nuestros usuarios.</p>
+                            <a href="privacidad.html" class="btn" target="_blank">Leer mas</a>
 
             
         </div>
     </section>
     <section class="portfolio" id="portfolio">
-        <h2 class="heading">Latest <span>Project</span></h2>
+        <h2 class="heading">Nuestras <span>Fortalezas</span></h2>
         <div class="portfolio-container">
             <div class="portfolio-box">
                 <img src="../Img/portfolio1.jpg" alt="img1">
                 <div class="portfolio-layer">
-                    <h4>Web Design</h4>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad, qui!</p>
-                    <a href="#"><i class="bx bx-link-external"></i></a>
+                    <h4>Control y Seguridad</h4>
+                    <p>Ofrecemos un seguimiento en tus transacciones.</p>
+                    <a href="privacidad.html" target="_blank"><i class="bx bx-link-external"></i></a>
                 </div>
             </div>
             <div class="portfolio-box">
                 <img src="../Img/portfolio2.jpg" alt="img2">
                 <div class="portfolio-layer">
-                    <h4>Web Design</h4>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad, qui!</p>
-                    <a href="#"><i class="bx bx-link-external"></i></a>
+                    <h4>Conveniencia en la gestion</h4>
+                    <p>Te persuadimos ya que nuestra gestion en las transferencias es la mejor.</p>
+                    <a href="privacidad.html" target="_blank"><i class="bx bx-link-external"></i></a>
                 </div>
             </div>
             <div class="portfolio-box">
                 <img src="../Img/portfolio3.jpg" alt="img3">
                 <div class="portfolio-layer">
-                    <h4>Web Design</h4>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad, qui!</p>
-                    <a href="#"><i class="bx bx-link-external"></i></a>
+                    <h4>Chat interactivo</h4>
+                    <p>Un bot conectado a nuestra base de datos el cual te permite resolver todas tus dudas.</p>
+                    <a href="privacidad.html" target="_blank"><i class="bx bx-link-external"></i></a>
                 </div>
             </div>
             <div class="portfolio-box">
                 <img src="../Img/portfolio4.jpg" alt="img4">
                 <div class="portfolio-layer">
-                    <h4>Web Design</h4>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad, qui!</p>
-                    <a href="#"><i class="bx bx-link-external"></i></a>
+                    <h4>Confianza</h4>
+                    <p>Al ser usuario de Abonar, no debes preocuparte por ningún ciberataque, tu plata estará segura en todo momento.</p>
+                    <a href="privacidad.html" target="_blank"><i class="bx bx-link-external"></i></a>
                 </div>
             </div>
             <div class="portfolio-box">
                 <img src="../Img/portfolio5.jpg" alt="img5">
                 <div class="portfolio-layer">
-                    <h4>Web Design</h4>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad, qui!</p>
-                    <a href="#"><i class="bx bx-link-external"></i></a>
+                    <h4>Comodidad</h4>
+                    <p>Ofrecemos servicios cómodos a la vista y fáciles de utilizar para que ningún usuario tenga problemas.</p>
+                    <a href="privacidad.html" target="_blank"><i class="bx bx-link-external"></i></a>
                 </div>
             </div>
             <div class="portfolio-box">
                 <img src="../Img/portfolio6.jpg" alt="img6">
                 <div class="portfolio-layer">
-                    <h4>Web Design</h4>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad, qui!</p>
-                    <a href="#"><i class="bx bx-link-external"></i></a>
+                    <h4>Innovacion tecnologica</h4>
+                    <p>Nos adaptamos a la moda ofreciendote una billetera responsiva.</p>
+                    <a href="privacidad.html" target="_blank"><i class="bx bx-link-external"></i></a>
                 </div>
             </div>
         </div>
     </section>
 
     <section class="contact" id="contact">
-        <h2 class="heading">Contact <span>Me!</span></h2>
+        <h2 class="heading">Contacta a <span>Abonar!</span></h2>
     
-        <form id="contact-form">
+        <form
+        action="https://formspree.io/f/xzzpazqy"
+        method="POST"
+      >
             <div class="input-box">
-                <input type="text" id="name" placeholder="Full Name" required>
-                <input type="email" id="email" placeholder="Email Address" required>
+                <input name="llave" type="hidden" name="access_key" value="29a408d0-2ccb-46c7-89af-f10704e6e58b">
+                <input name="Nombre" type="text" id="name" placeholder="Nombre completo" required>
+                <input name="Correo" type="email" id="email" placeholder="Correo Electronico" required>
             </div>
             <div class="input-box">
-                <input type="number" id="phone" placeholder="Mobile Number">
-                <input type="text" id="subject" placeholder="Email Subject" required>
+                <input name="Telefono" type="number" id="phone" placeholder="Telefono">
+                <input name="Asunto" type="text" id="subject" placeholder="Asunto" required>
             </div>
-            <textarea id="message" cols="30" rows="10" placeholder="Your Message" required></textarea>
-            <input type="submit" value="Send Message" class="btn">
+            <textarea name="Mensaje" id="message" cols="30" rows="10" placeholder="Tu mensaje" required></textarea>
+            <input name="Boton" type="submit" value="Enviar" class="btn">
         </form>
     </section>
     
@@ -177,26 +177,7 @@
     </footer>
 
     
-    <script>
-        const form = document.querySelector("form");
-        Email.send({
-    Host : "smtp.elasticemail.com",
-    Username : "valentinepeluso@gmail.com",
-    Password : "C8ED5AB88E506A4C5FC010148D9DFAB7A4AE",
-    To : 'valentinepeluso@gmail.com',
-    From : "valentinepeluso@gmail.com",
-    Subject : "Abonar",
-    Body : "Contactanos"
-}).then(
-  message => alert(message)
-);
-
-form.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    sendEmail();
-});
-    </script>
+   
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <script>

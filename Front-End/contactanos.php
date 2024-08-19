@@ -16,7 +16,10 @@
   <body>
     <div class="container">
       <div class="text">Contáctanos</div>
-      <form action="https://formspree.io/f/mqkrojld" method="POST">
+      <form
+  action="https://formspree.io/f/xzzpazqy"
+  method="POST"
+>
         <div class="form-row">
           <div class="input-data">
             <input type="text" name="nombre" required />
