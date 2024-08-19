@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-05-2024 a las 22:31:14
+-- Tiempo de generación: 19-08-2024 a las 18:27:47
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 8.0.13
 
@@ -58,6 +58,14 @@ CREATE TABLE `wallets` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Volcado de datos para la tabla `wallets`
+--
+
+INSERT INTO `wallets` (`id_wallet`, `id_user`, `amount`) VALUES
+(1, 1, 1000),
+(2, 2, 500);
+
+--
 -- Índices para tablas volcadas
 --
 
@@ -90,7 +98,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `wallets`
 --
 ALTER TABLE `wallets`
-  MODIFY `id_wallet` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_wallet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas

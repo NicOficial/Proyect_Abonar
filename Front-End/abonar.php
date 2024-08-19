@@ -1,4 +1,4 @@
-<!-- <?php
+<?php
 
 session_start();
 
@@ -18,7 +18,7 @@ $amount = $row['amount'];
 
 mysqli_close($conexion);
 
-?> -->
+?>  
 
 <!DOCTYPE html>
 <html lang="en">
@@ -123,17 +123,17 @@ mysqli_close($conexion);
             <div class="features">
                 <div class="feature" id="box1">
                     <ion-icon name="wallet-outline"></ion-icon>
-                    <h3>Balance en Tiempo Real</h3>
+                    <h3>Balance en tiempo real</h3>
                     <p>Consulta tu balance y transacciones al instante</p>
                 </div>
                 <div class="feature" id="box2">
                     <ion-icon name="swap-horizontal-outline"></ion-icon>
-                    <h3>Transferencias Rápidas</h3>
-                    <p>Envía y recibe dinero rápidamente</p>
+                    <h3>Transferencias rápidas</h3>
+                    <p>Envía y recibí dinero rápidamente</p>
                 </div>
                 <div class="feature" id="box3">
                     <ion-icon name="shield-checkmark-outline"></ion-icon>
-                    <h3>Seguridad Garantizada</h3>
+                    <h3>Seguridad garantizada</h3>
                     <p>Tus datos están protegidos con nosotros</p>
                 </div>
             </div>
@@ -150,13 +150,13 @@ mysqli_close($conexion);
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label for="email" class="form-label">Correo Electrónico</label>
+                    <label for="email" class="form-label">Correo electrónico</label>
                     <div class="cuadro-texto">
                         <?php echo htmlspecialchars($email); ?>
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label for="direccion-postal" class="form-label">Dirección y Postal</label>
+                    <label for="direccion-postal" class="form-label">Dirección y p    ostal</label>
                     <div class="cuadro-texto">
                         <?php echo htmlspecialchars($address); ?>
                         <?php echo htmlspecialchars($postal); ?>
