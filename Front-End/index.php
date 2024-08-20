@@ -40,8 +40,8 @@
                 <a href="https://www.instagram.com/abonar.oficial/" target="_blank"><i class="bx bxl-instagram-alt"></i></a>
 
             </div>
-            <a href="register.html" class="btn" target="_blank">Crear Cuenta</a>
-            <a href="login.html" class="btn" target="_blank">Iniciar sesion</a>
+            <a href="register.php" class="btn">Crear Cuenta</a>
+            <a href="login.php" class="btn">Iniciar sesion</a>
 
         </div>
 

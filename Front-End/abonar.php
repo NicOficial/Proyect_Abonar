@@ -92,7 +92,7 @@ mysqli_close($conexion);
         </nav>
 
         <div class="cerrarsesion">
-        <a href="index.php">
+        <a href="../Back-End/close_session.php">
             <ion-icon name="exit-outline"></ion-icon>
             <span>Cerrar Sesión</span>
         </a>
@@ -145,21 +145,26 @@ mysqli_close($conexion);
                 <div class="mb-3">
                     <label for="nombre" class="form-label">Nombre</label>
                     <div class="cuadro-texto">
-                    <?php echo htmlspecialchars($name); ?>
-                    <?php echo htmlspecialchars($surname); ?>
+                      <?php echo htmlspecialchars($name); ?>
+                      <?php echo htmlspecialchars($surname); ?>
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Correo electrónico</label>
                     <div class="cuadro-texto">
-                        <?php echo htmlspecialchars($email); ?>
+                      <?php echo htmlspecialchars($email); ?>
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label for="direccion-postal" class="form-label">Dirección y p    ostal</label>
+                    <label for="direccion" class="form-label">Dirección</label>
                     <div class="cuadro-texto">
-                        <?php echo htmlspecialchars($address); ?>
-                        <?php echo htmlspecialchars($postal); ?>
+                      <?php echo htmlspecialchars($address); ?>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="postal" class="form-label">Postal</label>
+                    <div class="cuadro-texto">
+                      <?php echo htmlspecialchars($postal); ?>
                     </div>
                 </div>
             </form>
