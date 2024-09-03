@@ -104,8 +104,8 @@ mysqli_close($conexion);
             <div class="linea"></div>
 
             <div class="usuario">
-                <img src="../Img/unnamed.jpg" alt="" />
-                <div class="info-usuario">
+                <img src="../Img/unnamed.jpg" alt="" /> 
+                <div class="info-usuario"> 
                     <div class="nombre-email">
                         <span class="nombre"><?php echo htmlspecialchars($name); ?></span>
                         <span class="email"><?php echo htmlspecialchars($email); ?></span>
@@ -116,10 +116,12 @@ mysqli_close($conexion);
     </div>
 
     <main>
-        <section id="inicio">
+    <section id="inicio">
             <h1 class="bienvenido">Bienvenido, <span id="nombre-usuario"><?php echo htmlspecialchars($name); ?></span></h1>
-            <p id="saldo" class="saldo">Saldo: $ <span id="saldo-usuario"><?php echo htmlspecialchars($amount); ?></span></p>
-            <i class="bx bx-show-alt"></i>
+            <p id="saldo" class="saldo">
+    Saldo: $ <span id="saldo-usuario" data-original-value="<?php echo htmlspecialchars($amount); ?>"><?php echo htmlspecialchars($amount); ?></span>
+</p>
+            <i id="toggle-eye" class="bx bx-show-alt" style="cursor: pointer;"></i>
             <div class="features">
                 <div class="feature" id="box1">
                     <ion-icon name="wallet-outline"></ion-icon>
@@ -137,7 +139,58 @@ mysqli_close($conexion);
                     <p>Tus datos están protegidos con nosotros</p>
                 </div>
             </div>
-        </section>
+        
+            <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script>
+        // Función para mostrar la sección correspondiente y ocultar las demás
+        function mostrarSeccion(id) {
+            const secciones = document.querySelectorAll('section');
+            secciones.forEach(seccion => {
+                seccion.style.display = 'none';
+            });
+            document.querySelector(id).style.display = 'block';
+        }
+
+        // Añadir event listeners a los enlaces de navegación
+        document.querySelectorAll('.navegacion a').forEach(enlace => {
+            enlace.addEventListener('click', function(event) {
+                event.preventDefault();
+                const id = this.getAttribute('href');
+                mostrarSeccion(id);
+            });
+        });
+
+        // Inicializar mostrando la sección de inicio
+        mostrarSeccion('#inicio');
+
+        // Funcionalidad para ocultar/mostrar saldo
+        const saldoUsuario = document.getElementById("saldo-usuario");
+        const toggleEye = document.getElementById("toggle-eye");
+
+        toggleEye.addEventListener("click", () => {
+    const originalValue = saldoUsuario.getAttribute("data-original-value");
+
+    if (!saldoUsuario.dataset.isHidden) {
+        // Cambiar el contenido del saldo a asteriscos
+        saldoUsuario.textContent = "******";
+        saldoUsuario.dataset.isHidden = "true"; // Marcamos que está oculto
+        toggleEye.classList.remove("bx-show-alt");
+        toggleEye.classList.add("bx-hide");
+    } else {
+        // Restaurar el valor original del saldo
+        saldoUsuario.textContent = originalValue;
+        delete saldoUsuario.dataset.isHidden; // Quitamos la marca de oculto
+        toggleEye.classList.remove("bx-hide");
+        toggleEye.classList.add("bx-show-alt");
+    }
+});
+
+    </script>
+    </section>
+    
+
+
         <section id="perfil" style="display:none;">
             <h1>Perfil</h1>
             <p>Aquí puedes visualizar tu información personal y preferencias.</p>
@@ -169,6 +222,7 @@ mysqli_close($conexion);
                 </div>
             </form>
         </section>
+       
         <section id="transferencias" style="display:none;">
             <h1>Transferencias</h1>
             <!DOCTYPE html>
@@ -447,46 +501,10 @@ body {
                     </div>
                 </div>
             </body>
-            </html>        </section>
-    </main>
-
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <script>
-        // Función para mostrar la sección correspondiente y ocultar las demás
-        function mostrarSeccion(id) {
-            const secciones = document.querySelectorAll('section');
-            secciones.forEach(seccion => {
-                seccion.style.display = 'none';
-            });
-            document.querySelector(id).style.display = 'block';
-        }
-
-        // Añadir event listeners a los enlaces de navegación
-        document.querySelectorAll('.navegacion a').forEach(enlace => {
-            enlace.addEventListener('click', function(event) {
-                event.preventDefault();
-                const id = this.getAttribute('href');
-                mostrarSeccion(id);
-            });
-        });
-
-        // Inicializar mostrando la sección de inicio
-        mostrarSeccion('#inicio');
-
-        const pass = document.getElementById("saldo"),
-            icon = document.querySelector(".bx");
-        icon.addEventListener("click", (e) => {
-            if (pass.type === "password") {
-                pass.type = "text"; 
-                icon.classList.remove("bx-show-alt");
-                icon.classList.add("bx-hide");
-            } else {
-                pass.type = "password";
-                icon.classList.add("bx-show-alt");
-                icon.classList.remove("bx-hide");
-            }
-        });
-    </script>
+            </html>        
+          
+          
+        </section>
+    </main> 
 </body>
 </html>
