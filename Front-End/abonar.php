@@ -214,12 +214,8 @@ mysqli_close($conexion);
                       <?php echo htmlspecialchars($address); ?>
                     </div>
                 </div>
-                <div class="mb-3">
-                    <label for="postal" class="form-label">Postal</label>
-                    <div class="cuadro-texto">
-                      <?php echo htmlspecialchars($postal); ?>
-                    </div>
-                </div>
+               
+                
             </form>
         </section>
        
@@ -229,152 +225,102 @@ mysqli_close($conexion);
 <html>
 <head>
 <style>
+/* Estilos generales */
 body {
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
+  padding: 0;
 }
 
-.container {
-  display: flex;
-  height: 100vh;
-  background-color: #f5f5f5;
+/* Ajuste de la barra lateral */
+.barra-lateral {
+  width: 250px; /* Ancho fijo para pantallas grandes */
 }
 
-.sidebar {
-  width: 300px;
-  background-color: #fff;
+.menu {
+  display: none; /* Mostrar menú para pantallas pequeñas */
+}
+
+@media (max-width: 768px) {
+  .barra-lateral {
+    width: 100%; /* Ancho completo en pantallas pequeñas */
+    position: fixed;
+    top: 0;
+    left: -100%;
+    transition: left 0.3s ease;
+  }
+
+  .barra-lateral.open {
+    left: 0;
+  }
+
+  .menu {
+    display: block;
+  }
+}
+
+/* Ajuste del contenido principal */
+main {
+  margin-left: 250px; /* Margen para la barra lateral en pantallas grandes */
+}
+
+@media (max-width: 768px) {
+  main {
+    margin-left: 0; /* Sin margen para pantallas pequeñas */
+  }
+}
+
+/* Estilo de los botones y las secciones */
+.feature {
+  flex: 1;
   padding: 20px;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.sidebar h2 {
-  margin-top: 0;
+@media (max-width: 768px) {
+  .features {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .feature {
+    margin: 10px 0;
+  }
 }
 
-.sidebar .add-account {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-bottom: 20px;
-  cursor: pointer;
+/* Estilo para las secciones */
+section {
+  padding: 20px;
 }
 
-.sidebar .add-account i {
-  margin-right: 10px;
-  font-size: 18px;
-  color: #337ab7;
+@media (max-width: 768px) {
+  section {
+    padding: 10px;
+  }
 }
 
-.sidebar .add-account span {
-  font-weight: bold;
-}
-
-.sidebar .account-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.sidebar .account-item {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.sidebar .account-item .account-info {
-  display: flex;
-  flex-direction: column;
-  margin-left: 10px;
-}
-
-.sidebar .account-item .account-info h3 {
-  margin: 0;
-  font-size: 16px;
-}
-
-.sidebar .account-item .account-info p {
-  margin: 0;
-  font-size: 12px;
-  color: #777;
-}
-
-.sidebar .account-item .account-actions {
-  display: flex;
-  align-items: center;
-  margin-left: auto;
-}
-
-.sidebar .account-item .account-actions i {
-  margin-right: 10px;
-  font-size: 16px;
-  color: #337ab7;
+/* Ajuste de la tabla de transferencia */
+.sidebar {
+  display: none; /* Ocultar la barra lateral en pantallas pequeñas */
 }
 
 .main {
-  flex-grow: 1;
-  padding: 20px;
+  margin-left: 0;
 }
 
-.main .tabs {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
+@media (min-width: 769px) {
+  .sidebar {
+    display: block;
+  }
+
+  .main {
+    margin-left: 300px; /* Ancho de la barra lateral en pantallas grandes */
+  }
 }
 
-.main .tabs button {
-  background-color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.main .tabs button.active {
-  background-color: #337ab7;
-  color: #fff;
-}
-
-.main .account-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.main .account-item {
-  background-color: #fff;
-  padding: 15px;
-  border-radius: 5px;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-}
-
-.main .account-item h3 {
-  margin: 0;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.main .account-item p {
-  margin: 0;
-  font-size: 14px;
-  color: #777;
-}
-
-.main .account-item .account-actions {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 10px;
-}
-
-.main .account-item .account-actions i {
-  font-size: 18px;
-  color: #337ab7;
-}
 </style>
 </head>
 <body>
