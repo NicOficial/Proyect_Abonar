@@ -13,14 +13,14 @@ $surname = $_POST['surname'];
 $email = $_POST['email'];
 $password = $_POST['password'];
 $address = $_POST['address'];
-$postal = $_POST['postal'];
+$dni = $_POST['dni'];
 
 mysqli_begin_transaction($conexion);
 
 try {
-    $query_user = "INSERT INTO users (name, surname, email, password, address, postal) VALUES (?, ?, ?, ?, ?, ?)";
+    $query_user = "INSERT INTO users (name, surname, email, password, address, dni) VALUES (?, ?, ?, ?, ?, ?)";
     $stmt_user = mysqli_prepare($conexion, $query_user);
-    mysqli_stmt_bind_param($stmt_user, 'ssssss', $name, $surname, $email, $password, $address, $postal);
+    mysqli_stmt_bind_param($stmt_user, 'ssssss', $name, $surname, $email, $password, $address, $dni);
     mysqli_stmt_execute($stmt_user);
 
     $user_id = mysqli_insert_id($conexion);

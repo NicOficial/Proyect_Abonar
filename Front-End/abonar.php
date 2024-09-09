@@ -5,7 +5,7 @@ session_start();
 include '../Back-End/con_db.php';
 
 $email = $_SESSION['email'];
-$info_user = mysqli_query($conexion, "SELECT users.id_users, users.name, users.surname, users.email, users.password, users.address, users.postal, wallets.amount FROM users JOIN wallets ON users.id_users = wallets.id_user WHERE users.email = '$email';");
+$info_user = mysqli_query($conexion, "SELECT users.id_users, users.name, users.surname, users.email, users.password, users.address, users.dni, wallets.amount FROM users JOIN wallets ON users.id_users = wallets.id_user WHERE users.email = '$email';");
 
 $row = mysqli_fetch_assoc($info_user);
 
@@ -13,7 +13,7 @@ $name = $row['name'];
 $surname = $row['surname'];
 $password = $row['password'];
 $address = $row['address'];
-$postal = $row['postal'];
+$dni = $row['dni'];
 $amount = $row['amount'];
 
 mysqli_close($conexion);
@@ -120,8 +120,7 @@ mysqli_close($conexion);
             <h1 class="bienvenido">Bienvenido, <span id="nombre-usuario"><?php echo htmlspecialchars($name); ?></span></h1>
             <p id="saldo" class="saldo">
     Saldo: $ <span id="saldo-usuario" data-original-value="<?php echo htmlspecialchars($amount); ?>"><?php echo htmlspecialchars($amount); ?></span>
-</p>
-            <i id="toggle-eye" class="bx bx-show-alt" style="cursor: pointer;"></i>
+    <i id="toggle-eye" class="bx bx-show-alt" style="cursor: pointer;"></i>
             <div class="features">
                 <div class="feature" id="box1">
                     <ion-icon name="wallet-outline"></ion-icon>
@@ -187,6 +186,8 @@ mysqli_close($conexion);
 });
 
     </script>
+  </p>
+            
     </section>
     
 
@@ -219,9 +220,9 @@ mysqli_close($conexion);
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label for="postal" class="form-label">DNI</label>
+                    <label for="dni" class="form-label">DNI</label>
                     <div class="cuadro-texto">
-                        <?php echo htmlspecialchars($postal); ?>
+                        <?php echo htmlspecialchars($dni); ?>
                     </div>
                 </div>
             </div>
