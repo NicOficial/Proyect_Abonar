@@ -98,7 +98,7 @@ mysqli_close($conexion);
             <span>Cerrar Sesión</span>
         </a>
 
-            </div>  
+            </div>
         
         </li>
         <div>
