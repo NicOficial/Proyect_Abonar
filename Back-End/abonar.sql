@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-08-2024 a las 18:27:47
--- Versión del servidor: 10.4.22-MariaDB
--- Versión de PHP: 8.0.13
+-- Tiempo de generación: 09-09-2024 a las 05:24:50
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,6 +24,65 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `categories`
+--
+
+CREATE TABLE `categories` (
+  `id_category` int(11) NOT NULL,
+  `name` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `categories`
+--
+
+INSERT INTO `categories` (`id_category`, `name`) VALUES
+(1, 'food'),
+(2, 'entertainment'),
+(3, 'merket'),
+(4, 'services'),
+(5, 'donations'),
+(6, 'education'),
+(7, 'electronics'),
+(8, 'taxes'),
+(9, 'clothing'),
+(10, 'investments'),
+(11, 'loans'),
+(12, 'health'),
+(13, 'subscriptions'),
+(14, 'transports'),
+(15, 'trips');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `transactions`
+--
+
+CREATE TABLE `transactions` (
+  `id_transaction` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `amount` int(11) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `id_wallet_of` int(11) NOT NULL,
+  `id_wallet_to` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `transaction_categories`
+--
+
+CREATE TABLE `transaction_categories` (
+  `id_transaction_category` int(11) NOT NULL,
+  `id_transaction` int(11) NOT NULL,
+  `id_category` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `users`
 --
 
@@ -34,16 +93,8 @@ CREATE TABLE `users` (
   `email` varchar(100) NOT NULL,
   `password` varchar(45) NOT NULL,
   `address` varchar(45) NOT NULL,
-  `postal` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `users`
---
-
-INSERT INTO `users` (`id_users`, `name`, `surname`, `email`, `password`, `address`, `postal`) VALUES
-(1, 'Nicolas', 'Primo', 'neque.primo@gmail.com', '123', 'Flora 984', 1706),
-(2, 'Valentin', 'Peluzo', 'panchoflencho@gmail.com', '123', 'monseñor de pancho 66', 1706);
+  `dni` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -55,19 +106,33 @@ CREATE TABLE `wallets` (
   `id_wallet` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `amount` bigint(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `wallets`
---
-
-INSERT INTO `wallets` (`id_wallet`, `id_user`, `amount`) VALUES
-(1, 1, 1000),
-(2, 2, 500);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id_category`);
+
+--
+-- Indices de la tabla `transactions`
+--
+ALTER TABLE `transactions`
+  ADD PRIMARY KEY (`id_transaction`),
+  ADD KEY `id_wallet_of` (`id_wallet_of`) USING BTREE,
+  ADD KEY `id_wallet_to` (`id_wallet_to`);
+
+--
+-- Indices de la tabla `transaction_categories`
+--
+ALTER TABLE `transaction_categories`
+  ADD PRIMARY KEY (`id_transaction_category`),
+  ADD KEY `id_transaction` (`id_transaction`),
+  ADD KEY `id_category` (`id_category`);
 
 --
 -- Indices de la tabla `users`
@@ -89,6 +154,24 @@ ALTER TABLE `wallets`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id_category` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT de la tabla `transactions`
+--
+ALTER TABLE `transactions`
+  MODIFY `id_transaction` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `transaction_categories`
+--
+ALTER TABLE `transaction_categories`
+  MODIFY `id_transaction_category` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
@@ -103,6 +186,20 @@ ALTER TABLE `wallets`
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `transactions`
+--
+ALTER TABLE `transactions`
+  ADD CONSTRAINT `transactions_ibfk_1` FOREIGN KEY (`id_wallet_of`) REFERENCES `wallets` (`id_wallet`),
+  ADD CONSTRAINT `transactions_ibfk_2` FOREIGN KEY (`id_wallet_to`) REFERENCES `wallets` (`id_wallet`);
+
+--
+-- Filtros para la tabla `transaction_categories`
+--
+ALTER TABLE `transaction_categories`
+  ADD CONSTRAINT `transaction_categories_ibfk_1` FOREIGN KEY (`id_transaction`) REFERENCES `transactions` (`id_transaction`),
+  ADD CONSTRAINT `transaction_categories_ibfk_2` FOREIGN KEY (`id_category`) REFERENCES `categories` (`id_category`);
 
 --
 -- Filtros para la tabla `wallets`
