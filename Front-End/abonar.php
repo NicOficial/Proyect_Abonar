@@ -94,6 +94,7 @@ mysqli_close($conexion);
         <div class="cerrarsesion">
         <a href="../Back-End/close_session.php">
             <ion-icon name="exit-outline"></ion-icon>
+
             <span>Cerrar Sesión</span>
         </a>
 

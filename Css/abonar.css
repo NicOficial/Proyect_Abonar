@@ -315,3 +315,30 @@ body {
       font-size: 0.9em;
   }
   
+  .cerrarsesion a {
+    color: #ffffff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    padding: 10px 15px;
+    border-radius: 3px;
+    transition: background-color 0.2s, padding 0.2s;
+    
+  }
+  
+  .cerrarsesion a ion-icon {
+    margin-right: 5px;
+    font-size: 25px; /* Ajusta según tus necesidades */
+  }
+  
+  .cerrarsesion a:hover {
+    background-color: #575757;
+    padding: 10px 20px;
+  }
+  
+  .cerrarsesion {
+    margin-top: 100px;
+    ; /* Empuja el botón hacia el final de la barra lateral */
+  }
+  
