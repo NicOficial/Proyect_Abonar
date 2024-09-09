@@ -55,8 +55,8 @@
                 <label>Domicilio</label>
                 <input type="text" placeholder="Ingresá tu domicilio" name="address" required />
                 <div class="input-box">
-                    <label>Código postal</label>
-                    <input type="number" placeholder="Ingresá tu código Postal" name="postal" required />
+                    <label>DNI</label>
+                    <input type="number" placeholder="Ingresá tu DNI" name="postal" required />
                 </div>
             
             </div>

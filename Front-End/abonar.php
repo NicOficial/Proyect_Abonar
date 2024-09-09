@@ -190,34 +190,49 @@ mysqli_close($conexion);
     </section>
     
 
-
-        <section id="perfil" style="display:none;">
-            <h1>Perfil</h1>
-            <p>Aquí puedes visualizar tu información personal y preferencias.</p>
-            <form>
+    <section id="perfil" style="display:none;">
+    <h1>Perfil</h1>
+    <p>Aquí puedes visualizar tu información personal y preferencias.</p>
+    <form>
+        <div class="info-container" style="display: flex; flex-wrap: wrap; gap: 20px;"> <!-- Eliminado el gap -->
+            <div style="flex: 1 1 48%;">
                 <div class="mb-3">
                     <label for="nombre" class="form-label">Nombre</label>
                     <div class="cuadro-texto">
-                      <?php echo htmlspecialchars($name); ?>
-                      <?php echo htmlspecialchars($surname); ?>
+                        <?php echo htmlspecialchars($name); ?>
+                        <?php echo htmlspecialchars($surname); ?>
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Correo electrónico</label>
                     <div class="cuadro-texto">
-                      <?php echo htmlspecialchars($email); ?>
+                        <?php echo htmlspecialchars($email); ?>
                     </div>
                 </div>
+            </div>
+
+            <div style="flex: 1 1 48%;">
                 <div class="mb-3">
                     <label for="direccion" class="form-label">Dirección</label>
                     <div class="cuadro-texto">
-                      <?php echo htmlspecialchars($address); ?>
+                        <?php echo htmlspecialchars($address); ?>
                     </div>
                 </div>
-               
-                
-            </form>
-        </section>
+                <div class="mb-3">
+                    <label for="postal" class="form-label">DNI</label>
+                    <div class="cuadro-texto">
+                        <?php echo htmlspecialchars($postal); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
+
+
+
+
+
        
         <section id="transferencias" style="display:none;">
             <h1>Transferencias</h1>
