@@ -118,7 +118,7 @@ mysqli_close($conexion);
 
     <main>
     <section id="inicio">
-            <h1 class="bienvenido">Bienvenido, <span id="nombre-usuario"><?php echo htmlspecialchars($name); ?></span></h1>
+            <h1 class="bienvenido">Bienvenido, <span id="nombre-usuario"><?php echo htmlspecialchars($name);?></span></h1>
             <p id="saldo" class="saldo">
     Saldo: $ <span id="saldo-usuario" data-original-value="<?php echo htmlspecialchars($amount); ?>"><?php echo htmlspecialchars($amount); ?></span>
     <i id="toggle-eye" class="bx bx-show-alt" style="cursor: pointer;"></i>
@@ -239,183 +239,166 @@ mysqli_close($conexion);
         <section id="transferencias" style="display:none;">
             <h1>Transferencias</h1>
             <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-<style>
-/* Estilos generales */
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
-/* Ajuste de la barra lateral */
-.barra-lateral {
-  width: 250px; /* Ancho fijo para pantallas grandes */
-}
-
-.menu {
-  display: none; /* Mostrar menú para pantallas pequeñas */
-}
-
-@media (max-width: 768px) {
-  .barra-lateral {
-    width: 100%; /* Ancho completo en pantallas pequeñas */
-    position: fixed;
-    top: 0;
-    left: -100%;
-    transition: left 0.3s ease;
-  }
-
-  .barra-lateral.open {
-    left: 0;
-  }
-
-  .menu {
-    display: block;
-  }
-}
-
-/* Ajuste del contenido principal */
-main {
-  margin-left: 250px; /* Margen para la barra lateral en pantallas grandes */
-}
-
-@media (max-width: 768px) {
-  main {
-    margin-left: 0; /* Sin margen para pantallas pequeñas */
-  }
-}
-
-/* Estilo de los botones y las secciones */
-.feature {
-  flex: 1;
-  padding: 20px;
-  margin: 10px;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-@media (max-width: 768px) {
-  .features {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .feature {
-    margin: 10px 0;
-  }
-}
-
-/* Estilo para las secciones */
-section {
-  padding: 20px;
-}
-
-@media (max-width: 768px) {
-  section {
-    padding: 10px;
-  }
-}
-
-/* Ajuste de la tabla de transferencia */
-.sidebar {
-  display: none; /* Ocultar la barra lateral en pantallas pequeñas */
-}
-
-.main {
-  margin-left: 0;
-}
-
-@media (min-width: 769px) {
-  .sidebar {
-    display: block;
-  }
-
-  .main {
-    margin-left: 300px; /* Ancho de la barra lateral en pantallas grandes */
-  }
-}
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Transferencia</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="container">
-  <div class="sidebar">
-    <h2>Elegí a qué cuenta transferir</h2>
-    <div class="add-account">
-      <i class="fas fa-plus"></i>
-      <span>Nueva cuenta</span>
+    <div class="container">
+        <h1>Sistema de Transferencia</h1>
+        
+        <!-- Información del Usuario 1 -->
+        <div class="user" id="user1">
+            <h2>Usuario 1</h2>
+            <p>Saldo: $<span id="balanceUser1">1000</span></p>
+        </div>
+
+        <!-- Información del Usuario 2 -->
+        <div class="user" id="user2">
+            <h2>Usuario 2</h2>
+            <p>Saldo: $<span id="balanceUser2">500</span></p>
+        </div>
+
+        <!-- Sección de transferencia -->
+        <div class="transfer-section">
+            <h3>Realizar una transferencia</h3>
+            <label for="transferAmount">Monto a transferir:</label>
+            <input type="number" id="transferAmount" min="1" step="1" required>
+            <button id="transferButton">Transferir</button>
+            <p id="transferMessage"></p>
+        </div>
     </div>
-    <div class="account-list">
-      <div class="account-item">
-        <div class="account-info">
-          <h3>Santiago Luis Minnicucci</h3>
-          <p>Abonar</p>
-        </div>
-        <div class="account-actions">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-trash-alt"></i>
-        </div>
-      </div>
-      <div class="account-item">
-        <div class="account-info">
-          <h3>Valentin Ezequiel Peluso</h3>
-          <p>Abonar</p>
-        </div>
-        <div class="account-actions">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-trash-alt"></i>
-        </div>
-      </div>
-      <div class="account-item">
-        <div class="account-info">
-          <h3>Brian Nahuel Ruejas</h3>
-          <p>Abonar</p>
-        </div>
-        <div class="account-actions">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-trash-alt"></i>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="main">
-    <div class="tabs">
-      <button class="active">Últimas</button>
-      <button>Favoritas</button>
-    </div>
-    <div class="account-list">
-      <div class="account-item">
-        <h3>Santiago Luis Minnicucci</h3>
-        <p>Abonar</p>
-        <div class="account-actions">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-trash-alt"></i>
-        </div>
-      </div>
-      <div class="account-item">
-        <h3>Valentin Ezequiel Peluso</h3>
-        <p>Abonar</p>
-        <div class="account-actions">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-trash-alt"></i>
-        </div>
-      </div>
-      <div class="account-item">
-        <h3>Brian Nahuel Ruejas</h3>
-        <p>Abonar</p>
-        <div class="account-actions">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-trash-alt"></i>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+
+    <script src="script.js"></script>
 </body>
 </html>
+<!-- 
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.user {
+    margin-bottom: 20px;
+}
+
+.user h2 {
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.transfer-section {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#transferMessage {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+</style> -->
+
+<script>
+
+// Obtener los elementos del DOM
+const balanceUser1 = document.getElementById('balanceUser1');
+const balanceUser2 = document.getElementById('balanceUser2');
+const transferAmount = document.getElementById('transferAmount');
+const transferButton = document.getElementById('transferButton');
+const transferMessage = document.getElementById('transferMessage');
+
+// Añadir el evento click al botón de transferencia
+transferButton.addEventListener('click', () => {
+    const amount = parseFloat(transferAmount.value); // Obtener el valor ingresado
+
+    if (isNaN(amount) || amount <= 0) {
+        transferMessage.textContent = "Por favor, ingresa un monto válido.";
+        transferMessage.style.color = 'red';
+        return;
+    }
+
+    const currentBalanceUser1 = parseFloat(balanceUser1.textContent);
+    const currentBalanceUser2 = parseFloat(balanceUser2.textContent);
+
+    // Verificar si el Usuario 1 tiene suficiente saldo
+    if (amount > currentBalanceUser1) {
+        transferMessage.textContent = "Saldo insuficiente en el Usuario 1.";
+        transferMessage.style.color = 'red';
+    } else {
+        // Restar del saldo del Usuario 1 y sumar al saldo del Usuario 2
+        balanceUser1.textContent = (currentBalanceUser1 - amount).toFixed(2);
+        balanceUser2.textContent = (currentBalanceUser2 + amount).toFixed(2);
+
+        // Mostrar un mensaje de éxito
+        transferMessage.textContent = `Se han transferido $${amount} de Usuario 1 a Usuario 2.`;
+        transferMessage.style.color = 'green';
+    }
+
+    // Limpiar el campo de monto después de la transferencia
+    transferAmount.value = '';
+});
+
+
+</script>
         </section>
         <section id="soporte" style="display:none;">
             <h1>Soporte</h1>

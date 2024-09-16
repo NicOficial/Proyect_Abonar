@@ -8,27 +8,31 @@ session_start();
 
 include 'con_db.php';
 
-$name = $_POST['name'];
-$surname = $_POST['surname'];
-$email = $_POST['email'];
-$password = $_POST['password'];
-$address = $_POST['address'];
-$dni = $_POST['dni'];
+$name = mysqli_real_escape_string($conexion, $_POST['name']);
+$surname = mysqli_real_escape_string($conexion, $_POST['surname']);
+$email = mysqli_real_escape_string($conexion, $_POST['email']);
+$password = mysqli_real_escape_string($conexion, $_POST['password']);
+$address = mysqli_real_escape_string($conexion, $_POST['address']);
+$dni = mysqli_real_escape_string($conexion, $_POST['dni']);
 
 mysqli_begin_transaction($conexion);
 
 try {
-    $query_user = "INSERT INTO users (name, surname, email, password, address, dni) VALUES (?, ?, ?, ?, ?, ?)";
-    $stmt_user = mysqli_prepare($conexion, $query_user);
-    mysqli_stmt_bind_param($stmt_user, 'ssssss', $name, $surname, $email, $password, $address, $dni);
-    mysqli_stmt_execute($stmt_user);
+    $query_user = "INSERT INTO users (name, surname, email, password, address, dni) VALUES ('$name', '$surname', '$email', '$password', '$address', '$dni')";
+    $result_user = mysqli_query($conexion, $query_user);
+
+    if (!$result_user) {
+        throw new Exception(mysqli_error($conexion));
+    }
 
     $user_id = mysqli_insert_id($conexion);
 
-    $query_wallet = "INSERT INTO wallets (id_user, amount) VALUES (?, 0)";
-    $stmt_wallet = mysqli_prepare($conexion, $query_wallet);
-    mysqli_stmt_bind_param($stmt_wallet, 'i', $user_id);
-    mysqli_stmt_execute($stmt_wallet);
+    $query_wallet = "INSERT INTO wallets (id_user, amount) VALUES ($user_id, 0)";
+    $result_wallet = mysqli_query($conexion, $query_wallet);
+
+    if (!$result_wallet) {
+        throw new Exception(mysqli_error($conexion));
+    }
 
     mysqli_commit($conexion);
 
