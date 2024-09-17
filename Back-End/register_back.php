@@ -12,13 +12,18 @@ $name = mysqli_real_escape_string($conexion, $_POST['name']);
 $surname = mysqli_real_escape_string($conexion, $_POST['surname']);
 $email = mysqli_real_escape_string($conexion, $_POST['email']);
 $password = mysqli_real_escape_string($conexion, $_POST['password']);
-$address = mysqli_real_escape_string($conexion, $_POST['address']);
+$street = mysqli_real_escape_string($conexion, $_POST['street']);
+$snumber = mysqli_real_escape_string($conexion, $_POST['snumber']);
+$floor = mysqli_real_escape_string($conexion, $_POST['floor']);
+$flat = mysqli_real_escape_string($conexion, $_POST['flat']);
+$locality = mysqli_real_escape_string($conexion, $_POST['locality']);
 $dni = mysqli_real_escape_string($conexion, $_POST['dni']);
+
 
 mysqli_begin_transaction($conexion);
 
 try {
-    $query_user = "INSERT INTO users (name, surname, email, password, address, dni) VALUES ('$name', '$surname', '$email', '$password', '$address', '$dni')";
+    $query_user = "INSERT INTO users (name, surname, email, password, street, snumber, floor, flat,  locality, dni) VALUES ('$name', '$surname', '$email', '$password', '$street', '$snumber', '$floor', '$flat', '$locality', '$dni')";
     $result_user = mysqli_query($conexion, $query_user);
 
     if (!$result_user) {

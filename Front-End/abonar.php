@@ -5,14 +5,18 @@ session_start();
 include '../Back-End/con_db.php';
 
 $email = $_SESSION['email'];
-$info_user = mysqli_query($conexion, "SELECT users.id_users, users.name, users.surname, users.email, users.password, users.address, users.dni, wallets.amount FROM users JOIN wallets ON users.id_users = wallets.id_user WHERE users.email = '$email';");
+$info_user = mysqli_query($conexion, "SELECT users.id_users, users.name, users.surname, users.email, users.password, users.street, users.snumber, users.floor, users.flat, users.locality, users.dni, wallets.amount FROM users JOIN wallets ON users.id_users = wallets.id_user WHERE users.email = '$email';");
 
 $row = mysqli_fetch_assoc($info_user);
 
 $name = $row['name'];
 $surname = $row['surname'];
 $password = $row['password'];
-$address = $row['address'];
+$street = $row['street'];
+$snumber = $row['snumber'];
+$floor = $row['floor'];
+$flat = $row['flat'];
+$locality = $row['locality'];
 $dni = $row['dni'];
 $amount = $row['amount'];
 
@@ -49,7 +53,7 @@ mysqli_close($conexion);
     <div class="barra-lateral">
         <div class="nombre-pagina">
             <span>Abonar</span>
-            <img src="../Img/abonar logo nuevo sin fondo.jpg.png" height="50px" alt="">
+           <img src="../Img/abonar logo nuevo sin fondo.jpg.png" height="50px" alt=""></a>
         </div>
 
         <nav class="navegacion">
@@ -217,15 +221,40 @@ mysqli_close($conexion);
                 <div class="mb-3">
                     <label for="direccion" class="form-label">Dirección</label>
                     <div class="cuadro-texto">
-                        <?php echo htmlspecialchars($address); ?>
+                        <?php echo htmlspecialchars($street); ?>
                     </div>
                 </div>
                 <div class="mb-3">
+                    <label for="dni" class="form-label">Numero</label>
+                    <div class="cuadro-texto">
+                        <?php echo htmlspecialchars($snumber); ?>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="dni" class="form-label">Piso</label>
+                    <div class="cuadro-texto">
+                        <?php echo htmlspecialchars($floor); ?>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="dni" class="form-label">Departamento</label>
+                    <div class="cuadro-texto">
+                        <?php echo htmlspecialchars($flat); ?>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="dni" class="form-label">Localidad</label>
+                    <div class="cuadro-texto">
+                        <?php echo htmlspecialchars($locality); ?>
+                    </div>
+                </div>
+                <div class="mb-3" >
                     <label for="dni" class="form-label">DNI</label>
                     <div class="cuadro-texto">
                         <?php echo htmlspecialchars($dni); ?>
                     </div>
                 </div>
+                
             </div>
         </div>
     </form>

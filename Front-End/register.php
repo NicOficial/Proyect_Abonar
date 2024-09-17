@@ -51,9 +51,17 @@
                 <i class="bx bx-show-alt"></i>
             </div>
 
-            <div class="input-box address" id=" mipene">
-                <label>Domicilio</label>
-                <input type="text" placeholder="Ingresá tu domicilio" name="address" required />
+            <div class="input-box address" >
+                <label>Calle</label>
+                <input type="text" placeholder="Ingresá tu calle" name="street" required />
+                <label>Numero</label>
+                <input type="number" placeholder="Ingresá tu direccion" name="snumber" required />
+                <label>Piso</label>
+                <input type="text" placeholder="Ingresá tu piso (opcional)" name="floor" />
+                <label>Departamento</label>
+                <input type="text" placeholder="Ingresá tu departamento (opcional)" name="flat" />
+                <label>Localidad</label>
+                <input type="text" placeholder="Ingresá tu localidad" name="locality" required />
                 <div class="input-box">
                     <label>DNI</label>
                     <input type="number" placeholder="Ingresá tu DNI" name="dni" required />
