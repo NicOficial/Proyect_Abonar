@@ -200,7 +200,7 @@ mysqli_close($conexion);
     <h1>Perfil</h1>
     <p>Aquí puedes visualizar tu información personal y preferencias.</p>
     <form>
-        <div class="info-container" style="display: flex; flex-wrap: wrap; gap: 20px;"> <!-- Eliminado el gap -->
+        <div class="info-container" style="display: flex; flex-wrap: wrap; gap: 20px;">
             <div style="flex: 1 1 48%;">
                 <div class="mb-3">
                     <label for="nombre" class="form-label">Nombre</label>
@@ -215,46 +215,45 @@ mysqli_close($conexion);
                         <?php echo htmlspecialchars($email); ?>
                     </div>
                 </div>
-            </div>
-
-            <div style="flex: 1 1 48%;">
                 <div class="mb-3">
-                    <label for="direccion" class="form-label">Dirección</label>
+                    <label for="direccion" class="form-label">DNI</label>
                     <div class="cuadro-texto">
-                        <?php echo htmlspecialchars($street); ?>
+                        <?php echo htmlspecialchars($dni); ?>
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label for="dni" class="form-label">Numero</label>
+                    <label for="dni" class="form-label">Número</label>
                     <div class="cuadro-texto">
                         <?php echo htmlspecialchars($snumber); ?>
                     </div>
                 </div>
+            </div>
+
+            <div style="flex: 1 1 48%;">
                 <div class="mb-3">
-                    <label for="dni" class="form-label">Piso</label>
+                    <label for="piso" class="form-label">Piso</label>
                     <div class="cuadro-texto">
                         <?php echo htmlspecialchars($floor); ?>
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label for="dni" class="form-label">Departamento</label>
+                    <label for="departamento" class="form-label">Departamento</label>
                     <div class="cuadro-texto">
                         <?php echo htmlspecialchars($flat); ?>
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label for="dni" class="form-label">Localidad</label>
+                    <label for="localidad" class="form-label">Localidad</label>
                     <div class="cuadro-texto">
                         <?php echo htmlspecialchars($locality); ?>
                     </div>
                 </div>
-                <div class="mb-3" >
-                    <label for="dni" class="form-label">DNI</label>
+                <div class="mb-3">
+                    <label for="dni" class="form-label">Calle</label>
                     <div class="cuadro-texto">
-                        <?php echo htmlspecialchars($dni); ?>
+                        <?php echo htmlspecialchars($street); ?>
                     </div>
                 </div>
-                
             </div>
         </div>
     </form>

@@ -16,7 +16,7 @@
 <body>
     <header>
         <nav>
-            <a href="abonar.php">
+            <a href="index.php">
                 <img src="../Img/abonar logo nuevo sin fondo.jpg.png" id="abonarlogo" />
             </a>
         </nav>

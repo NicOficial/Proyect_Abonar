@@ -17,7 +17,7 @@
 <body>
     <header>
         <nav>
-            <a href="abonar.php">
+            <a href="index.php">
                 <img src="../Img/abonar logo nuevo sin fondo.jpg.png" height="69px" width="123px" alt="" id="abonarlogo" />
             </a>
             <!-- <img src="../Img/abonar palabra.png" id="abonarpalabra" /> -->
@@ -52,22 +52,36 @@
             </div>
 
             <div class="input-box address" >
+            <div class="input-box">
                 <label>Calle</label>
                 <input type="text" placeholder="Ingresá tu calle" name="street" required />
+            </div>
+                
+            <div class="input-box">
                 <label>Numero</label>
                 <input type="number" placeholder="Ingresá tu direccion" name="snumber" required />
+            </div>
+            <div class="input-box">
                 <label>Piso</label>
-                <input type="text" placeholder="Ingresá tu piso (opcional)" name="floor" />
+                <input type="text" placeholder="Ingresá tu piso (opcional)" name="floor" required />
+            </div>
+                
+            <div class="input-box">
                 <label>Departamento</label>
-                <input type="text" placeholder="Ingresá tu departamento (opcional)" name="flat" />
+                <input type="text" placeholder="Ingresá tu departamento (opcional)" name="flat" required />
+            </div>
+    
+            <div class="input-box">
                 <label>Localidad</label>
                 <input type="text" placeholder="Ingresá tu localidad" name="locality" required />
+            </div>
+
                 <div class="input-box">
                     <label>DNI</label>
                     <input type="number" placeholder="Ingresá tu DNI" name="dni" required />
                 </div>
             
-            </div>
+            
             <button>Crear cuenta</button>
         </form>
     </section>

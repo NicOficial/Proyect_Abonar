@@ -105,9 +105,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_users`, `name`, `surname`, `email`, `password`, `street`, `snumber`, `floor`, `flat`, `locality`, `dni`) VALUES
-(3, 'Valentin', 'Peluso', 'valentinepeluso@gmail.com', '123', '', 0, '', '0', '', 1234),
-(4, 'Bautista', 'Sangineto', 'bautistasangineto@hotmail.com', '123', 'Viamonte', 174, '', '', 'Ramos Mejia', 2512889),
-(5, 'Nicolas', 'Primo', 'neque.primo@gmail.com', '1234', 'Flora', 984, '', '', 'Haedo', 12345767);
+(1, 'Valentin', 'Peluso', 'valentinepeluso@gmail.com', '123', '', 0, '', '0', '', 1234),
+(2, 'Bautista', 'Sangineto', 'bautistasangineto@hotmail.com', '123', 'Viamonte', 174, '', '', 'Ramos Mejia', 2512889),
+(3, 'Nicolas', 'Primo', 'neque.primo@gmail.com', '1234', 'Flora', 984, '', '', 'Haedo', 12345767);
 
 -- --------------------------------------------------------
 
