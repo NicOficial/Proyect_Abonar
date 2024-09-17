@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-09-2024 a las 05:24:50
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
+-- Tiempo de generación: 17-09-2024 a las 19:47:36
+-- Versión del servidor: 10.4.22-MariaDB
+-- Versión de PHP: 8.0.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `categories` (
   `id_category` int(11) NOT NULL,
   `name` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `categories`
@@ -66,7 +66,7 @@ CREATE TABLE `transactions` (
   `type` varchar(20) NOT NULL,
   `id_wallet_of` int(11) NOT NULL,
   `id_wallet_to` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -78,7 +78,7 @@ CREATE TABLE `transaction_categories` (
   `id_transaction_category` int(11) NOT NULL,
   `id_transaction` int(11) NOT NULL,
   `id_category` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -92,9 +92,22 @@ CREATE TABLE `users` (
   `surname` varchar(45) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(45) NOT NULL,
-  `address` varchar(45) NOT NULL,
+  `street` varchar(200) NOT NULL,
+  `snumber` int(11) NOT NULL,
+  `floor` varchar(10) NOT NULL,
+  `flat` varchar(11) NOT NULL,
+  `locality` varchar(200) NOT NULL,
   `dni` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `users`
+--
+
+INSERT INTO `users` (`id_users`, `name`, `surname`, `email`, `password`, `street`, `snumber`, `floor`, `flat`, `locality`, `dni`) VALUES
+(3, 'Valentin', 'Peluso', 'valentinepeluso@gmail.com', '123', '', 0, '', '0', '', 1234),
+(4, 'Bautista', 'Sangineto', 'bautistasangineto@hotmail.com', '123', 'Viamonte', 174, '', '', 'Ramos Mejia', 2512889),
+(5, 'Nicolas', 'Primo', 'neque.primo@gmail.com', '1234', 'Flora', 984, '', '', 'Haedo', 12345767);
 
 -- --------------------------------------------------------
 
@@ -106,7 +119,16 @@ CREATE TABLE `wallets` (
   `id_wallet` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `amount` bigint(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `wallets`
+--
+
+INSERT INTO `wallets` (`id_wallet`, `id_user`, `amount`) VALUES
+(3, 3, 0),
+(4, 4, 0),
+(5, 5, 0);
 
 --
 -- Índices para tablas volcadas
@@ -175,13 +197,13 @@ ALTER TABLE `transaction_categories`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_users` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_users` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `wallets`
 --
 ALTER TABLE `wallets`
-  MODIFY `id_wallet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_wallet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas
