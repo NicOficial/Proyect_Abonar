@@ -428,57 +428,96 @@ transferButton.addEventListener('click', () => {
 
 </script>
         </section>
-        <section id="soporte" style="display:none;">
-            <h1>Soporte</h1>
-            <p>¿Necesitas ayuda? 
-            </p>
-            <!DOCTYPE html>
-            <html lang="es">
-            <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Ayuda Mercado Libre</title>
-               
-            </head>
-            <body>
-                <div class="container">
-                    <h1>¿Con qué podemos ayudarte?</h1>
-            
-                    <div class="options">
-                        <div class="option">    
-                            <div class="option-icon">
-                                <i class="fas fa-lock"></i>
-                            </div>
-                            <div class="option-text">
-                                <h3>Seguridad y acceso a la cuenta</h3>
-                                <p>Problemas y configuración.</p>
-                            </div>
-                        </div>
-                        <div class="option">
-                            <div class="option-icon">
-                                <i class="fas fa-credit-card"></i>
-                            </div>
-                            <div class="option-text">
-                                <h3>Cuenta Abonar</h3>
-                                <p>Ingresos, transferencias.</p>
-                            </div>
-                        </div>
-                        <div class="option">
-                            <div class="option-icon">
-                                <i class="fas fa-money-bill-wave"></i>
-                            </div>
-                            <div class="option-text">
-                                <h3>Pagos</h3>
-                                <p>Compras y pagos de servicios. </p>
-                            </div>
-                        </div>
+        <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayuda Mercado Libre</title>
+    <style>
+        .option {
+            cursor: pointer;
+            margin: 10px 0;
+        }
+        .additional-content {
+            display: none;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+        }
+        .arrow {
+            display: inline-block;
+            margin-left: 10px;
+            transition: transform 0.3s;
+        }
+        .expanded .arrow {
+            transform: rotate(90deg);
+        }
+    </style>
+</head>
+<body>
+    <section id="soporte" style="display:none;">
+        <h1>Soporte</h1>
+        <p>¿Necesitas ayuda?</p>
+        
+        <div class="container">
+            <h1>¿Con qué podemos ayudarte?</h1>
+            <div class="options">
+                <div class="option" onclick="toggleContent(this)">    
+                    <div class="option-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="option-text">
+                        <h3>Seguridad y acceso a la cuenta</h3>
+                        <p>Problemas y configuración.</p>
+                    </div>
+                    <span class="arrow">→</span>
+                    <div class="additional-content">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.</p>
                     </div>
                 </div>
-            </body>
-            </html>        
-          
-          
-        </section>
+
+                <div class="option" onclick="toggleContent(this)">
+                    <div class="option-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <div class="option-text">
+                        <h3>Cuenta Abonar</h3>
+                        <p>Ingresos, transferencias.</p>
+                    </div>
+                    <span class="arrow">→</span>
+                    <div class="additional-content">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.</p>
+                    </div>
+                </div>
+
+                <div class="option" onclick="toggleContent(this)">
+                    <div class="option-icon">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <div class="option-text">
+                        <h3>Pagos</h3>
+                        <p>Compras y pagos de servicios.</p>
+                    </div>
+                    <span class="arrow">→</span>
+                    <div class="additional-content">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function toggleContent(element) {
+            const content = element.querySelector('.additional-content');
+            content.style.display = content.style.display === 'block' ? 'none' : 'block';
+            element.classList.toggle('expanded');
+        }
+    </script>
+</body>
+</html>
+
     </main> 
 </body>
 </html>
