@@ -107,7 +107,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id_users`, `name`, `surname`, `email`, `password`, `street`, `snumber`, `floor`, `flat`, `locality`, `dni`) VALUES
 (1, 'Valentin', 'Peluso', 'valentinepeluso@gmail.com', '123', '', 0, '', '0', '', 1234),
 (2, 'Bautista', 'Sangineto', 'bautistasangineto@hotmail.com', '123', 'Viamonte', 174, '', '', 'Ramos Mejia', 2512889),
-(3, 'Nicolas', 'Primo', 'neque.primo@gmail.com', '1234', 'Flora', 984, '', '', 'Haedo', 12345767);
+(3, 'Nicolas', 'Primo', 'neque.primo@gmail.com', '123', 'Flora', 984, '', '', 'Haedo', 12345767);
 
 -- --------------------------------------------------------
 
@@ -126,9 +126,9 @@ CREATE TABLE `wallets` (
 --
 
 INSERT INTO `wallets` (`id_wallet`, `id_user`, `amount`) VALUES
-(3, 3, 0),
-(4, 4, 0),
-(5, 5, 0);
+(1, 1, 1500),
+(2, 2, 1000),
+(3, 3, 700);
 
 --
 -- Índices para tablas volcadas
