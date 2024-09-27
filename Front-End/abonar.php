@@ -261,8 +261,6 @@ mysqli_close($conexion);
 
 
 
-
-
        
         <section id="transferencias" style="display:none;">
             <h1>Transferencias</h1>
@@ -275,115 +273,21 @@ mysqli_close($conexion);
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Sistema de Transferencia</h1>
-        
-        <!-- Información del Usuario 1 -->
-        <div class="user" id="user1">
-            <h2>Usuario 1</h2>
-            <p>Saldo: $<span id="balanceUser1">1000</span></p>
-        </div>
+    <div class="form-container">
+        <h2>Enviar Dinero</h2>
+        <form action="#">
+            <label for="email">Correo Electrónico:</label>
+            <input type="email" id="email" name="email" placeholder="Introduce el correo electrónico" required>
 
-        <!-- Información del Usuario 2 -->
-        <div class="user" id="user2">
-            <h2>Usuario 2</h2>
-            <p>Saldo: $<span id="balanceUser2">500</span></p>
-        </div>
+            <label for="amount">Monto a Enviar (USD):</label>
+            <input type="number" id="amount" name="amount" placeholder="Introduce el monto en USD" required>
 
-        <!-- Sección de transferencia -->
-        <div class="transfer-section">
-            <h3>Realizar una transferencia</h3>
-            <label for="transferAmount">Monto a transferir:</label>
-            <input type="number" id="transferAmount" min="1" step="1" required>
-            <button id="transferButton">Transferir</button>
-            <p id="transferMessage"></p>
-        </div>
+            <button type="submit">Enviar</button>
+        </form>
     </div>
-
-    <script src="script.js"></script>
 </body>
 </html>
-<!-- 
-<style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-.container {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    width: 300px;
-}
-
-h1 {
-    margin-bottom: 20px;
-    font-size: 24px;
-}
-
-.user {
-    margin-bottom: 20px;
-}
-
-.user h2 {
-    margin-bottom: 10px;
-}
-
-p {
-    font-size: 18px;
-    margin-bottom: 10px;
-}
-
-.transfer-section {
-    margin-top: 20px;
-}
-
-label {
-    display: block;
-    margin-bottom: 10px;
-}
-
-input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #45a049;
-}
-
-#transferMessage {
-    margin-top: 10px;
-    font-weight: bold;
-}
-
-</style> -->
 
 <script>
 
