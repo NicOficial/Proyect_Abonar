@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 include '../Back-End/con_db.php';
@@ -20,12 +19,52 @@ $locality = $row['locality'];
 $dni = $row['dni'];
 $amount = $row['amount'];
 
-mysqli_close($conexion);
+$mensaje = '';
 
-?>  
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $destinatario_email = $_POST['email'] ?? '';
+    $monto_transferencia = floatval($_POST['amount'] ?? 0);
+
+    if ($monto_transferencia <= $amount) {
+        // Verificar si el destinatario existe
+        $check_destinatario = mysqli_query($conexion, "SELECT id_users FROM users WHERE email = '$destinatario_email'");
+        if (mysqli_num_rows($check_destinatario) > 0) {
+            $destinatario_row = mysqli_fetch_assoc($check_destinatario);
+            $id_destinatario = $destinatario_row['id_users'];
+
+            // Iniciar transacción
+            mysqli_begin_transaction($conexion);
+
+            try {
+                // Actualizar saldo del remitente
+                mysqli_query($conexion, "UPDATE wallets SET amount = amount - $monto_transferencia WHERE id_user = {$row['id_users']}");
+
+                // Actualizar saldo del destinatario
+                mysqli_query($conexion, "UPDATE wallets SET amount = amount + $monto_transferencia WHERE id_user = $id_destinatario");
+
+                // Confirmar transacción
+                mysqli_commit($conexion);
+
+                $amount -= $monto_transferencia; // Actualizar el saldo local
+                $mensaje = "Transferencia exitosa. Nuevo saldo: $" . number_format($amount, 2);
+            } catch (Exception $e) {
+                mysqli_rollback($conexion);
+                $mensaje = "Error en la transferencia: " . $e->getMessage();
+            }
+        } else {
+            $mensaje = "El destinatario no existe en nuestro sistema.";
+        }
+    } else {
+        $mensaje = "Saldo insuficiente. Tu saldo actual es: $" . number_format($amount, 2);
+    }
+}
+
+mysqli_close($conexion);
+?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -33,17 +72,17 @@ mysqli_close($conexion);
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <link href="https://db.onlinewebfonts.com/c/d05c19ccecf7003d248c60ffd6b5e8f7?family=Binance+PLEX" rel="stylesheet" type="text/css" />
     <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../Css/abonar.css" />
     <title>Abonar‎ | ‎Hacé más con tu plata</title>
     <link rel="icon" href="../Img/abonar logo nuevo sin fondo.jpg.png" />
-</head> 
+</head>
+
 <body>
     <div class="menu">
         <ion-icon name="menu-outline"></ion-icon>
@@ -53,7 +92,7 @@ mysqli_close($conexion);
     <div class="barra-lateral">
         <div class="nombre-pagina">
             <span>Abonar</span>
-           <img src="../Img/abonar logo nuevo sin fondo.jpg.png" height="50px" alt=""></a>
+            <img src="../Img/abonar logo nuevo sin fondo.jpg.png" height="50px" alt=""></a>
         </div>
 
         <nav class="navegacion">
@@ -96,21 +135,21 @@ mysqli_close($conexion);
         </nav>
 
         <div class="cerrarsesion">
-        <a href="../Back-End/close_session.php">
-            <ion-icon name="exit-outline"></ion-icon>
+            <a href="../Back-End/close_session.php">
+                <ion-icon name="exit-outline"></ion-icon>
 
-            <span>Cerrar Sesión</span>
-        </a>
+                <span>Cerrar Sesión</span>
+            </a>
 
-            </div>
-        
+        </div>
+
         </li>
         <div>
             <div class="linea"></div>
 
             <div class="usuario">
-                <img src="../Img/unnamed.jpg" alt="" /> 
-                <div class="info-usuario"> 
+                <img src="../Img/unnamed.jpg" alt="" />
+                <div class="info-usuario">
                     <div class="nombre-email">
                         <span class="nombre"><?php echo htmlspecialchars($name); ?></span>
                         <span class="email"><?php echo htmlspecialchars($email); ?></span>
@@ -121,11 +160,11 @@ mysqli_close($conexion);
     </div>
 
     <main>
-    <section id="inicio">
-            <h1 class="bienvenido">Bienvenido, <span id="nombre-usuario"><?php echo htmlspecialchars($name);?></span></h1>
+        <section id="inicio">
+            <h1 class="bienvenido">Bienvenido, <span id="nombre-usuario"><?php echo htmlspecialchars($name); ?></span></h1>
             <p id="saldo" class="saldo">
-    Saldo: $ <span id="saldo-usuario" data-original-value="<?php echo htmlspecialchars($amount); ?>"><?php echo htmlspecialchars($amount); ?></span>
-    <i id="toggle-eye" class="bx bx-show-alt" style="cursor: pointer;"></i>
+                Saldo: $ <span id="saldo-usuario" data-original-value="<?php echo htmlspecialchars($amount); ?>"><?php echo htmlspecialchars($amount); ?></span>
+                <i id="toggle-eye" class="bx bx-show-alt" style="cursor: pointer;"></i>
             <div class="features">
                 <div class="feature" id="box1">
                     <ion-icon name="wallet-outline"></ion-icon>
@@ -143,285 +182,242 @@ mysqli_close($conexion);
                     <p>Tus datos están protegidos con nosotros</p>
                 </div>
             </div>
-        
+
             <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <script>
-        // Función para mostrar la sección correspondiente y ocultar las demás
-        function mostrarSeccion(id) {
-            const secciones = document.querySelectorAll('section');
-            secciones.forEach(seccion => {
-                seccion.style.display = 'none';
-            });
-            document.querySelector(id).style.display = 'block';
-        }
+            <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+            <script>
+                // Función para mostrar la sección correspondiente y ocultar las demás
+                function mostrarSeccion(id) {
+                    const secciones = document.querySelectorAll('section');
+                    secciones.forEach(seccion => {
+                        seccion.style.display = 'none';
+                    });
+                    document.querySelector(id).style.display = 'block';
+                }
 
-        // Añadir event listeners a los enlaces de navegación
-        document.querySelectorAll('.navegacion a').forEach(enlace => {
-            enlace.addEventListener('click', function(event) {
-                event.preventDefault();
-                const id = this.getAttribute('href');
-                mostrarSeccion(id);
-            });
-        });
+                // Añadir event listeners a los enlaces de navegación
+                document.querySelectorAll('.navegacion a').forEach(enlace => {
+                    enlace.addEventListener('click', function(event) {
+                        event.preventDefault();
+                        const id = this.getAttribute('href');
+                        mostrarSeccion(id);
+                    });
+                });
 
-        // Inicializar mostrando la sección de inicio
-        mostrarSeccion('#inicio');
+                // Inicializar mostrando la sección de inicio
+                mostrarSeccion('#inicio');
 
-        // Funcionalidad para ocultar/mostrar saldo
-        const saldoUsuario = document.getElementById("saldo-usuario");
-        const toggleEye = document.getElementById("toggle-eye");
+                // Funcionalidad para ocultar/mostrar saldo
+                const saldoUsuario = document.getElementById("saldo-usuario");
+                const toggleEye = document.getElementById("toggle-eye");
 
-        toggleEye.addEventListener("click", () => {
-    const originalValue = saldoUsuario.getAttribute("data-original-value");
+                toggleEye.addEventListener("click", () => {
+                    const originalValue = saldoUsuario.getAttribute("data-original-value");
 
-    if (!saldoUsuario.dataset.isHidden) {
-        // Cambiar el contenido del saldo a asteriscos
-        saldoUsuario.textContent = "******";
-        saldoUsuario.dataset.isHidden = "true"; // Marcamos que está oculto
-        toggleEye.classList.remove("bx-show-alt");
-        toggleEye.classList.add("bx-hide");
-    } else {
-        // Restaurar el valor original del saldo
-        saldoUsuario.textContent = originalValue;
-        delete saldoUsuario.dataset.isHidden; // Quitamos la marca de oculto
-        toggleEye.classList.remove("bx-hide");
-        toggleEye.classList.add("bx-show-alt");
-    }
-});
+                    if (!saldoUsuario.dataset.isHidden) {
+                        // Cambiar el contenido del saldo a asteriscos
+                        saldoUsuario.textContent = "******";
+                        saldoUsuario.dataset.isHidden = "true"; // Marcamos que está oculto
+                        toggleEye.classList.remove("bx-show-alt");
+                        toggleEye.classList.add("bx-hide");
+                    } else {
+                        // Restaurar el valor original del saldo
+                        saldoUsuario.textContent = originalValue;
+                        delete saldoUsuario.dataset.isHidden; // Quitamos la marca de oculto
+                        toggleEye.classList.remove("bx-hide");
+                        toggleEye.classList.add("bx-show-alt");
+                    }
+                });
+            </script>
+            </p>
 
-    </script>
-  </p>
-            
-    </section>
-    
-
-    <section id="perfil" style="display:none;">
-    <h1>Perfil</h1>
-    <p>Aquí puedes visualizar tu información personal y preferencias.</p>
-    <form>
-        <div class="info-container" style="display: flex; flex-wrap: wrap; gap: 20px;">
-            <div style="flex: 1 1 48%;">
-                <div class="mb-3">
-                    <label for="nombre" class="form-label">Nombre</label>
-                    <div class="cuadro-texto">
-                        <?php echo htmlspecialchars($name); ?>
-                        <?php echo htmlspecialchars($surname); ?>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label for="email" class="form-label">Correo electrónico</label>
-                    <div class="cuadro-texto">
-                        <?php echo htmlspecialchars($email); ?>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label for="direccion" class="form-label">DNI</label>
-                    <div class="cuadro-texto">
-                        <?php echo htmlspecialchars($dni); ?>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label for="dni" class="form-label">Número</label>
-                    <div class="cuadro-texto">
-                        <?php echo htmlspecialchars($snumber); ?>
-                    </div>
-                </div>
-            </div>
-
-            <div style="flex: 1 1 48%;">
-                <div class="mb-3">
-                    <label for="piso" class="form-label">Piso</label>
-                    <div class="cuadro-texto">
-                        <?php echo htmlspecialchars($floor); ?>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label for="departamento" class="form-label">Departamento</label>
-                    <div class="cuadro-texto">
-                        <?php echo htmlspecialchars($flat); ?>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label for="localidad" class="form-label">Localidad</label>
-                    <div class="cuadro-texto">
-                        <?php echo htmlspecialchars($locality); ?>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label for="dni" class="form-label">Calle</label>
-                    <div class="cuadro-texto">
-                        <?php echo htmlspecialchars($street); ?>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
-</section>
-
-
-
-       
-        <section id="transferencias" style="display:none;">
-            <h1>Transferencias</h1>
-            <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Transferencia</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="form-container">
-        <h2>Enviar Dinero</h2>
-        <form action="#">
-            <label for="email">Correo Electrónico:</label>
-            <input type="email" id="email" name="email" placeholder="Introduce el correo electrónico" required>
-
-            <label for="amount">Monto a Enviar (USD):</label>
-            <input type="number" id="amount" name="amount" placeholder="Introduce el monto en USD" required>
-
-            <button type="submit">Enviar</button>
-        </form>
-    </div>
-</body>
-</html>
-
-
-<script>
-
-// Obtener los elementos del DOM
-const balanceUser1 = document.getElementById('balanceUser1');
-const balanceUser2 = document.getElementById('balanceUser2');
-const transferAmount = document.getElementById('transferAmount');
-const transferButton = document.getElementById('transferButton');
-const transferMessage = document.getElementById('transferMessage');
-
-// Añadir el evento click al botón de transferencia
-transferButton.addEventListener('click', () => {
-    const amount = parseFloat(transferAmount.value); // Obtener el valor ingresado
-
-    if (isNaN(amount) || amount <= 0) {
-        transferMessage.textContent = "Por favor, ingresa un monto válido.";
-        transferMessage.style.color = 'red';
-        return;
-    }
-
-    const currentBalanceUser1 = parseFloat(balanceUser1.textContent);
-    const currentBalanceUser2 = parseFloat(balanceUser2.textContent);
-
-    // Verificar si el Usuario 1 tiene suficiente saldo
-    if (amount > currentBalanceUser1) {
-        transferMessage.textContent = "Saldo insuficiente en el Usuario 1.";
-        transferMessage.style.color = 'red';
-    } else {
-        // Restar del saldo del Usuario 1 y sumar al saldo del Usuario 2
-        balanceUser1.textContent = (currentBalanceUser1 - amount).toFixed(2);
-        balanceUser2.textContent = (currentBalanceUser2 + amount).toFixed(2);
-
-        // Mostrar un mensaje de éxito
-        transferMessage.textContent = `Se han transferido $${amount} de Usuario 1 a Usuario 2.`;
-        transferMessage.style.color = 'green';
-    }
-
-    // Limpiar el campo de monto después de la transferencia
-    transferAmount.value = '';
-});
-
-
-</script>
         </section>
-        <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ayuda Mercado Libre</title>
-    <style>
-        .option {
-            cursor: pointer;
-            margin: 10px 0;
-        }
-        .additional-content {
-            display: none;
-            padding: 10px;
-            background-color: #f9f9f9;
-            border: 1px solid #ccc;
-        }
-        .arrow {
-            display: inline-block;
-            margin-left: 10px;
-            transition: transform 0.3s;
-        }
-        .expanded .arrow {
-            transform: rotate(90deg);
-        }
-    </style>
-</head>
-<body>
-    <section id="soporte" style="display:none;">
-        <h1>Soporte</h1>
-        <p>¿Necesitas ayuda?</p>
+
+
+        <section id="perfil" style="display:none;">
+            <h1>Perfil</h1>
+            <p>Aquí puedes visualizar tu información personal y preferencias.</p>
+            <form>
+                <div class="info-container" style="display: flex; flex-wrap: wrap; gap: 20px;">
+                    <div style="flex: 1 1 48%;">
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <div class="cuadro-texto">
+                                <?php echo htmlspecialchars($name); ?>
+                                <?php echo htmlspecialchars($surname); ?>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Correo electrónico</label>
+                            <div class="cuadro-texto">
+                                <?php echo htmlspecialchars($email); ?>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="direccion" class="form-label">DNI</label>
+                            <div class="cuadro-texto">
+                                <?php echo htmlspecialchars($dni); ?>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="dni" class="form-label">Número</label>
+                            <div class="cuadro-texto">
+                                <?php echo htmlspecialchars($snumber); ?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="flex: 1 1 48%;">
+                        <div class="mb-3">
+                            <label for="piso" class="form-label">Piso</label>
+                            <div class="cuadro-texto">
+                                <?php echo htmlspecialchars($floor); ?>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="departamento" class="form-label">Departamento</label>
+                            <div class="cuadro-texto">
+                                <?php echo htmlspecialchars($flat); ?>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="localidad" class="form-label">Localidad</label>
+                            <div class="cuadro-texto">
+                                <?php echo htmlspecialchars($locality); ?>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="dni" class="form-label">Calle</label>
+                            <div class="cuadro-texto">
+                                <?php echo htmlspecialchars($street); ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+
+
+
+    <section id="transferencias" style="display:none;">
         
-        <div class="container">
-            <h1>¿Con qué podemos ayudarte?</h1>
-            <div class="options">
-                <div class="option" onclick="toggleContent(this)">    
-                    <div class="option-icon">
-                        <i class="fas fa-lock"></i>
-                    </div>
-                    <div class="option-text">
-                        <h3>Seguridad y acceso a la cuenta</h3>
-                        <p>Problemas y configuración.</p>
-                    </div>
-                    <span class="arrow">→</span>
-                    <div class="additional-content">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.</p>
-                    </div>
-                </div>
+        <div class="form-container">
+            <h1>Transferencias</h1>
+            <h2>Enviar Dinero</h2>
+            <?php if ($mensaje): ?>
+                <div class="mensaje"><?php echo $mensaje; ?></div>
+            <?php endif; ?>
+            <form method="post" action="">
+                <label for="email">Correo Electrónico del Destinatario:</label>
+                <input type="email" id="email" name="email" required>
 
-                <div class="option" onclick="toggleContent(this)">
-                    <div class="option-icon">
-                        <i class="fas fa-credit-card"></i>
-                    </div>
-                    <div class="option-text">
-                        <h3>Cuenta Abonar</h3>
-                        <p>Ingresos, transferencias.</p>
-                    </div>
-                    <span class="arrow">→</span>
-                    <div class="additional-content">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.</p>
-                    </div>
-                </div>
+                <label for="amount">Monto a Enviar (USD):</label>
+                <input type="number" id="amount" name="amount" step="0.01" required>
 
-                <div class="option" onclick="toggleContent(this)">
-                    <div class="option-icon">
-                        <i class="fas fa-money-bill-wave"></i>
-                    </div>
-                    <div class="option-text">
-                        <h3>Pagos</h3>
-                        <p>Compras y pagos de servicios.</p>
-                    </div>
-                    <span class="arrow">→</span>
-                    <div class="additional-content">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.</p>
-                    </div>
-                </div>
-            </div>
+                <button type="submit">Enviar</button>
+            </form>
+            <p>Saldo actual: $<?php echo number_format($amount, 2); ?></p>
+        
         </div>
     </section>
+        <!DOCTYPE html>
+        <html lang="es">
 
-    <script>
-        function toggleContent(element) {
-            const content = element.querySelector('.additional-content');
-            content.style.display = content.style.display === 'block' ? 'none' : 'block';
-            element.classList.toggle('expanded');
-        }
-    </script>
-</body>
-</html>
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Ayuda Mercado Libre</title>
+            <style>
+                .option {
+                    cursor: pointer;
+                    margin: 10px 0;
+                }
 
-    </main> 
+                .additional-content {
+                    display: none;
+                    padding: 10px;
+                    background-color: #f9f9f9;
+                    border: 1px solid #ccc;
+                }
+
+                .arrow {
+                    display: inline-block;
+                    margin-left: 10px;
+                    transition: transform 0.3s;
+                }
+
+                .expanded .arrow {
+                    transform: rotate(90deg);
+                }
+            </style>
+        </head>
+
+        <body>
+            <section id="soporte" style="display:none;">
+                <h1>Soporte</h1>
+                <p>¿Necesitas ayuda?</p>
+
+                <div class="container">
+                    <h1>¿Con qué podemos ayudarte?</h1>
+                    <div class="options">
+                        <div class="option" onclick="toggleContent(this)">
+                            <div class="option-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <div class="option-text">
+                                <h3>Seguridad y acceso a la cuenta</h3>
+                                <p>Problemas y configuración.</p>
+                            </div>
+                            <span class="arrow">→</span>
+                            <div class="additional-content">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.</p>
+                            </div>
+                        </div>
+
+                        <div class="option" onclick="toggleContent(this)">
+                            <div class="option-icon">
+                                <i class="fas fa-credit-card"></i>
+                            </div>
+                            <div class="option-text">
+                                <h3>Cuenta Abonar</h3>
+                                <p>Ingresos, transferencias.</p>
+                            </div>
+                            <span class="arrow">→</span>
+                            <div class="additional-content">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.</p>
+                            </div>
+                        </div>
+
+                        <div class="option" onclick="toggleContent(this)">
+                            <div class="option-icon">
+                                <i class="fas fa-money-bill-wave"></i>
+                            </div>
+                            <div class="option-text">
+                                <h3>Pagos</h3>
+                                <p>Compras y pagos de servicios.</p>
+                            </div>
+                            <span class="arrow">→</span>
+                            <div class="additional-content">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <script>
+                function toggleContent(element) {
+                    const content = element.querySelector('.additional-content');
+                    content.style.display = content.style.display === 'block' ? 'none' : 'block';
+                    element.classList.toggle('expanded');
+                }
+            </script>
+        </body>
+
+        </html>
+
+    </main>
 </body>
+
 </html>

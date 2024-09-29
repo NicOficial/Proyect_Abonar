@@ -51,17 +51,17 @@
                 <i class="bx bx-show-alt"></i>
             </div>
 
-            <div class="input-box address" >
-            <div class="input-box">
-                <label>Calle</label>
-                <input type="text" placeholder="Ingresá tu calle" name="street" required />
-            </div>
-                
-            <div class="input-box">
-                <label>Numero</label>
-                <input type="number" placeholder="Ingresá tu direccion" name="snumber" required />
-            </div>
-            <div class="input-box">
+            <div class="input-box address">
+                <div class="input-box">
+                    <label>Calle</label>
+                    <input type="text" placeholder="Ingresá tu calle" name="street" required />
+                </div>
+
+                <div class="input-box">
+                    <label>Numero</label>
+                    <input type="number" placeholder="Ingresá tu direccion" name="snumber" required />
+                </div>
+                <!-- <div class="input-box">
                 <label>Piso</label>
                 <input type="text" placeholder="Ingresá tu piso (opcional)" name="floor" required />
             </div>
@@ -69,20 +69,20 @@
             <div class="input-box">
                 <label>Departamento</label>
                 <input type="text" placeholder="Ingresá tu departamento (opcional)" name="flat" required />
-            </div>
-    
-            <div class="input-box">
-                <label>Localidad</label>
-                <input type="text" placeholder="Ingresá tu localidad" name="locality" required />
-            </div>
+            </div> -->
+
+                <div class="input-box">
+                    <label>Localidad</label>
+                    <input type="text" placeholder="Ingresá tu localidad" name="locality" required />
+                </div>
 
                 <div class="input-box">
                     <label>DNI</label>
                     <input type="number" placeholder="Ingresá tu DNI" name="dni" required />
                 </div>
-            
-            
-            <button>Crear cuenta</button>
+
+
+                <button>Crear cuenta</button>
         </form>
     </section>
     <script>
