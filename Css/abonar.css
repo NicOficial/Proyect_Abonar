@@ -1,3 +1,31 @@
+.mensaje {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #e7f3fe;
+  border: 1px solid #b6d4fe;
+  border-radius: 4px;
+  color: #084298;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+th, td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+th {
+  background-color: #f2f2f2;
+}
+.monto-verde {
+  color: green;
+}
+.monto-rojo {
+  color: red;
+}
+
 .bx {
   font-size: 30px;
   cursor: pointer;

@@ -20,13 +20,18 @@ $dni = $row['dni'];
 $amount = $row['amount'];
 $id_wallet_of = $row['id_wallet'];
 
+$mensaje = '';
 $js_mensaje = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $destinatario_email = $_POST['email'] ?? '';
     $monto_transferencia = floatval($_POST['amount'] ?? 0);
 
-    if ($monto_transferencia <= $amount) {
+    // Comprobar que no se está transfiriendo a sí mismo
+    if ($destinatario_email === $email) {
+        $mensaje = "No puedes transferir dinero a tu propia cuenta.";
+        $js_mensaje = "alert('No puedes transferir dinero a tu propia cuenta.');";
+    } elseif ($monto_transferencia <= $amount) {
         // Verificar si el destinatario existe
         $check_destinatario = mysqli_query($conexion, "SELECT users.id_users, wallets.id_wallet FROM users JOIN wallets ON users.id_users = wallets.id_user WHERE users.email = '$destinatario_email'");
         if (mysqli_num_rows($check_destinatario) > 0) {
@@ -56,18 +61,50 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 mysqli_commit($conexion);
 
                 $amount -= $monto_transferencia; // Actualizar el saldo local
-                $js_mensaje = "alert('Transferencia exitosa.');";
+                $mensaje = "Transferencia exitosa.";
             } catch (Exception $e) {
                 mysqli_rollback($conexion);
-                $js_mensaje = "alert('Error en la transferencia: " . addslashes($e->getMessage()) . "');";
+                $mensaje = "Error en la transferencia: " . $e->getMessage();
             }
         } else {
-            $js_mensaje = "alert('El destinatario no existe en nuestro sistema.');";
+            $mensaje = "El destinatario no existe en nuestro sistema.";
         }
     } else {
-        $js_mensaje = "alert('Saldo insuficiente. Tu saldo actual es: $" . number_format($amount, 2) . "');";
+        $mensaje = "Saldo insuficiente.";
     }
 }
+
+// Obtener las últimas transacciones
+$query_transacciones = "
+    SELECT 
+        t.date, 
+        t.amount, 
+        CASE 
+            WHEN t.id_wallet_of = $id_wallet_of THEN 'salida'
+            ELSE 'entrada'
+        END AS tipo,
+        CASE 
+            WHEN t.id_wallet_of = $id_wallet_of THEN u_to.email
+            ELSE u_from.email
+        END AS otro_usuario
+    FROM 
+        transactions t
+    JOIN 
+        wallets w_from ON t.id_wallet_of = w_from.id_wallet
+    JOIN 
+        users u_from ON w_from.id_user = u_from.id_users
+    JOIN 
+        wallets w_to ON t.id_wallet_to = w_to.id_wallet
+    JOIN 
+        users u_to ON w_to.id_user = u_to.id_users
+    WHERE 
+        t.id_wallet_of = $id_wallet_of OR t.id_wallet_to = $id_wallet_of
+    ORDER BY 
+        t.date DESC
+    LIMIT 10
+";
+
+$resultado_transacciones = mysqli_query($conexion, $query_transacciones);
 
 mysqli_close($conexion);
 ?>
@@ -129,7 +166,7 @@ mysqli_close($conexion);
                     <li>
                         <a href="#transferencias">
                             <ion-icon name="cash-outline"></ion-icon>
-                            <span>Transferencias</span>
+                            <span>Historial</span>
                         </a>
                     </li>
                 </div>
@@ -191,6 +228,32 @@ mysqli_close($conexion);
                     <h3>Seguridad garantizada</h3>
                     <p>Tus datos están protegidos con nosotros</p>
                 </div>
+            </div>
+
+            <div class="container">
+                <h1>Enviar dinero</h1>
+                <?php if ($mensaje): ?>
+                <div class="mensaje"><?php echo $mensaje; ?></div>
+                <?php endif; ?>
+
+                <form method="post" action="">
+                    <label for="email">Correo Electrónico del Destinatario:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <br>
+
+                    <label for="amount">Monto a Enviar (USD):</label>
+                    <input type="number" id="amount" name="amount" step="0.01" required>
+
+                    <br>
+
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+
+            <div>
+                <h1>Ingresar dinero</h1>
+                
             </div>
 
             <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
@@ -311,31 +374,29 @@ mysqli_close($conexion);
 
 
     <section id="transferencias" style="display:none;">
-        
-        <div class="form-container">
-            <h1>Transferencias</h1>
-            <h2>Enviar Dinero</h2>
-            <form method="post" action="">
-                <label for="email">Correo Electrónico del Destinatario:</label>
-                <input type="email" id="email" name="email" required>
 
-                <label for="amount">Monto a Enviar (USD):</label>
-                <input type="number" id="amount" name="amount" step="0.01" required>
-
-                <button type="submit">Enviar</button>
-            </form>
-            <p>Saldo actual: $<?php echo number_format($amount, 2); ?></p>
-        </div>
-
-        <script>
-            <?php
-            if ($js_mensaje) {
-                echo $js_mensaje;
-            }
-            ?>
-        </script>
+    <div class="container">
+        <h2>Últimas Transferencias</h2>
+        <table>
+            <tr>
+                <th>Fecha</th>
+                <th>Usuario</th>
+                <th>Monto</th>
+            </tr>
+            <?php while ($transaccion = mysqli_fetch_assoc($resultado_transacciones)): ?>
+                <tr>
+                    <td><?php echo $transaccion['date']; ?></td>
+                    <td><?php echo $transaccion['otro_usuario']; ?></td>
+                    <td class="<?php echo $transaccion['tipo'] == 'entrada' ? 'monto-verde' : 'monto-rojo'; ?>">
+                        <?php echo ($transaccion['tipo'] == 'entrada' ? '+' : '-') . '$' . number_format($transaccion['amount'], 2); ?>
+                    </td>
+                </tr>
+            <?php endwhile; ?>
+        </table>
+    </div>
 
     </section>
+
         <!DOCTYPE html>
         <html lang="es">
 
