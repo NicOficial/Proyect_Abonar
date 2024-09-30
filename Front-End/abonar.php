@@ -4,7 +4,7 @@ session_start();
 include '../Back-End/con_db.php';
 
 $email = $_SESSION['email'];
-$info_user = mysqli_query($conexion, "SELECT users.id_users, users.name, users.surname, users.email, users.password, users.street, users.snumber, users.floor, users.flat, users.locality, users.dni, wallets.amount FROM users JOIN wallets ON users.id_users = wallets.id_user WHERE users.email = '$email';");
+$info_user = mysqli_query($conexion, "SELECT users.id_users, users.name, users.surname, users.email, users.password, users.street, users.snumber, users.floor, users.flat, users.locality, users.dni, wallets.id_wallet, wallets.amount FROM users JOIN wallets ON users.id_users = wallets.id_user WHERE users.email = '$email';");
 
 $row = mysqli_fetch_assoc($info_user);
 
@@ -18,8 +18,9 @@ $flat = $row['flat'];
 $locality = $row['locality'];
 $dni = $row['dni'];
 $amount = $row['amount'];
+$id_wallet_of = $row['id_wallet'];
 
-$mensaje = '';
+$js_mensaje = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $destinatario_email = $_POST['email'] ?? '';
@@ -27,35 +28,44 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($monto_transferencia <= $amount) {
         // Verificar si el destinatario existe
-        $check_destinatario = mysqli_query($conexion, "SELECT id_users FROM users WHERE email = '$destinatario_email'");
+        $check_destinatario = mysqli_query($conexion, "SELECT users.id_users, wallets.id_wallet FROM users JOIN wallets ON users.id_users = wallets.id_user WHERE users.email = '$destinatario_email'");
         if (mysqli_num_rows($check_destinatario) > 0) {
             $destinatario_row = mysqli_fetch_assoc($check_destinatario);
             $id_destinatario = $destinatario_row['id_users'];
+            $id_wallet_to = $destinatario_row['id_wallet'];
 
             // Iniciar transacción
             mysqli_begin_transaction($conexion);
 
             try {
                 // Actualizar saldo del remitente
-                mysqli_query($conexion, "UPDATE wallets SET amount = amount - $monto_transferencia WHERE id_user = {$row['id_users']}");
+                mysqli_query($conexion, "UPDATE wallets SET amount = amount - $monto_transferencia WHERE id_wallet = $id_wallet_of");
 
                 // Actualizar saldo del destinatario
-                mysqli_query($conexion, "UPDATE wallets SET amount = amount + $monto_transferencia WHERE id_user = $id_destinatario");
+                mysqli_query($conexion, "UPDATE wallets SET amount = amount + $monto_transferencia WHERE id_wallet = $id_wallet_to");
+
+                // Registrar la transacción
+                $fecha_actual = date('Y-m-d H:i:s');
+                $insertar_transaccion = mysqli_query($conexion, "INSERT INTO transactions (date, amount, id_wallet_of, id_wallet_to) VALUES ('$fecha_actual', $monto_transferencia, $id_wallet_of, $id_wallet_to)");
+
+                if (!$insertar_transaccion) {
+                    throw new Exception("Error al registrar la transacción");
+                }
 
                 // Confirmar transacción
                 mysqli_commit($conexion);
 
                 $amount -= $monto_transferencia; // Actualizar el saldo local
-                $mensaje = "Transferencia exitosa. Nuevo saldo: $" . number_format($amount, 2);
+                $js_mensaje = "alert('Transferencia exitosa.');";
             } catch (Exception $e) {
                 mysqli_rollback($conexion);
-                $mensaje = "Error en la transferencia: " . $e->getMessage();
+                $js_mensaje = "alert('Error en la transferencia: " . addslashes($e->getMessage()) . "');";
             }
         } else {
-            $mensaje = "El destinatario no existe en nuestro sistema.";
+            $js_mensaje = "alert('El destinatario no existe en nuestro sistema.');";
         }
     } else {
-        $mensaje = "Saldo insuficiente. Tu saldo actual es: $" . number_format($amount, 2);
+        $js_mensaje = "alert('Saldo insuficiente. Tu saldo actual es: $" . number_format($amount, 2) . "');";
     }
 }
 
@@ -305,9 +315,6 @@ mysqli_close($conexion);
         <div class="form-container">
             <h1>Transferencias</h1>
             <h2>Enviar Dinero</h2>
-            <?php if ($mensaje): ?>
-                <div class="mensaje"><?php echo $mensaje; ?></div>
-            <?php endif; ?>
             <form method="post" action="">
                 <label for="email">Correo Electrónico del Destinatario:</label>
                 <input type="email" id="email" name="email" required>
@@ -318,8 +325,16 @@ mysqli_close($conexion);
                 <button type="submit">Enviar</button>
             </form>
             <p>Saldo actual: $<?php echo number_format($amount, 2); ?></p>
-        
         </div>
+
+        <script>
+            <?php
+            if ($js_mensaje) {
+                echo $js_mensaje;
+            }
+            ?>
+        </script>
+
     </section>
         <!DOCTYPE html>
         <html lang="es">
