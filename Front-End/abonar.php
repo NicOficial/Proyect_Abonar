@@ -4,7 +4,7 @@ session_start();
 include '../Back-End/con_db.php';
 
 $email = $_SESSION['email'];
-$info_user = mysqli_query($conexion, "SELECT users.id_users, users.name, users.surname, users.email, users.password, users.street, users.snumber, users.floor, users.flat, users.locality, users.dni, wallets.id_wallet, wallets.amount FROM users JOIN wallets ON users.id_users = wallets.id_user WHERE users.email = '$email';");
+$info_user = mysqli_query($conexion, "SELECT users.id_users, users.name, users.surname, users.email, users.password, users.street, users.snumber, users.locality, users.dni, wallets.id_wallet, wallets.amount FROM users JOIN wallets ON users.id_users = wallets.id_user WHERE users.email = '$email';");
 
 $row = mysqli_fetch_assoc($info_user);
 
@@ -13,15 +13,12 @@ $surname = $row['surname'];
 $password = $row['password'];
 $street = $row['street'];
 $snumber = $row['snumber'];
-$floor = $row['floor'];
-$flat = $row['flat'];
 $locality = $row['locality'];
 $dni = $row['dni'];
 $amount = $row['amount'];
 $id_wallet_of = $row['id_wallet'];
 
 $mensaje = '';
-$js_mensaje = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $destinatario_email = $_POST['email'] ?? '';
@@ -30,7 +27,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Comprobar que no se está transfiriendo a sí mismo
     if ($destinatario_email === $email) {
         $mensaje = "No puedes transferir dinero a tu propia cuenta.";
-        $js_mensaje = "alert('No puedes transferir dinero a tu propia cuenta.');";
     } elseif ($monto_transferencia <= $amount) {
         // Verificar si el destinatario existe
         $check_destinatario = mysqli_query($conexion, "SELECT users.id_users, wallets.id_wallet FROM users JOIN wallets ON users.id_users = wallets.id_user WHERE users.email = '$destinatario_email'");
@@ -308,67 +304,55 @@ mysqli_close($conexion);
 
 
         <section id="perfil" style="display:none;">
-            <h1>Perfil</h1>
-            <p>Aquí puedes visualizar tu información personal y preferencias.</p>
-            <form>
-                <div class="info-container" style="display: flex; flex-wrap: wrap; gap: 20px;">
-                    <div style="flex: 1 1 48%;">
-                        <div class="mb-3">
-                            <label for="nombre" class="form-label">Nombre</label>
-                            <div class="cuadro-texto">
-                                <?php echo htmlspecialchars($name); ?>
-                                <?php echo htmlspecialchars($surname); ?>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Correo electrónico</label>
-                            <div class="cuadro-texto">
-                                <?php echo htmlspecialchars($email); ?>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="direccion" class="form-label">DNI</label>
-                            <div class="cuadro-texto">
-                                <?php echo htmlspecialchars($dni); ?>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="dni" class="form-label">Número</label>
-                            <div class="cuadro-texto">
-                                <?php echo htmlspecialchars($snumber); ?>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div style="flex: 1 1 48%;">
-                        <div class="mb-3">
-                            <label for="piso" class="form-label">Piso</label>
-                            <div class="cuadro-texto">
-                                <?php echo htmlspecialchars($floor); ?>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="departamento" class="form-label">Departamento</label>
-                            <div class="cuadro-texto">
-                                <?php echo htmlspecialchars($flat); ?>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="localidad" class="form-label">Localidad</label>
-                            <div class="cuadro-texto">
-                                <?php echo htmlspecialchars($locality); ?>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="dni" class="form-label">Calle</label>
-                            <div class="cuadro-texto">
-                                <?php echo htmlspecialchars($street); ?>
-                            </div>
-                        </div>
+    <h1>Perfil</h1>
+    <p>Aquí puedes visualizar tu información personal y preferencias.</p>
+    <form>
+        <div class="info-container" style="display: flex; flex-wrap: wrap; gap: 20px;">
+            <div style="flex: 1 1 48%;">
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <div class="cuadro-texto">
+                        <?php echo htmlspecialchars($name); ?>
+                        <?php echo htmlspecialchars($surname); ?>
                     </div>
                 </div>
-            </form>
-        </section>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Correo electrónico</label>
+                    <div class="cuadro-texto">
+                        <?php echo htmlspecialchars($email); ?>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="direccion" class="form-label">DNI</label>
+                    <div class="cuadro-texto">
+                        <?php echo htmlspecialchars($dni); ?>
+                    </div>
+                </div>
+            </div>
+
+            <div style="flex: 1 1 48%;">
+                <div class="mb-3">
+                    <label for="localidad" class="form-label">Localidad</label>
+                    <div class="cuadro-texto">
+                        <?php echo htmlspecialchars($locality); ?>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="dni" class="form-label">Calle</label>
+                    <div class="cuadro-texto">
+                        <?php echo htmlspecialchars($street); ?>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="dni" class="form-label">Número</label>
+                    <div class="cuadro-texto">
+                        <?php echo htmlspecialchars($snumber); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
 
 
 
@@ -439,29 +423,35 @@ mysqli_close($conexion);
                     <div class="options">
                         <div class="option" onclick="toggleContent(this)">
                             <div class="option-icon">
-                                <i class="fas fa-lock"></i>
+                            <i class="fas fa-credit-card"></i>
                             </div>
                             <div class="option-text">
-                                <h3>Seguridad y acceso a la cuenta</h3>
-                                <p>Problemas y configuración.</p>
+                                <h3>Cuenta</h3>
+                                <p>Ingresos, transferencias.</p>
                             </div>
                             <span class="arrow">→</span>
                             <div class="additional-content">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.</p>
+                                <p>Al registrarte en Abonar, te recibirán un panel de control intuitivo y amigable. 
+                                   Acá encontrarás un resumen de tu saldo actual. Utilizamos medidas de seguridad 
+                                   avanzadas para garantizar que tus datos estén siempre protegidos.</p>
                             </div>
                         </div>
 
                         <div class="option" onclick="toggleContent(this)">
                             <div class="option-icon">
-                                <i class="fas fa-credit-card"></i>
+                                <i class="fas fa-lock"></i>
                             </div>
                             <div class="option-text">
-                                <h3>Cuenta Abonar</h3>
-                                <p>Ingresos, transferencias.</p>
+                                <h3>Seguridad</h3>
+                                <p>Problemas y configuracion.</p>
                             </div>
                             <span class="arrow">→</span>
                             <div class="additional-content">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.</p>
+                                <p>
+                                En Abonar, la confianza es fundamental en cualquier relación financiera. 
+                                Por eso, cada medida de seguridad que implementamos está diseñada para proporcionarte 
+                                una experiencia de pago segura y confiable. 
+                                </p>
                             </div>
                         </div>
 
@@ -471,11 +461,12 @@ mysqli_close($conexion);
                             </div>
                             <div class="option-text">
                                 <h3>Pagos</h3>
-                                <p>Compras y pagos de servicios.</p>
+                                <p>Compras y transferencias.</p>
                             </div>
                             <span class="arrow">→</span>
                             <div class="additional-content">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.</p>
+                                <p>Ya sea para pagar un servicio, enviar dinero o realizar un pago comercial, Abonar te ofrece
+                                     una experiencia ágil y sin complicaciones.</p>
                             </div>
                         </div>
                     </div>

@@ -14,8 +14,6 @@ $email = mysqli_real_escape_string($conexion, $_POST['email']);
 $password = mysqli_real_escape_string($conexion, $_POST['password']);
 $street = mysqli_real_escape_string($conexion, $_POST['street']);
 $snumber = mysqli_real_escape_string($conexion, $_POST['snumber']);
-$floor = mysqli_real_escape_string($conexion, $_POST['floor']);
-$flat = mysqli_real_escape_string($conexion, $_POST['flat']);
 $locality = mysqli_real_escape_string($conexion, $_POST['locality']);
 $dni = mysqli_real_escape_string($conexion, $_POST['dni']);
 
