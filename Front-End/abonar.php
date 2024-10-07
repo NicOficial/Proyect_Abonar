@@ -18,58 +18,6 @@ $dni = $row['dni'];
 $amount = $row['amount'];
 $id_wallet_of = $row['id_wallet'];
 
-$mensaje = '';
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $destinatario_email = $_POST['email'] ?? '';
-    $monto_transferencia = floatval($_POST['amount'] ?? 0);
-
-    // Comprobar que no se está transfiriendo a sí mismo
-    if ($destinatario_email === $email) {
-        $mensaje = "No puedes transferir dinero a tu propia cuenta.";
-    } elseif ($monto_transferencia <= $amount) {
-        // Verificar si el destinatario existe
-        $check_destinatario = mysqli_query($conexion, "SELECT users.id_users, wallets.id_wallet FROM users JOIN wallets ON users.id_users = wallets.id_user WHERE users.email = '$destinatario_email'");
-        if (mysqli_num_rows($check_destinatario) > 0) {
-            $destinatario_row = mysqli_fetch_assoc($check_destinatario);
-            $id_destinatario = $destinatario_row['id_users'];
-            $id_wallet_to = $destinatario_row['id_wallet'];
-
-            // Iniciar transacción
-            mysqli_begin_transaction($conexion);
-
-            try {
-                // Actualizar saldo del remitente
-                mysqli_query($conexion, "UPDATE wallets SET amount = amount - $monto_transferencia WHERE id_wallet = $id_wallet_of");
-
-                // Actualizar saldo del destinatario
-                mysqli_query($conexion, "UPDATE wallets SET amount = amount + $monto_transferencia WHERE id_wallet = $id_wallet_to");
-
-                // Registrar la transacción
-                $fecha_actual = date('Y-m-d H:i:s');
-                $insertar_transaccion = mysqli_query($conexion, "INSERT INTO transactions (date, amount, id_wallet_of, id_wallet_to) VALUES ('$fecha_actual', $monto_transferencia, $id_wallet_of, $id_wallet_to)");
-
-                if (!$insertar_transaccion) {
-                    throw new Exception("Error al registrar la transacción");
-                }
-
-                // Confirmar transacción
-                mysqli_commit($conexion);
-
-                $amount -= $monto_transferencia; // Actualizar el saldo local
-                $mensaje = "Transferencia exitosa.";
-            } catch (Exception $e) {
-                mysqli_rollback($conexion);
-                $mensaje = "Error en la transferencia: " . $e->getMessage();
-            }
-        } else {
-            $mensaje = "El destinatario no existe en nuestro sistema.";
-        }
-    } else {
-        $mensaje = "Saldo insuficiente.";
-    }
-}
-
 // Obtener las últimas transacciones
 $query_transacciones = "
     SELECT 
@@ -208,6 +156,33 @@ mysqli_close($conexion);
             <p id="saldo" class="saldo">
                 Saldo: $ <span id="saldo-usuario" data-original-value="<?php echo htmlspecialchars($amount); ?>"><?php echo htmlspecialchars($amount); ?></span>
                 <i id="toggle-eye" class="bx bx-show-alt" style="cursor: pointer;"></i>
+                <br>
+                <br>
+                
+                <a href="../Front-End/ingresar.php" class="boton-ingresar">Ingresar</a>
+                <a href="../Front-End/transferencias.php" class="boton-transferir">Transferir</a>
+
+<style>
+.boton-ingresar, .boton-transferir {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #337ab7;
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .boton-ingresar:hover, .boton-transferir:hover {
+    background-color: #23527c;
+  }
+  
+  .boton-ingresar {
+    margin-right: 10px;
+  }
+</style>
             <div class="features">
                 <div class="feature" id="box1">
                     <ion-icon name="wallet-outline"></ion-icon>
@@ -226,31 +201,6 @@ mysqli_close($conexion);
                 </div>
             </div>
 
-            <div class="container">
-                <h1>Enviar dinero</h1>
-                <?php if ($mensaje): ?>
-                <div class="mensaje"><?php echo $mensaje; ?></div>
-                <?php endif; ?>
-
-                <form method="post" action="">
-                    <label for="email">Correo Electrónico del Destinatario:</label>
-                    <input type="email" id="email" name="email" required>
-
-                    <br>
-
-                    <label for="amount">Monto a Enviar (USD):</label>
-                    <input type="number" id="amount" name="amount" step="0.01" required>
-
-                    <br>
-
-                    <button type="submit">Enviar</button>
-                </form>
-            </div>
-
-            <div>
-                <h1>Ingresar dinero</h1>
-                
-            </div>
 
             <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
             <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>

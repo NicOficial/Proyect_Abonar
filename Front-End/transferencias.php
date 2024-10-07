@@ -1,3 +1,76 @@
+<?php
+session_start();
+
+include '../Back-End/con_db.php';
+
+$email = $_SESSION['email'];
+$info_user = mysqli_query($conexion, "SELECT users.id_users, users.name, users.surname, users.email, users.password, users.street, users.snumber, users.locality, users.dni, wallets.id_wallet, wallets.amount FROM users JOIN wallets ON users.id_users = wallets.id_user WHERE users.email = '$email';");
+
+$row = mysqli_fetch_assoc($info_user);
+
+$name = $row['name'];
+$surname = $row['surname'];
+$password = $row['password'];
+$street = $row['street'];
+$snumber = $row['snumber'];
+$locality = $row['locality'];
+$dni = $row['dni'];
+$amount = $row['amount'];
+$id_wallet_of = $row['id_wallet'];
+
+$mensaje = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $destinatario_email = $_POST['email'] ?? '';
+    $monto_transferencia = floatval($_POST['amount'] ?? 0);
+
+    // Comprobar que no se está transfiriendo a sí mismo
+    if ($destinatario_email === $email) {
+        $mensaje = "No puedes transferir dinero a tu propia cuenta.";
+    } elseif ($monto_transferencia <= $amount) {
+        // Verificar si el destinatario existe
+        $check_destinatario = mysqli_query($conexion, "SELECT users.id_users, wallets.id_wallet FROM users JOIN wallets ON users.id_users = wallets.id_user WHERE users.email = '$destinatario_email'");
+        if (mysqli_num_rows($check_destinatario) > 0) {
+            $destinatario_row = mysqli_fetch_assoc($check_destinatario);
+            $id_destinatario = $destinatario_row['id_users'];
+            $id_wallet_to = $destinatario_row['id_wallet'];
+
+            // Iniciar transacción
+            mysqli_begin_transaction($conexion);
+
+            try {
+                // Actualizar saldo del remitente
+                mysqli_query($conexion, "UPDATE wallets SET amount = amount - $monto_transferencia WHERE id_wallet = $id_wallet_of");
+
+                // Actualizar saldo del destinatario
+                mysqli_query($conexion, "UPDATE wallets SET amount = amount + $monto_transferencia WHERE id_wallet = $id_wallet_to");
+
+                // Registrar la transacción
+                $fecha_actual = date('Y-m-d H:i:s');
+                $insertar_transaccion = mysqli_query($conexion, "INSERT INTO transactions (date, amount, id_wallet_of, id_wallet_to) VALUES ('$fecha_actual', $monto_transferencia, $id_wallet_of, $id_wallet_to)");
+
+                if (!$insertar_transaccion) {
+                    throw new Exception("Error al registrar la transacción");
+                }
+
+                // Confirmar transacción
+                mysqli_commit($conexion);
+
+                $amount -= $monto_transferencia; // Actualizar el saldo local
+                $mensaje = "Transferencia exitosa.";
+            } catch (Exception $e) {
+                mysqli_rollback($conexion);
+                $mensaje = "Error en la transferencia: " . $e->getMessage();
+            }
+        } else {
+            $mensaje = "El destinatario no existe en nuestro sistema.";
+        }
+    } else {
+        $mensaje = "Saldo insuficiente.";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,21 +105,21 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<h1>Enviar dinero</h1>
-                <?php if ($mensaje): ?>
-                <div class="mensaje"><?php echo $mensaje; ?></div>
-                <?php endif; ?>
-                
-                
   <div class="container">
     <h1>Enviar Dinero</h1>
-    
-    <form id="paymentForm">
+    <?php if ($mensaje): ?>
+      <div class="mensaje"><?php echo $mensaje; ?></div>
+    <?php endif; ?>
+
+    <h3>Cantidad disponible: <?php echo htmlspecialchars($amount); ?>$</h3>
+
+    <form id="paymentForm" method="post" action="">
+
       <label for="email">Correo Electrónico del destinatario:</label>
-      <input type="email" id="email" placeholder="ejemplo@correo.com" required>
+      <input type="email" id="email" name="email" placeholder="Ingrese el mail de destinatario " required>
       
       <label for="amount">Monto a enviar:</label>
-      <input type="number" id="amount" placeholder="Monto en $" required>
+      <input type="number" id="amount" name="amount" placeholder="Monto en $" required>
       
       <button type="submit">Enviar</button>
     </form>
@@ -54,7 +127,6 @@
     <div id="result"></div>
   </div>
 </body>
-
 
 <style>
     * {
@@ -70,6 +142,7 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   width: 350px;
   text-align: center;
+  margin-left: 490px;
 }
 
 h1 {
@@ -99,7 +172,7 @@ input:focus {
 }
 
 button {
-  background-color: #4CAF50;
+  background-color: #1667a8;
   color: #fff;
   border: none;
   padding: 12px;
@@ -111,7 +184,7 @@ button {
 }
 
 button:hover {
-  background-color: #45a049;
+  background-color: #06416a;
 }
 
 #result {

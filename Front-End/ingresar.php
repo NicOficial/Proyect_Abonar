@@ -76,17 +76,18 @@ input {
 }
 
 button {
-  background-color: #4CAF50;
+  background-color: #1667a8;
   color: white;
   border: none;
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
   border-radius: 4px;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: #45a049;
+  background-color: #06416a;
 }
 
 #result {
