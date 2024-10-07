@@ -102,20 +102,3 @@ button:hover {
 
 </style>
 
-<script>
-
-document.getElementById("nextButton").addEventListener("click", function() {
-  const amount = document.getElementById("amount").value;
-
-  if (amount && amount > 0) {
-    // Generar número aleatorio de 6 dígitos
-    const randomNumber = Math.floor(100000 + Math.random() * 900000);
-    document.getElementById("result").innerHTML = 
-      `Monto ingresado: $${amount}<br>Número de referencia: ${randomNumber}`;
-  } else {
-    document.getElementById("result").innerHTML = "Por favor, ingrese un monto válido.";
-  }
-});
-
-
-</script>
