@@ -33,9 +33,10 @@
 </head>
 <body>
   <div class="container">
-    <h1>Transferencia</h1>
-    <label for="amount">Ingrese el monto a transferir:</label>
+    <h2>Ingrese el monto que desea cargar</h2>
+    <br>
     <input type="number" id="amount" placeholder="Monto en $">
+    <br>
     <button id="nextButton">Siguiente</button>
     <div id="result"></div>
   </div>
@@ -52,11 +53,13 @@
 
 .container {
   background-color: #fff;
-  padding: 20px;
+  padding: 30px;
   border-radius: 8px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   text-align: center;
   width: 300px;
+  margin-top: 120px;
+  margin-left:500px;
 }
 
 
