@@ -76,11 +76,8 @@
             <span>Nombre</span>
             <div>Martin Ignacio Galvez</div>
             
-            <span>Cuenta en</span>
-            <div>Mercado Libre Srl</div>
-            
-            <span>Alias</span>
-            <div>galvezmartin00</div>
+            <span>Localidad</span>
+            <div>Ramos Mejia</div>
 
             <span>Correo electrónico</span>  <!-- Nuevo dato de correo -->
             <div>martin.galvez@gmail.com</div>
