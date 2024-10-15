@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,18 +11,17 @@
     <link href="https://db.onlinewebfonts.com/c/d05c19ccecf7003d248c60ffd6b5e8f7?family=Binance+PLEX" rel="stylesheet" type="text/css" />
     <title>Abonar‎ |‎ Iniciá sesión</title>
 </head>
-
 <body>
 
 <header>
-        <nav>
-            <a href="abonar.php">
-                <img src="../Img/abonar logo nuevo sin fondo.jpg.png" height="69px" width="123px" alt="" id="abonarlogo" />
-            </a>
-        </nav>
-    </header>
+    <nav>
+        <a href="abonar.php">
+            <img src="../Img/abonar logo nuevo sin fondo.jpg.png" height="69px" width="123px" alt="" id="abonarlogo" />
+        </a>
+    </nav>
+</header>
 
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -32,25 +30,24 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="container">
-    <h2>Ingrese el monto que desea cargar</h2>
+<div class="container">
+  <h2>Ingrese el monto que desea cargar</h2>
+  <br>
+  <form id="transferForm" action="conf_trans.php" method="GET">
+    <!-- Monto requerido -->
+    <input type="number" id="amount" placeholder="Monto en $" required>
     <br>
-    <input type="number" id="amount" placeholder="Monto en $">
-    <br>
-    <button id="nextButton">Siguiente</button>
+    <!-- Botón que valida y envía -->
+    <button type="submit" id="nextButton">Siguiente</button>
     <div id="result"></div>
-  </div>
+  </form>
+</div>
 
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
 
-</body>
-
 <style>
-
-
-
 .container {
   background-color: #fff;
   padding: 30px;
@@ -60,14 +57,6 @@
   width: 300px;
   margin-top: 120px;
   margin-left:500px;
-}
-
-
-
-label {
-  display: block;
-  margin-bottom: 10px;
-  font-weight: bold;
 }
 
 input {
@@ -98,7 +87,4 @@ button:hover {
   font-size: 18px;
   color: #333;
 }
-
-
 </style>
-
