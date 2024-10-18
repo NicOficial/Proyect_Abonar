@@ -159,7 +159,7 @@ mysqli_close($conexion);
                 <br>
                 <br>
                 
-                <a href="../Front-End/ingresar.php" class="boton-ingresar">Ingresar</a>
+                <a href="../Front-End/cargardinero.php" class="boton-ingresar">Ingresar</a>
                 <a href="../Front-End/transferencias.php" class="boton-transferir">Transferir</a>
 
 <style>

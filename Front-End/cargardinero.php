@@ -75,6 +75,26 @@
             margin-right: 8px; /* Espacio entre el icono y el texto */
         }
 
+
+        .boton-ingresar, .boton-transferir {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #337ab7;
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .boton-ingresar:hover, .boton-transferir:hover {
+    background-color: #23527c;
+  }
+  
+  .boton-ingresar {
+    margin-right: 10px;
+  }
     </style>
 </head>
 
@@ -104,7 +124,7 @@
         </div>
     </div>
     <div class="button-container">
-        <button>CONFIRMAR</button>
+    <a href="../Front-End/ingresar.php" class="boton-ingresar">Continuar</a>
     </div>
 </div>
 
