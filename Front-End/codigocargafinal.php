@@ -16,7 +16,7 @@
             background-color: #f5f5f5;
         }
         .account-container {
-            max-width: 600px; /* Cuadrado más grande */
+            max-width: 600px;
             margin: 90px auto;
             padding: 30px;
             border: 1px solid #ddd;
@@ -26,9 +26,8 @@
         }
         .account-container h2 {
             text-align: center;
-            
             font-family: 'Binance PLEX', sans-serif;
-            font-size: 24px; /* Título más grande */
+            font-size: 24px;
         }
         .account-info {
             margin-bottom: 25px;
@@ -37,17 +36,17 @@
             display: block;
             font-weight: bold;
             margin-bottom: 10px;
-            font-size: 18px; /* Etiquetas más grandes */
+            font-size: 18px;
         }
         .account-info div {
-            font-size: 20px; /* Texto de datos más grande */
+            font-size: 20px;
             margin-bottom: 20px;
         }
         .button-container {
             text-align: center;
         }
         .button-container button {
-            background-color: #1667a8; /* Color del header */
+            background-color: #1667a8;
             color: white;
             border: none;
             padding: 15px 25px;
@@ -65,37 +64,59 @@
             margin-bottom: 15px;
         }
 
-        /* Estilo para centrar el icono con el texto */
         .centered-icon-text {
-            margin-top: 25px;
             display: flex;
-            align-items: center; /* Centra verticalmente */
+            align-items: center;
+            margin-top: 25px;
         }
 
+        /* Estilo uniforme para todos los íconos */
         .centered-icon-text img {
+            width: 24px;
+            height: 24px;
             margin-right: 8px; /* Espacio entre el icono y el texto */
         }
 
-
         .boton-ingresar, .boton-transferir {
-    display: inline-block;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #337ab7;
-    color: #fff;
-    text-decoration: none;
-    font-size: 16px;
-    cursor: pointer;
-  }
+            display: inline-block;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #337ab7;
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
   
-  .boton-ingresar:hover, .boton-transferir:hover {
-    background-color: #23527c;
-  }
+        .boton-ingresar:hover, .boton-transferir:hover {
+            background-color: #23527c;
+        }
   
-  .boton-ingresar {
-    margin-right: 10px;
-  }
+        #numero3foto{
+
+            width: 31px;
+            height: 28px;
+
+        }
+
+        #numero2foto{
+
+            width: 28px;
+            height: 27px;
+
+        }
+
+        #numero1foto{
+
+            width: 30px;
+            height: 28px;
+
+        }
+
+        .boton-ingresar {
+            margin-right: 10px;
+        }
     </style>
 </head>
 
@@ -109,23 +130,23 @@
     </header>
 
     <div class="account-container">
-    <h2>Este es tu codigo para cargar $</h2>
+    <h2>Este es tu código para cargar $</h2>
     <div class="account-info">
         <div class="centered-icon-text">
-            <img src="../Img/numero1.PNG" height="24px" width="24px" alt="Icono dinero" />
+            <img src="../Img/numero1.PNG" alt="Icono número 1" id="numero1foto"/>
             Acercate a un Pago Fácil.
         </div>
         <div class="centered-icon-text">
-            <img src="../Img/numero2.PNG" height="24px" width="24px" alt="Código de carga" />
+            <img src="../Img/numero2.PNG" alt="Icono número 2" id="numero2foto"/>
             Mostrá el código y cargá la cantidad de plata que indicaste.
         </div>
         <div class="centered-icon-text">
-            <img src="../Img/numero3.PNG" height="24px" width="24px" alt="Pago Facil" />
+            <img src="../Img/numero3.PNG" alt="Icono número 3" id="numero3foto"/>
             ¡Listo!, ya podés ver tu plata en la app.
         </div>
         
         <div class="centered-icon-text">
-            <img src="../Img/calendarioxdlol.PNG" height="20px" width="20px" alt="Pago Facil" />
+            <img src="../Img/calendarioxdlol.PNG" alt="Icono calendario" />
             Vence hoy a las 23:59 hs.
         </div>
     </div>
