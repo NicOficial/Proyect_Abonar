@@ -25,9 +25,10 @@
             background-color: white;
         }
         .account-container h2 {
-            text-align: center;
             font-family: 'Binance PLEX', sans-serif;
             font-size: 24px;
+            text-align: left;
+            margin-left: 30px;
         }
         .account-info {
             margin-bottom: 25px;
@@ -94,30 +95,36 @@
         }
   
         #numero3foto{
-
             width: 31px;
             height: 28px;
-
         }
 
         #numero2foto{
-
             width: 28px;
             height: 27px;
-
         }
 
         #numero1foto{
-
             width: 30px;
             height: 28px;
-
         }
 
         .boton-ingresar {
             margin-right: 10px;
         }
     </style>
+    <script>
+        // Función para generar un código aleatorio de 6 dígitos
+        function generarCodigoAleatorio() {
+            return Math.floor(100000 + Math.random() * 900000); // Genera un número de 6 dígitos
+        }
+
+        // Añadir el código generado al texto
+        window.onload = function() {
+            const codigo = generarCodigoAleatorio();
+            document.getElementById('codigo-generado').innerText = codigo;
+        };
+    </script>
 </head>
 
 <body>
@@ -130,30 +137,31 @@
     </header>
 
     <div class="account-container">
-    <h2>Este es tu código para cargar $</h2>
-    <div class="account-info">
-        <div class="centered-icon-text">
-            <img src="../Img/numero1.PNG" alt="Icono número 1" id="numero1foto"/>
-            Acercate a un Pago Fácil.
+        <h2>Este es tu código para cargar $ </h2>
+        <h2><span id="codigo-generado"></span></h2>
+        <div class="account-info">
+            <div class="centered-icon-text">
+                <img src="../Img/numero1.PNG" alt="Icono número 1" id="numero1foto"/>
+                Acercate a un Pago Fácil.
+            </div>
+            <div class="centered-icon-text">
+                <img src="../Img/numero2.PNG" alt="Icono número 2" id="numero2foto"/>
+                Mostrá el código y cargá la cantidad de plata que indicaste.
+            </div>
+            <div class="centered-icon-text">
+                <img src="../Img/numero3.PNG" alt="Icono número 3" id="numero3foto"/>
+                ¡Listo!, ya podés ver tu plata en la app.
+            </div>
+            
+            <div class="centered-icon-text">
+                <img src="../Img/calendarioxdlol.PNG" alt="Icono calendario" />
+                Vence hoy a las 23:59 hs.
+            </div>
         </div>
-        <div class="centered-icon-text">
-            <img src="../Img/numero2.PNG" alt="Icono número 2" id="numero2foto"/>
-            Mostrá el código y cargá la cantidad de plata que indicaste.
-        </div>
-        <div class="centered-icon-text">
-            <img src="../Img/numero3.PNG" alt="Icono número 3" id="numero3foto"/>
-            ¡Listo!, ya podés ver tu plata en la app.
-        </div>
-        
-        <div class="centered-icon-text">
-            <img src="../Img/calendarioxdlol.PNG" alt="Icono calendario" />
-            Vence hoy a las 23:59 hs.
+        <div class="button-container">
+            <a href="../Front-End/abonar.php" class="boton-ingresar">Ir al inicio</a>
         </div>
     </div>
-    <div class="button-container">
-    <a href="../Front-End/abonar.php" class="boton-ingresar">Ir al inicio</a>
-    </div>
-</div>
 
 </body>
 </html>

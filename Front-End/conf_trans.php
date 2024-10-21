@@ -17,7 +17,7 @@
         }
         .account-container {
             max-width: 600px; /* Cuadrado más grande */
-            margin: 120px auto;
+            margin: 50px auto;
             padding: 30px;
             border: 1px solid #ddd;
             border-radius: 10px;
@@ -58,6 +58,22 @@
         .button-container button:hover {
             background-color: #06416a;
         }
+        .enlace-boton {
+    display: inline-block;
+    background-color: #1667a8;
+    color: white;
+    padding: 15px 25px;
+    font-size: 18px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.enlace-boton:hover {
+    background-color: #06416a;
+}
+
     </style>
 </head>
 
@@ -75,17 +91,25 @@
         <div class="account-info">
             <span>Nombre</span>
             <div>Martin Ignacio Galvez</div>
-            
-            <span>Localidad</span>
-            <div>Ramos Mejia</div>
+
+            <span>DNI</span>
+            <div>47273555</div>
+
 
             <span>Correo electrónico</span>  <!-- Nuevo dato de correo -->
             <div>martin.galvez@gmail.com</div>
+
+            <span>Monto</span>
+            <div>$</div>
+
+            
+
         </div>
 
         <div class="button-container">
-            <button>CONFIRMAR</button>
-        </div>
+    <a href="fin_trans.php" class="enlace-boton">Confirmar transferencia</a>
+</div>
+
     </div>
 </body>
 </html>

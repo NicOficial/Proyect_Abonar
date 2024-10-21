@@ -73,7 +73,7 @@
         <h2>¡Transferiste $1,00 a Peluso Ezequiel Valentin!</h2>
 
         <div class="button-container">
-            <a href="abonar.php">VOLVER AL INICIO</a>
+            <a href="abonar.php">Volver al inicio</a>
         </div>
     </div>
 </body>

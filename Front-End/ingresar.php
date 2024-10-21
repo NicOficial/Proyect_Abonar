@@ -38,7 +38,7 @@
     <input type="number" id="amount" placeholder="Monto en $" required>
     <br>
     <!-- Botón que valida y envía -->
-    <button type="submit" id="nextButton">Siguiente</button>
+    <a href="../Front-End/codigocargafinal.php" class="boton-ingresar">Siguiente</a>
     <div id="result"></div>
   </form>
 </div>
@@ -67,20 +67,22 @@ input {
   border-radius: 4px;
 }
 
-button {
-  background-color: #1667a8;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #06416a;
-}
+.boton-ingresar, .boton-transferir {
+            display: inline-block;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #337ab7;
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+  
+        .boton-ingresar:hover, .boton-transferir:hover {
+            background-color: #23527c;
+        }
+  
 
 #result {
   margin-top: 20px;

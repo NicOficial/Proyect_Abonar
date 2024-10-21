@@ -115,14 +115,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <form id="paymentForm" method="post" action="">
 
-      <label for="email">Correo Electrónico del destinatario:</label>
-      <input type="email" id="email" name="email" placeholder="Ingrese el mail de destinatario " required>
-      
-      <label for="amount">Monto a enviar:</label>
-      <input type="number" id="amount" name="amount" placeholder="Monto en $" required>
-      
-      <button type="submit">Enviar</button>
-    </form>
+<label for="email">Correo Electrónico del destinatario:</label>
+<input type="email" id="email" name="email" placeholder="Ingrese el mail de destinatario " required>
+
+<label for="amount">Monto a enviar:</label>
+<input type="number" id="amount" name="amount" placeholder="Monto en $" required>
+
+<!-- Cambiar el botón por un enlace -->
+<a href="conf_trans.php" class="enlace-boton">Siguiente</a>
+</form>
+
 
     <div id="result"></div>
   </div>
@@ -191,7 +193,29 @@ button:hover {
   margin-top: 20px;
   font-size: 18px;
   color: #333;
+
+
+
 }
+
+
+.enlace-boton {
+  display: inline-block;
+  background-color: #1667a8;
+  color: #fff;
+  padding: 12px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.enlace-boton:hover {
+  background-color: #06416a;
+}
+
 
 </style>
 
