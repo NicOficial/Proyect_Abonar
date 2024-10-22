@@ -19,56 +19,6 @@ $amount = $row['amount'];
 $id_wallet_of = $row['id_wallet'];
 
 $mensaje = '';
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $destinatario_email = $_POST['email'] ?? '';
-    $monto_transferencia = floatval($_POST['amount'] ?? 0);
-
-    // Comprobar que no se está transfiriendo a sí mismo
-    if ($destinatario_email === $email) {
-        $mensaje = "No puedes transferir dinero a tu propia cuenta.";
-    } elseif ($monto_transferencia <= $amount) {
-        // Verificar si el destinatario existe
-        $check_destinatario = mysqli_query($conexion, "SELECT users.id_users, wallets.id_wallet FROM users JOIN wallets ON users.id_users = wallets.id_user WHERE users.email = '$destinatario_email'");
-        if (mysqli_num_rows($check_destinatario) > 0) {
-            $destinatario_row = mysqli_fetch_assoc($check_destinatario);
-            $id_destinatario = $destinatario_row['id_users'];
-            $id_wallet_to = $destinatario_row['id_wallet'];
-
-            // Iniciar transacción
-            mysqli_begin_transaction($conexion);
-
-            try {
-                // Actualizar saldo del remitente
-                mysqli_query($conexion, "UPDATE wallets SET amount = amount - $monto_transferencia WHERE id_wallet = $id_wallet_of");
-
-                // Actualizar saldo del destinatario
-                mysqli_query($conexion, "UPDATE wallets SET amount = amount + $monto_transferencia WHERE id_wallet = $id_wallet_to");
-
-                // Registrar la transacción
-                $fecha_actual = date('Y-m-d H:i:s');
-                $insertar_transaccion = mysqli_query($conexion, "INSERT INTO transactions (date, amount, id_wallet_of, id_wallet_to) VALUES ('$fecha_actual', $monto_transferencia, $id_wallet_of, $id_wallet_to)");
-
-                if (!$insertar_transaccion) {
-                    throw new Exception("Error al registrar la transacción");
-                }
-
-                // Confirmar transacción
-                mysqli_commit($conexion);
-
-                $amount -= $monto_transferencia; // Actualizar el saldo local
-                $mensaje = "Transferencia exitosa.";
-            } catch (Exception $e) {
-                mysqli_rollback($conexion);
-                $mensaje = "Error en la transferencia: " . $e->getMessage();
-            }
-        } else {
-            $mensaje = "El destinatario no existe en nuestro sistema.";
-        }
-    } else {
-        $mensaje = "Saldo insuficiente.";
-    }
-}
 ?>
 
 <!DOCTYPE html>
@@ -129,6 +79,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div id="result"></div>
   </div>
 </body>
+
+<script>
+  // Esperar a que el documento esté completamente cargado
+document.addEventListener('DOMContentLoaded', function() {
+    // Obtener el formulario y el enlace
+    const form = document.getElementById('paymentForm');
+    const nextButton = form.querySelector('.enlace-boton');
+    
+    // Agregar evento click al botón de siguiente
+    nextButton.addEventListener('click', function(e) {
+        e.preventDefault(); // Prevenir la navegación inmediata
+        
+        // Obtener los valores de los inputs
+        const email = document.getElementById('email').value;
+        const amount = document.getElementById('amount').value;
+        
+        // Validar que los campos no estén vacíos
+        if(!email || !amount) {
+            alert('Por favor, complete todos los campos');
+            return;
+        }
+        
+        // Guardar los valores en localStorage
+        localStorage.setItem('transferEmail', email);
+        localStorage.setItem('transferAmount', amount);
+        
+        // Redirigir a la página de confirmación
+        window.location.href = 'conf_trans.php';
+    });
+});
+</script>
 
 <style>
     * {
