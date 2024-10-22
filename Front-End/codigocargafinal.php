@@ -113,20 +113,7 @@
             margin-right: 10px;
         }
     </style>
-    <script>
-        // Función para generar un código aleatorio de 6 dígitos
-        function generarCodigoAleatorio() {
-            return Math.floor(100000 + Math.random() * 900000); // Genera un número de 6 dígitos
-        }
-
-        // Añadir el código generado al texto
-        window.onload = function() {
-            const codigo = generarCodigoAleatorio();
-            document.getElementById('codigo-generado').innerText = codigo;
-        };
-    </script>
 </head>
-
 <body>
     <header>
         <nav>
@@ -137,7 +124,7 @@
     </header>
 
     <div class="account-container">
-        <h2>Este es tu código para cargar $ </h2>
+        <h2>Este es tu código para cargar $<span id="monto-guardado"></span></h2>
         <h2><span id="codigo-generado"></span></h2>
         <div class="account-info">
             <div class="centered-icon-text">
@@ -152,7 +139,6 @@
                 <img src="../Img/numero3.PNG" alt="Icono número 3" id="numero3foto"/>
                 ¡Listo!, ya podés ver tu plata en la app.
             </div>
-            
             <div class="centered-icon-text">
                 <img src="../Img/calendarioxdlol.PNG" alt="Icono calendario" />
                 Vence hoy a las 23:59 hs.
@@ -163,5 +149,22 @@
         </div>
     </div>
 
+    <script>
+        // Función para generar un código aleatorio de 6 dígitos
+        function generarCodigoAleatorio() {
+            return Math.floor(100000 + Math.random() * 900000); // Genera un número de 6 dígitos
+        }
+
+        // Al cargar la página, mostrar el código y el monto
+        window.onload = function() {
+            // Obtener y mostrar el código
+            const codigo = generarCodigoAleatorio();
+            document.getElementById('codigo-generado').innerText = codigo;
+
+            // Obtener y mostrar el monto desde localStorage
+            const montoGuardado = localStorage.getItem('montoTransferencia');
+            document.getElementById('monto-guardado').innerText = montoGuardado ? montoGuardado : '0';
+        };
+    </script>
 </body>
 </html>

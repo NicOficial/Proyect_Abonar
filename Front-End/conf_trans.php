@@ -108,6 +108,7 @@
 
         <div class="button-container">
     <a href="fin_trans.php" class="enlace-boton">Confirmar transferencia</a>
+    <a href="fin_trans.php" class="enlace-boton">Cancelar transferencia</a>
 </div>
 
     </div>

@@ -33,17 +33,47 @@
 <div class="container">
   <h2>Ingrese el monto que desea cargar</h2>
   <br>
-  <form id="transferForm" action="conf_trans.php" method="GET">
+  <form id="transferForm" onsubmit="return saveAndSubmit(event)">
     <!-- Monto requerido -->
-    <input type="number" id="amount" placeholder="Monto en $" required>
+    <input type="number" id="amount" name="amount" placeholder="Monto en $" required>
     <br>
     <!-- Botón que valida y envía -->
-    <a href="../Front-End/codigocargafinal.php" class="boton-ingresar">Siguiente</a>
-    <div id="result"></div>
+    <button type="submit" class="boton-ingresar">Siguiente</button>
   </form>
 </div>
 
-<script src="script.js"></script>
+<script>
+function saveAndSubmit(event) {
+    event.preventDefault();
+    
+    // Obtener el valor del input
+    const montoInput = document.getElementById('amount');
+    const monto = montoInput.value;
+    
+    // Validar que el monto sea mayor a 0
+    if (monto <= 0) {
+        document.getElementById('result').innerHTML = 'Por favor ingrese un monto válido';
+        return false;
+    }
+    
+    // Guardar el monto en localStorage
+    localStorage.setItem('montoTransferencia', monto);
+    
+    // Redireccionar a la siguiente página
+    window.location.href = '../Front-End/codigocargafinal.php';
+    
+    return false;
+}
+
+// Verificar si hay un monto guardado al cargar la página
+window.onload = function() {
+    const montoGuardado = localStorage.getItem('montoTransferencia');
+    if (montoGuardado) {
+        document.getElementById('amount').value = montoGuardado;
+    }
+}
+</script>
+
 </body>
 </html>
 
