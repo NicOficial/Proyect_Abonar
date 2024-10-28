@@ -61,7 +61,7 @@
                 Nuestra mision es diseñar interfaces modernas e interactivas; brindar seguridad y facilitar la gestión de dinero de los usuarios. <br>
                 Nos vemos como el mejor monedero digital de Argentina, con las mejores reseñas y publico. 
                 </p>
-            <a href="privacidad.html" class="btn" target="_blank">Leer Mas</a>
+            <a href="#services" class="btn" >Leer Mas</a>
         </div>
     </section>
 
@@ -72,19 +72,16 @@
                 <i class="bx bx-code-alt"></i>
                 <h3>Simplicidad</h3>
                 <p>Hacemos que las transferencias digitales sean fáciles para todos.</p>
-                    <a href="privacidad.html" class="btn" target="_blank">Leer mas</a>
             </div>
             <div class="services-box">
                 <i class="bx bxs-paint"></i>
                 <h3>Seguridad</h3>
                 <p>Protegemos los datos y dinero de todos nuestros usuarios para que utilicen nuestra plataforma con total tranquilidad.</p>
-                    <a href="privacidad.html" class="btn" target="_blank">Leer mas</a>
             </div>
                     <div class="services-box">
                         <i class="bx bx-bar-chart-alt"></i>
                         <h3>Innovacion</h3>
                         <p>Buscamos mejorar nuestra plataforma en base a las reseñas de nuestros usuarios.</p>
-                            <a href="privacidad.html" class="btn" target="_blank">Leer mas</a>
 
             
         </div>
@@ -97,7 +94,6 @@
                 <div class="portfolio-layer">
                     <h4>Control y Seguridad</h4>
                     <p>Ofrecemos un seguimiento en tus transacciones.</p>
-                    <a href="privacidad.html" target="_blank"><i class="bx bx-link-external"></i></a>
                 </div>
             </div>
             <div class="portfolio-box">
@@ -105,7 +101,6 @@
                 <div class="portfolio-layer">
                     <h4>Conveniencia en la gestion</h4>
                     <p>Te persuadimos ya que nuestra gestion en las transferencias es la mejor.</p>
-                    <a href="privacidad.html" target="_blank"><i class="bx bx-link-external"></i></a>
                 </div>
             </div>
             <div class="portfolio-box">
@@ -113,7 +108,6 @@
                 <div class="portfolio-layer">
                     <h4>Chat interactivo</h4>
                     <p>Un bot conectado a nuestra base de datos el cual te permite resolver todas tus dudas.</p>
-                    <a href="privacidad.html" target="_blank"><i class="bx bx-link-external"></i></a>
                 </div>
             </div>
             <div class="portfolio-box">
@@ -121,7 +115,6 @@
                 <div class="portfolio-layer">
                     <h4>Confianza</h4>
                     <p>Al ser usuario de Abonar, no debes preocuparte por ningún ciberataque, tu plata estará segura en todo momento.</p>
-                    <a href="privacidad.html" target="_blank"><i class="bx bx-link-external"></i></a>
                 </div>
             </div>
             <div class="portfolio-box">
@@ -129,7 +122,6 @@
                 <div class="portfolio-layer">
                     <h4>Comodidad</h4>
                     <p>Ofrecemos servicios cómodos a la vista y fáciles de utilizar para que ningún usuario tenga problemas.</p>
-                    <a href="privacidad.html" target="_blank"><i class="bx bx-link-external"></i></a>
                 </div>
             </div>
             <div class="portfolio-box">
@@ -137,14 +129,13 @@
                 <div class="portfolio-layer">
                     <h4>Innovacion tecnologica</h4>
                     <p>Nos adaptamos a la moda ofreciendote una billetera responsiva.</p>
-                    <a href="privacidad.html" target="_blank"><i class="bx bx-link-external"></i></a>
                 </div>
             </div>
         </div>
     </section>
 
     <section class="contact" id="contact">
-        <h2 class="heading">Contacta a <span>Abonar!</span></h2>
+        <h2 class="heading">Contacta a <span>Abonar</span></h2>
     
         <form
         action="https://formspree.io/f/xzzpazqy"
