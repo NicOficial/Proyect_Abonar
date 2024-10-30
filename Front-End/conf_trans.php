@@ -13,76 +13,111 @@ $amount = $row['amount'];
 $id_wallet_of = $row['id_wallet'];
 
 $mensaje = '';
-$destinatario = null;
 
-// Procesar la transferencia si se envió el formulario
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['action'])) {
-        if ($_POST['action'] === 'confirmar') {
-            $destinatario_email = $_POST['email'] ?? '';
-            $monto_transferencia = floatval($_POST['amount'] ?? 0);
+// Obtener los valores en PHP
+$destinatario_email = isset($_POST['destinatario_email']) ? mysqli_real_escape_string($conexion, $_POST['destinatario_email']) : '';
+$monto_transferencia = isset($_POST['monto_transferencia']) ? floatval($_POST['monto_transferencia']) : 0;
 
-            // Validaciones
-            if ($destinatario_email === $email) {
-                $mensaje = "No puedes transferir dinero a tu propia cuenta.";
-            } elseif ($monto_transferencia <= 0) {
-                $mensaje = "El monto debe ser mayor a 0.";
-            } elseif ($monto_transferencia > $amount) {
-                $mensaje = "Saldo insuficiente.";
-            } else {
-                // Verificar si el destinatario existe
-                $check_destinatario = mysqli_query($conexion, "SELECT users.id_users, users.name, users.surname, wallets.id_wallet 
-                                                             FROM users 
-                                                             JOIN wallets ON users.id_users = wallets.id_user 
-                                                             WHERE users.email = '$destinatario_email'");
-                
-                $id_wallet_to = $destinatario_row['id_wallet'];
-                $destinatario_name = $destinatario_row['name'];
-                $destinatario_surname =  $destinatario_row['surname'];
-                $destinatario_dni =  $destinatario_row['dni'];
-                
-                if (mysqli_num_rows($check_destinatario) > 0) {
-                    $destinatario_row = mysqli_fetch_assoc($check_destinatario);
+// Procesamiento inicial de la transferencia
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && !isset($_POST['action'])) {
+    // Validaciones iniciales
+    if ($destinatario_email === $email) {
+        $_SESSION['mensaje'] = "No puedes transferir dinero a tu propia cuenta.";
+        header('Location: transferencias.php');
+        exit;
+    } elseif ($monto_transferencia <= 0) {
+        $_SESSION['mensaje'] = "El monto debe ser mayor a 0.";
+        header('Location: transferencias.php');
+        exit;
+    } elseif ($monto_transferencia > $amount) {
+        $_SESSION['mensaje'] = "Saldo insuficiente.";
+        header('Location: transferencias.php');
+        exit;
+    }
 
-                    mysqli_begin_transaction($conexion);
+    // Verificar destinatario
+    $check_destinatario = mysqli_query($conexion, "SELECT users.id_users, users.name, users.surname, users.dni, wallets.id_wallet 
+                                                 FROM users 
+                                                 JOIN wallets ON users.id_users = wallets.id_user 
+                                                 WHERE users.email = '$destinatario_email'");
+    
+    if (mysqli_num_rows($check_destinatario) > 0) {
+        $destinatario_row = mysqli_fetch_assoc($check_destinatario);
+        $id_wallet_to = $destinatario_row['id_wallet'];
+        $destinatario_name = $destinatario_row['name'];
+        $destinatario_surname = $destinatario_row['surname'];
+        $destinatario_dni = $destinatario_row['dni'];
+        
+        $mostrar_confirmacion = true;
+    } else {
+        $_SESSION['mensaje'] = "El destinatario no existe en nuestro sistema.";
+        header('Location: transferencias.php');
+        exit;
+    }
+} 
+// Procesamiento de la confirmación
+elseif ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
+    if ($_POST['action'] === 'confirmar') {
+        // Volver a obtener y verificar los datos del destinatario
+        $destinatario_email = mysqli_real_escape_string($conexion, $_POST['destinatario_email']);
+        $monto_transferencia = floatval($_POST['monto_transferencia']);
+        
+        $check_destinatario = mysqli_query($conexion, "SELECT users.id_users, users.name, users.surname, wallets.id_wallet 
+                                                     FROM users 
+                                                     JOIN wallets ON users.id_users = wallets.id_user 
+                                                     WHERE users.email = '$destinatario_email'");
+        
+        if (mysqli_num_rows($check_destinatario) > 0) {
+            $destinatario_row = mysqli_fetch_assoc($check_destinatario);
+            $id_wallet_to = $destinatario_row['id_wallet'];
+            $destinatario_name = $destinatario_row['name'];
+            $destinatario_surname = $destinatario_row['surname'];
 
-                    try {
-                        // Actualizar saldo del remitente
-                        mysqli_query($conexion, "UPDATE wallets SET amount = amount - $monto_transferencia WHERE id_wallet = $id_wallet_of");
+            mysqli_begin_transaction($conexion);
 
-                        // Actualizar saldo del destinatario
-                        mysqli_query($conexion, "UPDATE wallets SET amount = amount + $monto_transferencia WHERE id_wallet = $id_wallet_to");
+            try {
+                // Actualizar saldo del remitente
+                $query_remitente = "UPDATE wallets SET amount = amount - $monto_transferencia WHERE id_wallet = $id_wallet_of";
+                $update_remitente = mysqli_query($conexion, $query_remitente);
 
-                        // Registrar la transacción
-                        $fecha_actual = date('Y-m-d H:i:s');
-                        $insertar_transaccion = mysqli_query($conexion, "INSERT INTO transactions (date, amount, id_wallet_of, id_wallet_to) 
-                                                                        VALUES ('$fecha_actual', $monto_transferencia, $id_wallet_of, $id_wallet_to)");
+                // Actualizar saldo del destinatario
+                $query_destinatario = "UPDATE wallets SET amount = amount + $monto_transferencia WHERE id_wallet = $id_wallet_to";
+                $update_destinatario = mysqli_query($conexion, $query_destinatario);
 
-                        if (!$insertar_transaccion) {
-                            throw new Exception("Error al registrar la transacción");
-                        }
+                // Registrar la transacción
+                $fecha_actual = date('Y-m-d H:i:s');
+                $query_transaccion = "INSERT INTO transactions (date, amount, id_wallet_of, id_wallet_to) 
+                                    VALUES ('$fecha_actual', $monto_transferencia, $id_wallet_of, $id_wallet_to)";
+                $insertar_transaccion = mysqli_query($conexion, $query_transaccion);
 
-                        mysqli_commit($conexion);
-                        
-                        // Guardar datos para la página final y redirigir
-                        $_SESSION['transferencia_exitosa'] = true;
-                        $_SESSION['monto_transferido'] = $monto_transferencia;
-                        $_SESSION['destinatario_nombre'] = $destinatario_row['name'] . ' ' . $destinatario_row['surname'];
-                        
-                        header('Location: fin_trans.php');
-                        exit;
-                    } catch (Exception $e) {
-                        mysqli_rollback($conexion);
-                        $mensaje = "Error en la transferencia: " . $e->getMessage();
-                    }
-                } else {
-                    $mensaje = "El destinatario no existe en nuestro sistema.";
+                if (!$update_remitente || !$update_destinatario || !$insertar_transaccion) {
+                    throw new Exception("Error en la operación de base de datos");
                 }
+
+                mysqli_commit($conexion);
+                
+                // Guardar datos para fin_trans.php
+                $_SESSION['transferencia_exitosa'] = true;
+                $_SESSION['monto_transferido'] = $monto_transferencia;
+                $_SESSION['destinatario_nombre'] = $destinatario_name . ' ' . $destinatario_surname;
+                
+                header('Location: fin_trans.php');
+                exit;
+            } catch (Exception $e) {
+                mysqli_rollback($conexion);
+                $_SESSION['mensaje'] = "Error en la transferencia: " . mysqli_error($conexion);
+                header('Location: transferencias.php');
+                exit;
             }
-        } elseif ($_POST['action'] === 'cancelar') {
+        } else {
+            $_SESSION['mensaje'] = "Error: No se encontró el destinatario.";
             header('Location: transferencias.php');
             exit;
         }
+    } elseif ($_POST['action'] === 'cancelar') {
+        $_SESSION['mensaje'] = "La transferencia ha sido cancelada.";
+        header('Location: transferencias.php');
+        exit;
     }
 }
 ?>
@@ -115,11 +150,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <h2>Confirmar Transferencia</h2>
         <div class="account-info" id="recipientInfo">
-            <!-- Los datos se llenarán via JavaScript -->
             <span>Nombre</span>
             <div><?php echo htmlspecialchars($destinatario_name); ?></div>
             
-            <span>Nombre</span>
+            <span>Apellido</span>
             <div><?php echo htmlspecialchars($destinatario_surname); ?></div>
 
             <span>DNI</span>
@@ -129,12 +163,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div><?php echo htmlspecialchars($destinatario_email); ?></div>
 
             <span>Monto a transferir</span>
-            <div id="montoTransferencia"></div>
+            <div><?php echo htmlspecialchars($monto_transferencia); ?></div>
         </div>
 
         <form method="POST" id="confirmForm">
-            <input type="hidden" name="email" id="emailHidden">
-            <input type="hidden" name="amount" id="amountHidden">
+            <input type="hidden" name="destinatario_email" value="<?php echo htmlspecialchars($destinatario_email); ?>">
+            <input type="hidden" name="monto_transferencia" value="<?php echo htmlspecialchars($monto_transferencia); ?>">
             
             <div class="button-container">
                 <button type="submit" name="action" value="confirmar" class="enlace-boton">Confirmar transferencia</button>
@@ -142,42 +176,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </form>
     </div>
-
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Obtener datos del localStorage
-        const emailDestinatario = localStorage.getItem('transferEmail');
-        const montoTransferencia = localStorage.getItem('transferAmount');
-
-        if (!emailDestinatario || !montoTransferencia) {
-            window.location.href = 'transferencias.php';
-            return;
-        }
-
-        // Llenar los campos ocultos del formulario
-        document.getElementById('emailHidden').value = emailDestinatario;
-        document.getElementById('amountHidden').value = montoTransferencia;
-
-        // Realizar consulta AJAX para obtener datos del destinatario
-        fetch('?email=' + encodeURIComponent(emailDestinatario), {
-            method: 'GET'
-        })
-        .then(response => response.text())
-        .then(html => {
-            // Mostrar los datos en la página
-            document.getElementById('emailDestinatario').textContent = emailDestinatario;
-            document.getElementById('montoTransferencia').textContent = '$' + montoTransferencia;
-        });
-
-        // Manejar el envío del formulario
-        document.getElementById('confirmForm').addEventListener('submit', function(e) {
-            // Si es cancelar, limpiar localStorage antes de enviar
-            if (e.submitter.value === 'cancelar') {
-                localStorage.removeItem('transferEmail');
-                localStorage.removeItem('transferAmount');
-            }
-        });
-    });
-    </script>
 </body>
 </html>

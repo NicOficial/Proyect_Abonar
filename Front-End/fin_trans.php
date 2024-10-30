@@ -3,7 +3,7 @@ session_start();
 
 // Verificar si existe la información de la transferencia
 if (!isset($_SESSION['transferencia_exitosa']) || !$_SESSION['transferencia_exitosa']) {
-    header('Location: transferencia.php');
+    header('Location: transferencias.php');
     exit;
 }
 

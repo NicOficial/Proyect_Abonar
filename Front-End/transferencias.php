@@ -3,6 +3,11 @@ session_start();
 
 include '../Back-End/con_db.php';
 
+if (isset($_SESSION['mensaje'])) {
+  $mensaje = $_SESSION['mensaje'];
+  unset($_SESSION['mensaje']);
+}
+
 $email = $_SESSION['email'];
 $info_user = mysqli_query($conexion, "SELECT users.id_users, users.name, users.surname, users.email, users.password, users.street, users.snumber, users.locality, users.dni, wallets.id_wallet, wallets.amount FROM users JOIN wallets ON users.id_users = wallets.id_user WHERE users.email = '$email';");
 
@@ -18,7 +23,6 @@ $dni = $row['dni'];
 $amount = $row['amount'];
 $id_wallet_of = $row['id_wallet'];
 
-$mensaje = '';
 ?>
 
 <!DOCTYPE html>
@@ -56,60 +60,29 @@ $mensaje = '';
 </head>
 <body>
   <div class="container">
-    <h1>Enviar Dinero</h1>
-    <?php if ($mensaje): ?>
-      <div class="mensaje"><?php echo $mensaje; ?></div>
+
+    <?php if (!empty($mensaje)): ?>
+      <div class="mensaje"><?php echo htmlspecialchars($mensaje); ?></div>
     <?php endif; ?>
+
+    <h1>Enviar Dinero</h1>
 
     <h3>Cantidad disponible: <?php echo htmlspecialchars($amount); ?>$</h3>
 
-    <form id="paymentForm" method="post" action="">
+    <form id="paymentForm" method="post" action="conf_trans.php">
+    <label for="email">Correo Electrónico del destinatario:</label>
+    <input type="email" id="email" name="destinatario_email" placeholder="Ingrese el mail de destinatario" required>
 
-<label for="email">Correo Electrónico del destinatario:</label>
-<input type="email" id="email" name="email" placeholder="Ingrese el mail de destinatario " required>
+    <label for="amount">Monto a enviar:</label>
+    <input type="number" id="amount" name="monto_transferencia" placeholder="Monto en $" required>
 
-<label for="amount">Monto a enviar:</label>
-<input type="number" id="amount" name="amount" placeholder="Monto en $" required>
-
-<!-- Cambiar el botón por un enlace -->
-<a href="conf_trans.php" class="enlace-boton">Siguiente</a>
+    <button type="submit">Enviar</button>
 </form>
 
 
     <div id="result"></div>
   </div>
 </body>
-
-<script>
-  // Esperar a que el documento esté completamente cargado
-document.addEventListener('DOMContentLoaded', function() {
-    // Obtener el formulario y el enlace
-    const form = document.getElementById('paymentForm');
-    const nextButton = form.querySelector('.enlace-boton');
-    
-    // Agregar evento click al botón de siguiente
-    nextButton.addEventListener('click', function(e) {
-        e.preventDefault(); // Prevenir la navegación inmediata
-        
-        // Obtener los valores de los inputs
-        const email = document.getElementById('email').value;
-        const amount = document.getElementById('amount').value;
-        
-        // Validar que los campos no estén vacíos
-        if(!email || !amount) {
-            alert('Por favor, complete todos los campos');
-            return;
-        }
-        
-        // Guardar los valores en localStorage
-        localStorage.setItem('transferEmail', email);
-        localStorage.setItem('transferAmount', amount);
-        
-        // Redirigir a la página de confirmación
-        window.location.href = 'conf_trans.php';
-    });
-});
-</script>
 
 <style>
     * {
