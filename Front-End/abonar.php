@@ -4,6 +4,11 @@ session_start();
 include '../Back-End/con_db.php';
 
 $email = $_SESSION['email'];
+if (!isset($email)) {
+    header("Location: login.php");
+    exit(); 
+}
+
 $info_user = mysqli_query($conexion, "SELECT users.id_users, users.name, users.surname, users.email, users.password, users.street, users.snumber, users.locality, users.dni, wallets.id_wallet, wallets.amount FROM users JOIN wallets ON users.id_users = wallets.id_user WHERE users.email = '$email';");
 
 $row = mysqli_fetch_assoc($info_user);
@@ -228,8 +233,7 @@ mysqli_close($conexion);
 
         </section>
 
-
-        <section id="perfil" style="display:none;">
+    <section id="perfil" style="display:none;">
     <h1>Perfil</h1>
     <p>Aquí puedes visualizar tu información personal y preferencias.</p>
     <form>
@@ -259,20 +263,44 @@ mysqli_close($conexion);
             <div style="flex: 1 1 48%;">
                 <div class="mb-3">
                     <label for="localidad" class="form-label">Localidad</label>
-                    <div class="cuadro-texto">
-                        <?php echo htmlspecialchars($locality); ?>
+                    <div class="editable-container">
+                        <span class="editable-text" id="locality-text"><?php echo htmlspecialchars($locality); ?></span>
+                        <input type="text" class="editable-input" id="locality-input" style="display: none;" value="<?php echo htmlspecialchars($locality); ?>">
+                        <div class="edit-controls">
+                            <i class="fas fa-pencil-alt edit-icon" data-field="locality"></i>
+                            <div class="confirm-controls" style="display: none;">
+                                <i class="fas fa-check confirm-icon"></i>
+                                <i class="fas fa-times cancel-icon"></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label for="dni" class="form-label">Calle</label>
-                    <div class="cuadro-texto">
-                        <?php echo htmlspecialchars($street); ?>
+                    <label for="calle" class="form-label">Calle</label>
+                    <div class="editable-container">
+                        <span class="editable-text" id="street-text"><?php echo htmlspecialchars($street); ?></span>
+                        <input type="text" class="editable-input" id="street-input" style="display: none;" value="<?php echo htmlspecialchars($street); ?>">
+                        <div class="edit-controls">
+                            <i class="fas fa-pencil-alt edit-icon" data-field="street"></i>
+                            <div class="confirm-controls" style="display: none;">
+                                <i class="fas fa-check confirm-icon"></i>
+                                <i class="fas fa-times cancel-icon"></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label for="dni" class="form-label">Número</label>
-                    <div class="cuadro-texto">
-                        <?php echo htmlspecialchars($snumber); ?>
+                    <label for="numero" class="form-label">Número</label>
+                    <div class="editable-container">
+                        <span class="editable-text" id="snumber-text"><?php echo htmlspecialchars($snumber); ?></span>
+                        <input type="text" class="editable-input" id="snumber-input" style="display: none;" value="<?php echo htmlspecialchars($snumber); ?>">
+                        <div class="edit-controls">
+                            <i class="fas fa-pencil-alt edit-icon" data-field="snumber"></i>
+                            <div class="confirm-controls" style="display: none;">
+                                <i class="fas fa-check confirm-icon"></i>
+                                <i class="fas fa-times cancel-icon"></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -280,107 +308,75 @@ mysqli_close($conexion);
     </form>
 
     <div class="acciones-perfil">
-    <button id="btn-editar-perfil" class="btn btn-primary">Editar Perfil</button>
-    <button id="btn-eliminar-cuenta" class="btn btn-danger">Eliminar Cuenta</button>
-</div>
-
-<!-- Modal para Editar Perfil -->
-<div class="modal" id="editarPerfilModal" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Editar Perfil</h5>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <form id="form-editar-perfil">
-                    <!-- Campos de edición de perfil -->
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" id="guardar-cambios">Guardar Cambios</button>
-            </div>
-        </div>
+        <button id="btn-eliminar-cuenta" class="btn btn-danger">Eliminar Cuenta</button>
     </div>
-</div>
 
-<!-- Modal de Confirmación de Eliminar Cuenta -->
-<div class="modal" id="confirmarEliminarModal" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Confirmar Eliminación de Cuenta</h5>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <p>¿Estás seguro de que deseas eliminar permanentemente tu cuenta? Esta acción no se puede deshacer.</p>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="confirmacion-eliminar">
-                    <label class="form-check-label" for="confirmacion-eliminar">
-                        Entiendo que esta acción eliminará todos mis datos
-                    </label>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-danger" id="eliminar-cuenta-confirmado" disabled>Eliminar Cuenta</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
+    <script>
     document.addEventListener('DOMContentLoaded', function() {
-    const editarPerfilModal = new Modal(document.getElementById('editarPerfilModal'));
-    const confirmarEliminarModal = new Modal(document.getElementById('confirmarEliminarModal'));
-    const guardarCambiosBtn = document.getElementById('guardar-cambios');
-    const eliminarCuentaBtn = document.getElementById('btn-eliminar-cuenta');
-    const eliminarCuentaConfirmadoBtn = document.getElementById('eliminar-cuenta-confirmado');
-    const confirmacionCheckbox = document.getElementById('confirmacion-eliminar');
+        const editableFields = ['locality', 'street', 'snumber'];
+        
+        editableFields.forEach(field => {
+            const container = document.querySelector(`#${field}-text`).closest('.editable-container');
+            const text = container.querySelector('.editable-text');
+            const input = container.querySelector('.editable-input');
+            const editIcon = container.querySelector('.edit-icon');
+            const confirmControls = container.querySelector('.confirm-controls');
+            const confirmIcon = container.querySelector('.confirm-icon');
+            const cancelIcon = container.querySelector('.cancel-icon');
+            
+            // Enable editing
+            editIcon.addEventListener('click', () => {
+                text.style.display = 'none';
+                input.style.display = 'block';
+                editIcon.style.display = 'none';
+                confirmControls.style.display = 'flex';
+                input.focus();
+                input.select();
+            });
 
-    // Abrir modal de edición
-    document.getElementById('btn-editar-perfil').addEventListener('click', function() {
-        editarPerfilModal.show();
+            // Confirm changes
+            confirmIcon.addEventListener('click', async () => {
+                const newValue = input.value.trim();
+                if (newValue !== '') {
+                    try {
+                        const response = await fetch('../Back-End/actualizar_perfil.php', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded',
+                            },
+                            body: `field=${field}&value=${encodeURIComponent(newValue)}`
+                        });
+
+                        const data = await response.json();
+                        if (data.success) {
+                            text.textContent = newValue;
+                            exitEditMode();
+                        } else {
+                            alert('Error al actualizar el campo');
+                        }
+                    } catch (error) {
+                        console.error('Error:', error);
+                        alert('Error al actualizar el campo');
+                    }
+                }
+            });
+
+            // Cancel changes
+            cancelIcon.addEventListener('click', () => {
+                input.value = text.textContent;
+                exitEditMode();
+            });
+
+            function exitEditMode() {
+                text.style.display = 'block';
+                input.style.display = 'none';
+                editIcon.style.display = 'block';
+                confirmControls.style.display = 'none';
+            }
+        });
     });
-
-    // Guardar cambios
-    guardarCambiosBtn.addEventListener('click', function() {
-        // Código para actualizar el perfil
-    });
-
-    // Mostrar modal de eliminación de cuenta
-    eliminarCuentaBtn.addEventListener('click', function() {
-        confirmarEliminarModal.show();
-    });
-
-    // Validar checkbox de confirmación
-    confirmacionCheckbox.addEventListener('change', function() {
-        eliminarCuentaConfirmadoBtn.disabled = !this.checked;
-    });
-
-    // Eliminar cuenta
-    eliminarCuentaConfirmadoBtn.addEventListener('click', function() {
-        // Código para eliminar la cuenta
-    });
-});
-
-// Implementación básica de Modal sin Bootstrap
-class Modal {
-    constructor(element) {
-        this.element = element;
-        this.element.style.display = 'none';
-    }
-
-    show() {
-        this.element.style.display = 'block';
-    }
-
-    hide() {
-        this.element.style.display = 'none';
-    }
-}
-</script>
+    </script>
+</section>
 </section>
 
 

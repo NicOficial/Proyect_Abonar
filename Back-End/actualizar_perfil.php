@@ -5,15 +5,22 @@ include 'con_db.php';
 header('Content-Type: application/json');
 
 $email = $_SESSION['email'];
-$nombre = $_POST['nombre'];
-$apellido = $_POST['apellido'];
-$calle = $_POST['calle'];
-$numero = $_POST['numero'];
-$localidad = $_POST['localidad'];
-$dni = $_POST['dni'];
+$field = $_POST['field'];
+$value = $_POST['value'];
 
-$stmt = mysqli_prepare($conexion, "CALL UpdateUserProfile(?, ?, ?, ?, ?, ?, ?)");
-mysqli_stmt_bind_param($stmt, "ssssssi", $email, $nombre, $apellido, $calle, $numero, $localidad, $dni);
+// Validate field name to prevent SQL injection
+$allowedFields = ['locality' => 'locality', 'street' => 'street', 'snumber' => 'snumber'];
+
+if (!isset($allowedFields[$field])) {
+    echo json_encode(['success' => false, 'message' => 'Invalid field']);
+    exit;
+}
+
+$dbField = $allowedFields[$field];
+
+// Prepare and execute the update query
+$stmt = mysqli_prepare($conexion, "UPDATE users SET $dbField = ? WHERE email = ?");
+mysqli_stmt_bind_param($stmt, "ss", $value, $email);
 
 $response = ['success' => false];
 if (mysqli_stmt_execute($stmt)) {
