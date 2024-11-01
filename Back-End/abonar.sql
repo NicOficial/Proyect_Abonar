@@ -297,3 +297,58 @@ BEGIN
     WHERE users.email = p_email;
 END //
 
+DELIMITER //
+
+-- Stored Procedure para actualizar información de usuario
+CREATE PROCEDURE UpdateUserProfile(
+    IN p_email VARCHAR(100),
+    IN p_name VARCHAR(45),
+    IN p_surname VARCHAR(45),
+    IN p_street VARCHAR(200),
+    IN p_snumber INT,
+    IN p_locality VARCHAR(200),
+    IN p_dni INT
+)
+BEGIN
+    UPDATE users 
+    SET 
+        name = p_name,
+        surname = p_surname,
+        street = p_street,
+        snumber = p_snumber,
+        locality = p_locality,
+        dni = p_dni
+    WHERE email = p_email;
+END //
+
+-- Stored Procedure para eliminar usuario y su wallet
+CREATE PROCEDURE DeleteUserAccount(
+    IN p_email VARCHAR(100)
+)
+BEGIN
+    DECLARE user_id INT;
+    
+    -- Obtener el ID del usuario
+    SELECT id_users INTO user_id FROM users WHERE email = p_email;
+    
+    -- Eliminar transacciones relacionadas
+    DELETE FROM transactions 
+    WHERE id_wallet_of IN (SELECT id_wallet FROM wallets WHERE id_user = user_id)
+    OR id_wallet_to IN (SELECT id_wallet FROM wallets WHERE id_user = user_id);
+    
+    -- Eliminar categorías de transacciones
+    DELETE FROM transaction_categories 
+    WHERE id_transaction IN (
+        SELECT id_transaction FROM transactions 
+        WHERE id_wallet_of IN (SELECT id_wallet FROM wallets WHERE id_user = user_id)
+        OR id_wallet_to IN (SELECT id_wallet FROM wallets WHERE id_user = user_id)
+    );
+    
+    -- Eliminar wallet del usuario
+    DELETE FROM wallets WHERE id_user = user_id;
+    
+    -- Eliminar usuario
+    DELETE FROM users WHERE id_users = user_id;
+END //
+
+DELIMITER ;

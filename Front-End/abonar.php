@@ -278,6 +278,109 @@ mysqli_close($conexion);
             </div>
         </div>
     </form>
+
+    <div class="acciones-perfil">
+    <button id="btn-editar-perfil" class="btn btn-primary">Editar Perfil</button>
+    <button id="btn-eliminar-cuenta" class="btn btn-danger">Eliminar Cuenta</button>
+</div>
+
+<!-- Modal para Editar Perfil -->
+<div class="modal" id="editarPerfilModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Editar Perfil</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="form-editar-perfil">
+                    <!-- Campos de edición de perfil -->
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" id="guardar-cambios">Guardar Cambios</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Confirmación de Eliminar Cuenta -->
+<div class="modal" id="confirmarEliminarModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirmar Eliminación de Cuenta</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>¿Estás seguro de que deseas eliminar permanentemente tu cuenta? Esta acción no se puede deshacer.</p>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="confirmacion-eliminar">
+                    <label class="form-check-label" for="confirmacion-eliminar">
+                        Entiendo que esta acción eliminará todos mis datos
+                    </label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger" id="eliminar-cuenta-confirmado" disabled>Eliminar Cuenta</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const editarPerfilModal = new Modal(document.getElementById('editarPerfilModal'));
+    const confirmarEliminarModal = new Modal(document.getElementById('confirmarEliminarModal'));
+    const guardarCambiosBtn = document.getElementById('guardar-cambios');
+    const eliminarCuentaBtn = document.getElementById('btn-eliminar-cuenta');
+    const eliminarCuentaConfirmadoBtn = document.getElementById('eliminar-cuenta-confirmado');
+    const confirmacionCheckbox = document.getElementById('confirmacion-eliminar');
+
+    // Abrir modal de edición
+    document.getElementById('btn-editar-perfil').addEventListener('click', function() {
+        editarPerfilModal.show();
+    });
+
+    // Guardar cambios
+    guardarCambiosBtn.addEventListener('click', function() {
+        // Código para actualizar el perfil
+    });
+
+    // Mostrar modal de eliminación de cuenta
+    eliminarCuentaBtn.addEventListener('click', function() {
+        confirmarEliminarModal.show();
+    });
+
+    // Validar checkbox de confirmación
+    confirmacionCheckbox.addEventListener('change', function() {
+        eliminarCuentaConfirmadoBtn.disabled = !this.checked;
+    });
+
+    // Eliminar cuenta
+    eliminarCuentaConfirmadoBtn.addEventListener('click', function() {
+        // Código para eliminar la cuenta
+    });
+});
+
+// Implementación básica de Modal sin Bootstrap
+class Modal {
+    constructor(element) {
+        this.element = element;
+        this.element.style.display = 'none';
+    }
+
+    show() {
+        this.element.style.display = 'block';
+    }
+
+    hide() {
+        this.element.style.display = 'none';
+    }
+}
+</script>
 </section>
 
 
