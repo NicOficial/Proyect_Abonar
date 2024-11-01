@@ -19,36 +19,12 @@ $amount = $row['amount'];
 $id_wallet_of = $row['id_wallet'];
 
 // Obtener las últimas transacciones
-$query_transacciones = "
-    SELECT 
-        t.date, 
-        t.amount, 
-        CASE 
-            WHEN t.id_wallet_of = $id_wallet_of THEN 'salida'
-            ELSE 'entrada'
-        END AS tipo,
-        CASE 
-            WHEN t.id_wallet_of = $id_wallet_of THEN u_to.email
-            ELSE u_from.email
-        END AS otro_usuario
-    FROM 
-        transactions t
-    JOIN 
-        wallets w_from ON t.id_wallet_of = w_from.id_wallet
-    JOIN 
-        users u_from ON w_from.id_user = u_from.id_users
-    JOIN 
-        wallets w_to ON t.id_wallet_to = w_to.id_wallet
-    JOIN 
-        users u_to ON w_to.id_user = u_to.id_users
-    WHERE 
-        t.id_wallet_of = $id_wallet_of OR t.id_wallet_to = $id_wallet_of
-    ORDER BY 
-        t.date DESC
-    LIMIT 10
-";
-
-$resultado_transacciones = mysqli_query($conexion, $query_transacciones);
+$query = "CALL GetTransactionHistory(?, ?)";
+$stmt = mysqli_prepare($conexion, $query);
+mysqli_stmt_bind_param($stmt, "ii", $id_wallet_of, $limit);
+$limit = 10;
+mysqli_stmt_execute($stmt);
+$resultado_transacciones = mysqli_stmt_get_result($stmt);
 
 mysqli_close($conexion);
 ?>
