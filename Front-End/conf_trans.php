@@ -131,6 +131,8 @@ elseif ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     <link rel="icon" href="../Img/abonar logo nuevo sin fondo.jpg.png" />
     <link rel="stylesheet" href="../Css/login.css" />
     <link rel="stylesheet" href="../Css/nav.css">
+    <link href="https://db.onlinewebfonts.com/c/d05c19ccecf7003d248c60ffd6b5e8f7?family=Binance+PLEX" rel="stylesheet" type="text/css" />
+
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <title>Abonar‎ |‎ Confirmar Transferencia</title>
 </head>
@@ -150,22 +152,42 @@ elseif ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
 
         <h2>Confirmar Transferencia</h2>
         <div class="account-info" id="recipientInfo">
-            <span>Nombre</span>
-            <div><?php echo htmlspecialchars($destinatario_name); ?></div>
-            
-            <span>Apellido</span>
-            <div><?php echo htmlspecialchars($destinatario_surname); ?></div>
-
-            <span>DNI</span>
-            <div><?php echo htmlspecialchars($destinatario_dni); ?></div>
-
-            <span>Correo electrónico</span>
-            <div><?php echo htmlspecialchars($destinatario_email); ?></div>
-
-            <span>Monto a transferir</span>
-            <div><?php echo htmlspecialchars($monto_transferencia); ?></div>
-        </div>
-
+        <div class="info-container" style="display: flex; flex-wrap: wrap; gap: 20px;">
+            <div style="flex: 1 1 48%;">
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <div class="cuadro-texto">
+                        <div><?php echo htmlspecialchars($destinatario_name); ?></div>
+                            </div>
+                            <div class="info-container" style="display: flex; flex-wrap: wrap; gap: 20px;">
+            <div style="flex: 1 1 48%;">
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Apellido</label>
+                    <div class="cuadro-texto">
+                            <div><?php echo htmlspecialchars($destinatario_surname); ?></div>
+                    </div>
+                    <div class="info-container" style="display: flex; flex-wrap: wrap; gap: 20px;">
+            <div style="flex: 1 1 48%;">
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">DNI</label>
+                    <div class="cuadro-texto">
+                            <div><?php echo htmlspecialchars($destinatario_dni); ?></div>
+                    </div>
+                    <div class="info-container" style="display: flex; flex-wrap: wrap; gap: 20px;">
+            <div style="flex: 1 1 48%;">
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Correo electrónico</label>
+                    <div class="cuadro-texto">
+                            <div><?php echo htmlspecialchars($destinatario_email); ?></div>
+                    </div>
+                    <div class="info-container" style="display: flex; flex-wrap: wrap; gap: 20px;">
+            <div style="flex: 1 1 48%;">
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Monto a transferir</label>
+                    <div class="cuadro-texto">
+                            <div><?php echo htmlspecialchars($monto_transferencia); ?></div>
+                        </div>
+        
         <form method="POST" id="confirmForm">
             <input type="hidden" name="destinatario_email" value="<?php echo htmlspecialchars($destinatario_email); ?>">
             <input type="hidden" name="monto_transferencia" value="<?php echo htmlspecialchars($monto_transferencia); ?>">
@@ -178,3 +200,35 @@ elseif ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     </div>
 </body>
 </html>
+
+<style>
+
+
+
+</style>
+
+
+<style>
+
+  * {
+
+font-family: 'Binance PLEX', sans-serif;
+font-weight: 500;
+
+}
+
+.cuadro-texto {
+    border: 1.5px solid #9a9797; /* Borde del cuadro de texto */
+    padding: 12px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de fuente */
+    width: 18%; /* Ancho del cuadro de texto */
+    text-align: center; /* Alineación del texto */
+    border-radius: 10px;
+    margin-bottom: 15px; /* Espacio de 15px entre los cuadros */
+}
+
+.info-container > div {
+    margin-bottom: 5px; /* Espacio adicional entre los contenedores */
+}
+
+</style>
