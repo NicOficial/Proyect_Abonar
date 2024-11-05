@@ -375,6 +375,48 @@ mysqli_close($conexion);
             }
         });
     });
+    // Obtener el modal
+const deleteModal = document.getElementById('deleteAccountModal');
+const deleteAccountBtn = document.getElementById('btn-eliminar-cuenta');
+
+// Mostrar el modal cuando se hace clic en el botón de eliminar cuenta
+deleteAccountBtn.addEventListener('click', function() {
+    deleteModal.style.display = 'block';
+});
+
+// Función para cerrar el modal
+function closeDeleteModal() {
+    deleteModal.style.display = 'none';
+}
+
+// Función para confirmar y eliminar la cuenta
+function confirmDeleteAccount() {
+    fetch('../Back-End/eliminar_cuenta.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            window.location.href = '../index.php';
+        } else {
+            alert('Error al eliminar la cuenta. Por favor, inténtalo de nuevo.');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Error al eliminar la cuenta. Por favor, inténtalo de nuevo.');
+    });
+}
+
+// Cerrar el modal si se hace clic fuera de él
+window.onclick = function(event) {
+    if (event.target == deleteModal) {
+        closeDeleteModal();
+    }
+}
     </script>
 </section>
 </section>
@@ -510,6 +552,91 @@ mysqli_close($conexion);
         </html>
 
     </main>
+
+    <div id="deleteAccountModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Confirmar eliminación</h4>
+        </div>
+        <div class="modal-body">
+            <p>¿Estás seguro de que deseas eliminar tu cuenta? Esta acción no se puede deshacer.</p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-secondary" onclick="closeDeleteModal()">Cancelar</button>
+            <button class="btn btn-danger" onclick="confirmDeleteAccount()">Eliminar cuenta</button>
+        </div>
+    </div>
+</div>
+
 </body>
 
 </html>
+
+<style>
+    .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+    margin-bottom: 20px;
+}
+
+.modal-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.modal-body {
+    margin-bottom: 20px;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+</style>
