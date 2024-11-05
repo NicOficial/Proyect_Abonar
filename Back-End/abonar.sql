@@ -163,15 +163,15 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_users`, `name`, `surname`, `email`, `password`, `street`, `snumber`, `floor`, `flat`, `locality`, `dni`) VALUES
-(1, 'Valentin', 'Peluso', 'valentinepeluso@gmail.com', '56', 'Monseñor de Andrea', 0, '', '0', 'Haedo', 78543649),
+(1, 'Valentin', 'Peluso', 'valentinepeluso@gmail.com', '123', 'Monseñor de Andrea', 0, '', '0', 'Haedo', 78543649),
 (2, 'Bautista', 'Sangineto', 'bautistasangineto@hotmail.com', '123', 'Viamonte', 174, '', '', 'Ramos Mejia', 46389547),
 (3, 'Nicolas', 'Primo', 'neque.primo@gmail.com', '123', 'Flora', 984, '', '', 'Haedo', 47399133),
-(4, 'Emily', 'Thompson', 'emily@gmail.com', 'pass4', 'Main St', 123, '', '', 'Anytown', 12345678),
-(5, 'Michael', 'Anderson', 'michael@gmail.com', 'pass5', 'Oak Ave', 456, '', '', 'Othertown', 87654321),
-(6, 'Jessica', 'Hernandez', 'jessica@gmail.com', 'pass6', 'Elm Rd', 789, '', '', 'Somewhere', 13579086),
-(7, 'David', 'Gutierrez', 'david@gmail.com', 'pass7', 'Pine Ln', 321, '', '', 'Nowhere', 24680135),
-(8, 'Samantha', 'Ramirez', 'samantha@gmail.com', 'pass8', 'Maple Dr', 654, '', '', 'Everywhere', 97531468),
-(9, 'Christopher', 'Gonzalez', 'christopher@gmail.com', 'pass9', 'Cedar St', 987, '', '', 'Somewhere Else', 86420135);
+(4, 'Emily', 'Thompson', 'emily@gmail.com', '123', 'Main St', 123, '', '', 'Anytown', 12345678),
+(5, 'Michael', 'Anderson', 'michael@gmail.com', '123', 'Oak Ave', 456, '', '', 'Othertown', 87654321),
+(6, 'Jessica', 'Hernandez', 'jessica@gmail.com', '123', 'Elm Rd', 789, '', '', 'Somewhere', 13579086),
+(7, 'David', 'Gutierrez', 'david@gmail.com', '123', 'Pine Ln', 321, '', '', 'Nowhere', 24680135),
+(8, 'Samantha', 'Ramirez', 'samantha@gmail.com', '123', 'Maple Dr', 654, '', '', 'Everywhere', 97531468),
+(9, 'Christopher', 'Gonzalez', 'christopher@gmail.com', '123', 'Cedar St', 987, '', '', 'Somewhere Else', 86420135);
 
 -- --------------------------------------------------------
 

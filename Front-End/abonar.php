@@ -264,7 +264,9 @@ mysqli_close($conexion);
                 <div class="mb-3">
                     <label for="localidad" class="form-label">Localidad</label>
                     <div class="editable-container">
+                        <div class="cuadro-texto">
                         <span class="editable-text" id="locality-text"><?php echo htmlspecialchars($locality); ?></span>
+                        </div>
                         <input type="text" class="editable-input" id="locality-input" style="display: none;" value="<?php echo htmlspecialchars($locality); ?>">
                         <div class="edit-controls">
                             <i class="fas fa-pencil-alt edit-icon" data-field="locality"></i>
@@ -278,7 +280,9 @@ mysqli_close($conexion);
                 <div class="mb-3">
                     <label for="calle" class="form-label">Calle</label>
                     <div class="editable-container">
+                    <div class="cuadro-texto">
                         <span class="editable-text" id="street-text"><?php echo htmlspecialchars($street); ?></span>
+                    </div>
                         <input type="text" class="editable-input" id="street-input" style="display: none;" value="<?php echo htmlspecialchars($street); ?>">
                         <div class="edit-controls">
                             <i class="fas fa-pencil-alt edit-icon" data-field="street"></i>
@@ -292,7 +296,9 @@ mysqli_close($conexion);
                 <div class="mb-3">
                     <label for="numero" class="form-label">Número</label>
                     <div class="editable-container">
+                    <div class="cuadro-texto">
                         <span class="editable-text" id="snumber-text"><?php echo htmlspecialchars($snumber); ?></span>
+                    </div>
                         <input type="text" class="editable-input" id="snumber-input" style="display: none;" value="<?php echo htmlspecialchars($snumber); ?>">
                         <div class="edit-controls">
                             <i class="fas fa-pencil-alt edit-icon" data-field="snumber"></i>
