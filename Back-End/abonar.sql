@@ -70,6 +70,64 @@ CREATE TABLE `transactions` (
 
 -- --------------------------------------------------------
 
+SET @start_date = DATE_SUB(CURDATE(), INTERVAL 2 MONTH);
+SET @end_date = CURDATE();
+
+-- Establecer el rango de fechas (últimos 2 meses)
+SET @start_date = DATE_SUB(CURRENT_DATE(), INTERVAL 2 MONTH);
+SET @end_date = CURRENT_DATE();
+
+INSERT INTO `transactions` (`id_transaction`, `date`, `amount`, `type`, `id_wallet_of`, `id_wallet_to`) VALUES
+(1, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 578, 'transfer', 1, 4),
+(2, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 352, 'transfer', 2, 7),
+(3, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 1024, 'transfer', 3, 6),
+(4, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 789, 'transfer', 4, 9),
+(5, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 465, 'transfer', 5, 2),
+(6, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 902, 'transfer', 6, 3),
+(7, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 211, 'transfer', 7, 1),
+(8, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 683, 'transfer', 8, 5),
+(9, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 476, 'transfer', 9, 8),
+(10, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 394, 'transfer', 2, 6),
+(11, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 654, 'transfer', 7, 3),
+(12, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 821, 'transfer', 5, 1),
+(13, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 318, 'transfer', 8, 4),
+(14, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 972, 'transfer', 6, 9),
+(15, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 507, 'transfer', 3, 2),
+(16, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 439, 'transfer', 9, 7),
+(17, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 771, 'transfer', 1, 6),
+(18, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 295, 'transfer', 4, 3),
+(19, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 628, 'transfer', 2, 8),
+(20, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 413, 'transfer', 7, 5),
+(21, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 902, 'transfer', 6, 1),
+(22, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 564, 'transfer', 3, 9),
+(23, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 710, 'transfer', 8, 2),
+(24, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 421, 'transfer', 5, 7),
+(25, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 838, 'transfer', 1, 4),
+(26, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 359, 'transfer', 9, 6),
+(27, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 617, 'transfer', 2, 3),
+(28, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 475, 'transfer', 7, 8),
+(29, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 782, 'transfer', 4, 5),
+(30, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 293, 'transfer', 6, 1),
+(31, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 651, 'transfer', 3, 9),
+(32, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 446, 'transfer', 8, 2),
+(33, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 590, 'transfer', 5, 7),
+(34, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 727, 'transfer', 1, 4),
+(35, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 384, 'transfer', 9, 6),
+(36, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 532, 'transfer', 2, 3),
+(37, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 419, 'transfer', 7, 8),
+(38, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 694, 'transfer', 4, 5),
+(39, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 248, 'transfer', 6, 1),
+(40, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 571, 'transfer', 3, 9),
+(41, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 403, 'transfer', 8, 2),
+(42, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 736, 'transfer', 5, 7),
+(43, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 825, 'transfer', 1, 4),
+(44, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 312, 'transfer', 9, 6),
+(45, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 468, 'transfer', 2, 3),
+(46, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 596, 'transfer', 7, 8),
+(47, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 459, 'transfer', 4, 5),
+(48, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 712, 'transfer', 6, 1),
+(49, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 604, 'transfer', 3, 9),
+(50, DATE(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)), 380, 'transfer', 8, 2);
 --
 -- Estructura de tabla para la tabla `transaction_categories`
 --
@@ -105,9 +163,15 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_users`, `name`, `surname`, `email`, `password`, `street`, `snumber`, `floor`, `flat`, `locality`, `dni`) VALUES
-(1, 'Valentin', 'Peluso', 'valentinepeluso@gmail.com', '123', '', 0, '', '0', '', 1234),
-(2, 'Bautista', 'Sangineto', 'bautistasangineto@hotmail.com', '123', 'Viamonte', 174, '', '', 'Ramos Mejia', 2512889),
-(3, 'Nicolas', 'Primo', 'neque.primo@gmail.com', '123', 'Flora', 984, '', '', 'Haedo', 12345767);
+(1, 'Valentin', 'Peluso', 'valentinepeluso@gmail.com', '56', 'Monseñor de Andrea', 0, '', '0', 'Haedo', 78543649),
+(2, 'Bautista', 'Sangineto', 'bautistasangineto@hotmail.com', '123', 'Viamonte', 174, '', '', 'Ramos Mejia', 46389547),
+(3, 'Nicolas', 'Primo', 'neque.primo@gmail.com', '123', 'Flora', 984, '', '', 'Haedo', 47399133),
+(4, 'Emily', 'Thompson', 'emily@gmail.com', 'pass4', 'Main St', 123, '', '', 'Anytown', 12345678),
+(5, 'Michael', 'Anderson', 'michael@gmail.com', 'pass5', 'Oak Ave', 456, '', '', 'Othertown', 87654321),
+(6, 'Jessica', 'Hernandez', 'jessica@gmail.com', 'pass6', 'Elm Rd', 789, '', '', 'Somewhere', 13579086),
+(7, 'David', 'Gutierrez', 'david@gmail.com', 'pass7', 'Pine Ln', 321, '', '', 'Nowhere', 24680135),
+(8, 'Samantha', 'Ramirez', 'samantha@gmail.com', 'pass8', 'Maple Dr', 654, '', '', 'Everywhere', 97531468),
+(9, 'Christopher', 'Gonzalez', 'christopher@gmail.com', 'pass9', 'Cedar St', 987, '', '', 'Somewhere Else', 86420135);
 
 -- --------------------------------------------------------
 
@@ -128,7 +192,13 @@ CREATE TABLE `wallets` (
 INSERT INTO `wallets` (`id_wallet`, `id_user`, `amount`) VALUES
 (1, 1, 1500),
 (2, 2, 1000),
-(3, 3, 700);
+(3, 3, 1100),
+(4, 4, 2000),
+(5, 5, 2500),
+(6, 6, 3000),
+(7, 7, 3500),
+(8, 8, 4000),
+(9, 9, 4500);
 
 --
 -- Índices para tablas volcadas
