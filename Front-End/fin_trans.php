@@ -36,17 +36,26 @@ unset($_SESSION['destinatario_nombre']);
             </a>
         </nav>
     </header>
+    <h2>¡Listo! Ya hiciste tu transferencia.</h2>
 
-    <div class="container">
-        <h2>Transferencia Exitosa</h2>
+    <div class="container" id="arriba">
         <div class="transfer-details">
-            <p>Se ha transferido $<?php echo htmlspecialchars($monto); ?> a <?php echo htmlspecialchars($destinatario); ?></p>
+            <p>Un monto de $<?php echo htmlspecialchars($monto); ?> a <?php echo htmlspecialchars($destinatario); ?></p> <br>
+            <p>Gracias por elegirnos.</p>
+        </div>
+    </div>
+
+    <div class="container" id="abajo">
+        <div class="transfer-details" style="display: flex; ">
+            <img src="../Img/abonar logo nuevo sin fondo.jpg.png" height="65px" width="68px"/>
+            <p style="margin-top: 17px; margin-left: 13px;">Con dinero de Abonar.</p>
         </div>
     </div>
 </body>
 </html>
 
-<!-- <script>
+
+<script>
     // Limpiar localStorage
     localStorage.removeItem('transferEmail');
     localStorage.removeItem('transferAmount');
@@ -54,44 +63,46 @@ unset($_SESSION['destinatario_nombre']);
     // Redirigir después de 3 segundos
     setTimeout(() => {
         window.location.href = 'abonar.php';
-    }, 000);
-</script> -->
-
+    }, 7000);
+</script> 
 
 <style>
- 
     * {
-            font-family: 'Binance PLEX', sans-serif;
-            font-weight: 500;
-        }
+        font-family: 'Binance PLEX', sans-serif;
+        font-weight: 500;
+        color: #333;
+
+    }
 
     .container {
         background-color: #fff;
-        padding: 30px;
+        padding: 20px;
         border-radius: 10px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         width: 350px;
+        margin: 20px auto;
+
+    }
+
+    #abajo{
+
+        margin-top: 30px;
+        font-size: 1.3rem;
+        font-weight: 700;
+
+    }
+
+    #arriba{
+
+
+        font-size: 1.1rem;
+        font-weight: 700;
+
+
+    }
+    h2 {
+        margin-top: 90px;
         text-align: center;
-        margin-left: 37%;
     }
 
-    h1 {
-        color: #333;
-        margin-bottom: 20px;
-    }
-
-    label {
-        font-weight: bold;
-        color: #555;
-        display: block;
-        margin: 15px 0 5px;
-    }
-
-
-
-    #result {
-        margin-top: 20px;
-        font-size: 18px;
-        color: #333;
-    }
 </style>
