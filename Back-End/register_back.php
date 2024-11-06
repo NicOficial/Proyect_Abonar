@@ -21,7 +21,7 @@ $dni = mysqli_real_escape_string($conexion, $_POST['dni']);
 mysqli_begin_transaction($conexion);
 
 try {
-    $query_user = "INSERT INTO users (name, surname, email, password, street, snumber, floor, flat,  locality, dni) VALUES ('$name', '$surname', '$email', '$password', '$street', '$snumber', '$floor', '$flat', '$locality', '$dni')";
+    $query_user = "INSERT INTO users (name, surname, email, password, street, snumber, locality, dni) VALUES ('$name', '$surname', '$email', '$password', '$street', '$snumber', '$locality', '$dni')";
     $result_user = mysqli_query($conexion, $query_user);
 
     if (!$result_user) {
