@@ -9,6 +9,8 @@ if (!isset($email)) {
     exit(); 
 }
 
+date_default_timezone_set('America/Argentina/Buenos_Aires');
+
 $info_user = mysqli_query($conexion, "SELECT users.id_users, users.name, users.surname, users.email, users.password, users.street, users.snumber, users.locality, users.dni, wallets.id_wallet, wallets.amount FROM users JOIN wallets ON users.id_users = wallets.id_user WHERE users.email = '$email';");
 
 $row = mysqli_fetch_assoc($info_user);
@@ -27,7 +29,7 @@ $id_wallet_of = $row['id_wallet'];
 $query = "CALL GetTransactionHistory(?, ?)";
 $stmt = mysqli_prepare($conexion, $query);
 mysqli_stmt_bind_param($stmt, "ii", $id_wallet_of, $limit);
-$limit = 10;
+$limit = 100;
 mysqli_stmt_execute($stmt);
 $resultado_transacciones = mysqli_stmt_get_result($stmt);
 
@@ -432,25 +434,49 @@ window.onclick = function(event) {
 
     <section id="transferencias" style="display:none;">
 
-    <div class="container">
-        <h2>Últimas Transferencias</h2>
-        <table>
-            <tr>
-                <th>Fecha</th>
-                <th>Usuario</th>
-                <th>Monto</th>
-            </tr>
-            <?php while ($transaccion = mysqli_fetch_assoc($resultado_transacciones)): ?>
-                <tr>
-                    <td><?php echo $transaccion['date']; ?></td>
-                    <td><?php echo $transaccion['otro_usuario']; ?></td>
-                    <td class="<?php echo $transaccion['tipo'] == 'entrada' ? 'monto-verde' : 'monto-rojo'; ?>">
-                        <?php echo ($transaccion['tipo'] == 'entrada' ? '+' : '-') . '$' . number_format($transaccion['amount'], 2); ?>
-                    </td>
-                </tr>
-            <?php endwhile; ?>
-        </table>
-    </div>
+    <div class="container-trans">
+    <h2>Últimas Transferencias</h2>
+    <?php
+    $current_date = '';
+    while ($transaccion = mysqli_fetch_assoc($resultado_transacciones)):
+        $fecha = date('d/m/Y', strtotime($transaccion['transaction_date']));
+        
+        // Si es una nueva fecha, mostrar el encabezado del día
+        if ($fecha != $current_date):
+            if ($current_date != '') {
+                echo '</tbody></table>'; // Cerrar la tabla anterior si existe
+            }
+            $current_date = $fecha;
+    ?>
+            <h3 class="fecha-transaccion"><?php echo $fecha; ?></h3>
+            <table class="tabla-transacciones">
+                <thead>
+                    <tr>
+                        <th>Hora</th>
+                        <th>Usuario</th>
+                        <th>Email</th>
+                        <th>Monto</th>
+                    </tr>
+                </thead>
+                <tbody>
+    <?php
+        endif;
+    ?>
+        <tr>
+            <td><?php echo date('H:i', strtotime($transaccion['transaction_time'])); ?></td>
+            <td><?php echo htmlspecialchars($transaccion['nombre_usuario']); ?></td>
+            <td><?php echo htmlspecialchars($transaccion['email_usuario']); ?></td>
+            <td class="<?php echo $transaccion['tipo'] == 'entrada' ? 'monto-verde' : 'monto-rojo'; ?>">
+                <?php echo ($transaccion['tipo'] == 'entrada' ? '+' : '-') . '$' . number_format($transaccion['amount'], 2); ?>
+            </td>
+        </tr>
+    <?php 
+    endwhile;
+    if ($current_date != '') {
+        echo '</tbody></table>'; // Cerrar la última tabla
+    }
+    ?>
+</div>
 
     </section>
 

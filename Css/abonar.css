@@ -6,24 +6,54 @@
   border-radius: 4px;
   color: #084298;
 }
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
+
+.container-trans {
+    padding: 20px;
 }
-th, td {
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-  text-align: left;
+
+.fecha-transaccion {
+    margin-top: 30px;
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    font-size: 1.2em;
+    color: #495057;
 }
-th {
-  background-color: #f2f2f2;
+
+.tabla-transacciones {
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
+
+.tabla-transacciones th,
+.tabla-transacciones td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.tabla-transacciones th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+    color: #495057;
+}
+
+.tabla-transacciones tr:hover {
+    background-color: #f8f9fa;
+}
+
 .monto-verde {
-  color: green;
+    color: #28a745;
+    font-weight: 600;
 }
+
 .monto-rojo {
-  color: red;
+    color: #dc3545;
+    font-weight: 600;
 }
 
 .bx {

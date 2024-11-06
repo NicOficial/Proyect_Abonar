@@ -2,6 +2,8 @@
     session_start();
     include '../Back-End/con_db.php';
 
+    date_default_timezone_set('America/Argentina/Buenos_Aires');
+
     // Obtener información del usuario que envía (sesión actual)
     $email = $_SESSION['email'];
     $info_user = mysqli_query($conexion, "SELECT users.id_users, users.name, users.surname, users.email, wallets.id_wallet, wallets.amount 
