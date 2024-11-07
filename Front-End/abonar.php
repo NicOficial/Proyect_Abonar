@@ -383,48 +383,50 @@ mysqli_close($conexion);
             }
         });
     });
+ document.addEventListener('DOMContentLoaded', function() {
     // Obtener el modal
-const deleteModal = document.getElementById('deleteAccountModal');
-const deleteAccountBtn = document.getElementById('btn-eliminar-cuenta');
+    const deleteModal = document.getElementById('deleteAccountModal');
+    const deleteAccountBtn = document.getElementById('btn-eliminar-cuenta');
 
-// Mostrar el modal cuando se hace clic en el botón de eliminar cuenta
-deleteAccountBtn.addEventListener('click', function() {
-    deleteModal.style.display = 'block';
-});
-
-// Función para cerrar el modal
-function closeDeleteModal() {
-    deleteModal.style.display = 'none';
-}
-
-// Función para confirmar y eliminar la cuenta
-function confirmDeleteAccount() {
-    fetch('../Back-End/eliminar_cuenta.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        }
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            window.location.href = '../index.php';
-        } else {
-            alert('Error al eliminar la cuenta. Por favor, inténtalo de nuevo.');
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('Error al eliminar la cuenta. Por favor, inténtalo de nuevo.');
+    // Mostrar el modal cuando se hace clic en el botón de eliminar cuenta
+    deleteAccountBtn.addEventListener('click', function() {
+        deleteModal.style.display = 'block';
     });
-}
 
-// Cerrar el modal si se hace clic fuera de él
-window.onclick = function(event) {
-    if (event.target == deleteModal) {
-        closeDeleteModal();
+    // Función para cerrar el modal
+    function closeDeleteModal() {
+        deleteModal.style.display = 'none';
     }
-}
+    
+    // Función para confirmar y eliminar la cuenta
+    function confirmDeleteAccount() {
+        fetch('../Back-End/eliminar_cuenta.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                window.location.href = '../index.php';
+            } else {
+                alert('Error al eliminar la cuenta. Por favor, inténtalo de nuevo.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Error al eliminar la cuenta. Por favor, inténtalo de nuevo.');
+        });
+    }
+    
+    // Cerrar el modal si se hace clic fuera de él
+    window.addEventListener('click', function(event) {
+        if (event.target == deleteModal) {
+            closeDeleteModal();
+        }
+    });
+});
     </script>
 </section>
 </section>
