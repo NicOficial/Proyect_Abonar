@@ -383,10 +383,13 @@ mysqli_close($conexion);
             }
         });
     });
- document.addEventListener('DOMContentLoaded', function() {
+
+    document.addEventListener('DOMContentLoaded', function() {
     // Obtener el modal
     const deleteModal = document.getElementById('deleteAccountModal');
     const deleteAccountBtn = document.getElementById('btn-eliminar-cuenta');
+    const confirmCheckbox = document.getElementById('confirm-delete-checkbox');
+    const deleteAccountConfirmBtn = document.getElementById('btn-confirmar-eliminar');
 
     // Mostrar el modal cuando se hace clic en el botón de eliminar cuenta
     deleteAccountBtn.addEventListener('click', function() {
@@ -396,6 +399,14 @@ mysqli_close($conexion);
     // Función para cerrar el modal
     function closeDeleteModal() {
         deleteModal.style.display = 'none';
+        // Limpiar checkbox al cerrar
+        if(confirmCheckbox) {
+            confirmCheckbox.checked = false;
+        }
+        // Deshabilitar botón al cerrar
+        if(deleteAccountConfirmBtn) {
+            deleteAccountConfirmBtn.disabled = true;
+        }
     }
     
     // Función para confirmar y eliminar la cuenta
@@ -409,7 +420,8 @@ mysqli_close($conexion);
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                window.location.href = '../index.php';
+                alert('Tu cuenta ha sido eliminada correctamente.');
+                window.location.href = 'index.php';
             } else {
                 alert('Error al eliminar la cuenta. Por favor, inténtalo de nuevo.');
             }
@@ -426,6 +438,20 @@ mysqli_close($conexion);
             closeDeleteModal();
         }
     });
+
+    // Agregar evento al botón de confirmar eliminación
+    if(deleteAccountConfirmBtn) {
+        deleteAccountConfirmBtn.addEventListener('click', confirmDeleteAccount);
+    }
+
+    // Agregar evento al checkbox para habilitar/deshabilitar el botón
+    if(confirmCheckbox) {
+        confirmCheckbox.addEventListener('change', function() {
+            if(deleteAccountConfirmBtn) {
+                deleteAccountConfirmBtn.disabled = !this.checked;
+            }
+        });
+    }
 });
     </script>
 </section>
@@ -594,12 +620,20 @@ mysqli_close($conexion);
         </div>
         <div class="modal-body">
             <p>¿Estás seguro de que deseas eliminar tu cuenta? Esta acción no se puede deshacer.</p>
+            <div class="form-check mt-3">
+                <input type="checkbox" class="form-check-input" id="confirm-delete-checkbox">
+                <label class="form-check-label" for="confirm-delete-checkbox">
+                    Confirmo que deseo eliminar mi cuenta permanentemente
+                </label>
+            </div>
         </div>
         <div class="modal-footer">
             <button class="btn btn-secondary" onclick="closeDeleteModal()">Cancelar</button>
-            <button class="btn btn-danger" onclick="confirmDeleteAccount()">Eliminar cuenta</button>
+            <button class="btn btn-danger" id="btn-confirmar-eliminar" disabled>Eliminar cuenta</button>
         </div>
     </div>
+</div>
+
 </div>
 
 </body>
