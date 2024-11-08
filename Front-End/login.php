@@ -11,6 +11,17 @@
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <link href="https://db.onlinewebfonts.com/c/d05c19ccecf7003d248c60ffd6b5e8f7?family=Binance+PLEX" rel="stylesheet" type="text/css" />
     <title>Abonar‎ |‎ Iniciá sesión</title>
+    <style>
+        .error-message {
+            background-color: #fff;
+            border: 1px solid #dc3545;
+            color: #dc3545;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
@@ -26,20 +37,35 @@
         <header>
             <bold>Iniciar sesión</bold>
         </header>
+        <?php
+        session_start();
+        if(isset($_GET['error'])) {
+            echo '<div class="error-message">' . htmlspecialchars($_GET['error']) . '</div>';
+        }
+        ?>
         <form action="../Back-End/login_back.php" method="POST" class="form">
             <div class="input-box">
                 <label>Correo electrónico</label>
-                <input type="email" placeholder="Ingresá tu correo electrónico" name="email" required />
+                <input type="email" 
+                       placeholder="Ingresá tu correo electrónico" 
+                       name="email" 
+                       value="<?php echo htmlspecialchars($_SESSION['login_email'] ?? ''); ?>"
+                       required />
             </div>
 
             <div class="column">
                 <div class="input-box">
                     <label>Contraseña</label>
-                    <input type="password" class="pass" id="pass" placeholder="Ingresá tu contraseña" name="password" required />
+                    <input type="password" 
+                           class="pass" 
+                           id="pass" 
+                           placeholder="Ingresá tu contraseña" 
+                           name="password" 
+                           required />
                 </div>
                 <i class="bx bx-show-alt"></i>
             </div>
-            <button>Iniciar sesión</button>
+            <button type="submit">Iniciar sesión</button>
         </form>
     </section>
     <script>

@@ -12,6 +12,23 @@
     <link href="https://db.onlinewebfonts.com/c/d05c19ccecf7003d248c60ffd6b5e8f7?family=Binance+PLEX" rel="stylesheet" type="text/css" />
     <link rel="icon" href="../Img/abonar logo nuevo sin fondo.jpg.png" />
     <title>Registro‎ | ‎Abonar</title>
+    <style>
+        .error-message {
+            background-color: #fff;
+            border: 1px solid #dc3545;
+            color: #dc3545;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            text-align: center;
+        }
+        
+        .password-requirements {
+            font-size: 0.8em;
+            color: #666;
+            margin-top: 5px;
+        }
+    </style>
 </head>
 
 <body>
@@ -25,27 +42,40 @@
 
     <section class="container">
         <header>Registro</header>
-        <form action="../Back-End/register_back.php" method="POST" class="form">
+        <?php
+        session_start();
+        if(isset($_GET['error'])) {
+            echo '<div class="error-message">' . htmlspecialchars($_GET['error']) . '</div>';
+        }
+        // Recuperar los datos del formulario de la sesión
+        $form_data = isset($_SESSION['form_data']) ? $_SESSION['form_data'] : array();
+        ?>
+        <form action="../Back-End/register_back.php" method="POST" class="form" id="registerForm">
             <div class="column">
                 <div class="input-box">
                     <label>Nombre</label>
-                    <input type="text" placeholder="Ingresá tu nombre" name="name" required />
+                    <input type="text" placeholder="Ingresá tu nombre" name="name" 
+                           value="<?php echo htmlspecialchars($form_data['name'] ?? ''); ?>" required />
                 </div>
 
                 <div class="input-box">
                     <label>Apellido</label>
-                    <input type="text" placeholder="Ingresá tu apellido" name="surname" required />
+                    <input type="text" placeholder="Ingresá tu apellido" name="surname" 
+                           value="<?php echo htmlspecialchars($form_data['surname'] ?? ''); ?>" required />
                 </div>
             </div>
             <div class="input-box">
                 <label>Correo electrónico</label>
-                <input type="email" placeholder="Ingresá tu correo electrónico" name="email" required />
+                <input type="email" placeholder="Ingresá tu correo electrónico" name="email" 
+                       value="<?php echo htmlspecialchars($form_data['email'] ?? ''); ?>" required />
             </div>
 
             <div class="column">
                 <div class="input-box">
                     <label>Contraseña</label>
-                    <input type="password" class="pass" id="pass" placeholder="Creá tu contraseña" name="password" required />
+                    <input type="password" class="pass" id="pass" placeholder="Creá tu contraseña" name="password" 
+                           required pattern=".{8,}" title="La contraseña debe tener al menos 8 caracteres"/>
+                    <div class="password-requirements">La contraseña debe tener al menos 8 caracteres</div>
                 </div>
                 <i class="bx bx-show-alt"></i>
             </div>
@@ -53,25 +83,30 @@
             <div class="input-box address">
                 <div class="input-box">
                     <label>Calle</label>
-                    <input type="text" placeholder="Ingresá tu calle" name="street" required />
+                    <input type="text" placeholder="Ingresá tu calle" name="street" 
+                           value="<?php echo htmlspecialchars($form_data['street'] ?? ''); ?>" required />
                 </div>
 
                 <div class="input-box">
                     <label>Numero</label>
-                    <input type="number" placeholder="Ingresá tu direccion" name="snumber" required />
+                    <input type="number" placeholder="Ingresá tu direccion" name="snumber" 
+                           value="<?php echo htmlspecialchars($form_data['snumber'] ?? ''); ?>" required />
                 </div>
                 <div class="input-box">
                     <label>Localidad</label>
-                    <input type="text" placeholder="Ingresá tu localidad" name="locality" required />
+                    <input type="text" placeholder="Ingresá tu localidad" name="locality" 
+                           value="<?php echo htmlspecialchars($form_data['locality'] ?? ''); ?>" required />
                 </div>
 
                 <div class="input-box">
                     <label>DNI</label>
-                    <input type="number" placeholder="Ingresá tu DNI" name="dni" required />
+                    <input type="number" placeholder="Ingresá tu DNI" name="dni" 
+                           value="<?php echo htmlspecialchars($form_data['dni'] ?? ''); ?>" 
+                           required pattern="[0-9]{7,8}" title="El DNI debe tener 7 u 8 dígitos"/>
                 </div>
 
-
-                <button>Crear cuenta</button>
+                <button type="submit">Crear cuenta</button>
+            </div>
         </form>
     </section>
     <script>
