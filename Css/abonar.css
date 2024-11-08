@@ -106,6 +106,45 @@ body {
     transition: width 0.4s
   }
 
+  .editable-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.cuadro-texto {
+    flex-grow: 1;
+    padding-right: 30px;
+}
+
+.editable-input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    display: none;
+    box-sizing: border-box;
+    padding: 8px 12px;
+}
+
+.edit-controls {
+    position: absolute;
+    right: 0;
+    display: flex;
+    gap: 5px;
+}
+
+.edit-icon {
+    cursor: pointer;
+}
+
+.confirm-controls {
+    display: none;
+    gap: 5px;
+}
+
+
+
   .nombre-pagina{
     font-size: 25px;
     font-weight: bold;

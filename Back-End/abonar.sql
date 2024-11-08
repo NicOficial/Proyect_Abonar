@@ -14,7 +14,7 @@ CREATE TABLE `users` (
   `name` varchar(45) NOT NULL,
   `surname` varchar(45) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `password` varchar(45) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `street` varchar(200) NOT NULL,
   `snumber` int(11) NOT NULL,
   `locality` varchar(200) NOT NULL,
@@ -65,69 +65,85 @@ CREATE TABLE `transaction_categories` (
 
 -- Primero insertamos los users
 INSERT INTO `users` (`id_users`, `name`, `surname`, `email`, `password`, `street`, `snumber`, `locality`, `dni`) VALUES
-(1, 'Valentin', 'Peluso', 'valentinepeluso@gmail.com', '123', 'Monseñor de Andrea', 0, 'Haedo', 78543649),
-(2, 'Bautista', 'Sangineto', 'bautistasangineto@hotmail.com', '123', 'Viamonte', 174, 'Ramos Mejia', 46389547),
-(3, 'Nicolas', 'Primo', 'neque.primo@gmail.com', '123', 'Flora', 984, 'Haedo', 47399133),
-(4, 'Emily', 'Thompson', 'emily@gmail.com', '123', 'Main St', 123, 'Anytown', 12345678),
-(5, 'Michael', 'Anderson', 'michael@gmail.com', '123', 'Oak Ave', 456, 'Othertown', 87654321),
-(6, 'Jessica', 'Hernandez', 'jessica@gmail.com', '123', 'Elm Rd', 789, 'Somewhere', 13579086),
-(7, 'David', 'Gutierrez', 'david@gmail.com', '123', 'Pine Ln', 321, 'Nowhere', 24680135),
-(8, 'Samantha', 'Ramirez', 'samantha@gmail.com', '123', 'Maple Dr', 654, 'Everywhere', 97531468),
-(9, 'Christopher', 'Gonzalez', 'christopher@gmail.com', '123', 'Cedar St', 987, 'Somewhere Else', 86420135);
+(1, 'Valentin', 'Peluso', 'valentinepeluso@gmail.com', '$2y$10$ldremjo5mvS1AflMDE0.9OCpt4.tDodSt/GUqVvHEm8mauvS4kgHq', 'Juan Florio', 356, 'Villa Luzuriaga', 78543640),
+(2, 'Mister', 'Macs', 'mrmacs@gmail.com', '$2y$10$ldremjo5mvS1AflMDE0.9OCpt4.tDodSt/GUqVvHEm8mauvS4kgHq', 'Uruguay', 543, 'Haedo', 78543641),
+(3, 'Franco', 'Lopez', 'francolopez@gmail.com', '$2y$10$ldremjo5mvS1AflMDE0.9OCpt4.tDodSt/GUqVvHEm8mauvS4kgHq', 'Agustin de Elia', 933, 'Ramos Mejia', 78543642),
+(4, 'Dario', 'Deladed', 'deladed@gmail.com', '$2y$10$ldremjo5mvS1AflMDE0.9OCpt4.tDodSt/GUqVvHEm8mauvS4kgHq', 'Emilio Castro', 41, 'Haedo', 78543643),
+(5, 'Lucas', 'Davirro', 'lucasdavirro@gmail.com', '$2y$10$ldremjo5mvS1AflMDE0.9OCpt4.tDodSt/GUqVvHEm8mauvS4kgHq', 'Alegria', 120, 'Haedo', 78543644),
+(6, 'Yanfranco', 'Petrone', 'yani@gmail.com', '$2y$10$ldremjo5mvS1AflMDE0.9OCpt4.tDodSt/GUqVvHEm8mauvS4kgHq', 'Jose Murias', 660, 'Haedo', 78543645),
+(7, 'Martina', 'Capurro', 'marcapurro@gmail.com', '$2y$10$ldremjo5mvS1AflMDE0.9OCpt4.tDodSt/GUqVvHEm8mauvS4kgHq', 'Rivadavia', 14680, 'Haedo', 78543646),
+(8, 'Camila', 'Capurro', 'camicapurro@gmail.com', '$2y$10$ldremjo5mvS1AflMDE0.9OCpt4.tDodSt/GUqVvHEm8mauvS4kgHq', 'Igualdad', 1468, 'Haedo', 78543647),
+(9, 'Thiago', 'Galindo', 'thiagogalindo@gmail.com', '$2y$10$ldremjo5mvS1AflMDE0.9OCpt4.tDodSt/GUqVvHEm8mauvS4kgHq', 'Monseñor de Andrea', 55, 'Haedo', 78543648),
+(10, 'Ignacio', 'Gerpe', 'ignaciogeroe@gmail.com', '$2y$10$ldremjo5mvS1AflMDE0.9OCpt4.tDodSt/GUqVvHEm8mauvS4kgHq', 'Flora', 984, 'Haedo', 78543649),
+(11, 'Nicolas', 'Primo', 'neque.primo@gmail.com', '$2y$10$ldremjo5mvS1AflMDE0.9OCpt4.tDodSt/GUqVvHEm8mauvS4kgHq', 'Flora', 984, 'Haedo', 78543649);
 
 -- Luego insertamos las wallets
 INSERT INTO `wallets` (`id_wallet`, `id_user`, `amount`) VALUES
 (1, 1, 1500),
-(2, 2, 1000),
-(3, 3, 1100),
-(4, 4, 2000),
-(5, 5, 2500),
-(6, 6, 3000),
-(7, 7, 3500),
-(8, 8, 4000),
-(9, 9, 4500);
+(2, 2, 500),
+(3, 3, 1500),
+(4, 4, 150),
+(5, 5, 500),
+(6, 6, 100),
+(7, 7, 150),
+(8, 8, 1900),
+(9, 9, 2500),
+(10, 10, 4500),
+(11, 11, 10000);
+
+-- Primero obtenemos el número total de usuarios con wallets
+SET @total_users = (SELECT COUNT(DISTINCT id_user) FROM wallets);
+SET @min_user_id = (SELECT MIN(id_user) FROM wallets);
+SET @max_user_id = (SELECT MAX(id_user) FROM wallets);
 
 -- Modificación en la inserción de transacciones para usar zona horaria de Argentina
 SET @start_date = CONVERT_TZ(DATE_SUB(CURRENT_TIMESTAMP, INTERVAL 2 MONTH), @@session.time_zone, '-03:00');
 SET @end_date = CONVERT_TZ(CURRENT_TIMESTAMP, @@session.time_zone, '-03:00');
 
--- Ahora insertamos las transacciones asegurándonos de que todos los id_wallet existan
+-- Crear una tabla temporal con los rangos deseados para los montos
+SET @min_amount = 100;
+SET @max_amount = 1000;
+
+-- Insertamos las transacciones aleatorias asegurando usuarios diferentes
 INSERT INTO `transactions` (`date`, `amount`, `type`, `id_wallet_of`, `id_wallet_to`) 
-SELECT 
-    CONVERT_TZ(
-        TIMESTAMP(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)) + 
-        INTERVAL FLOOR(RAND() * 24) HOUR + 
-        INTERVAL FLOOR(RAND() * 60) MINUTE + 
-        INTERVAL FLOOR(RAND() * 60) SECOND,
-        @@session.time_zone,
-        '-03:00'
-    ) as date,
-    amount,
-    type,
-    id_wallet_of,
-    id_wallet_to
-FROM (
-    SELECT 578 as amount, 'transfer' as type, 1 as id_wallet_of, 4 as id_wallet_to UNION ALL
-    SELECT 352, 'transfer', 2, 7 UNION ALL
-    SELECT 1024, 'transfer', 3, 6 UNION ALL
-    SELECT 789, 'transfer', 4, 9 UNION ALL
-    SELECT 465, 'transfer', 5, 2 UNION ALL
-    SELECT 902, 'transfer', 6, 3 UNION ALL
-    SELECT 211, 'transfer', 7, 1 UNION ALL
-    SELECT 683, 'transfer', 8, 5 UNION ALL
-    SELECT 476, 'transfer', 9, 8 UNION ALL
-    SELECT 394, 'transfer', 2, 6 UNION ALL
-    SELECT 654, 'transfer', 7, 3 UNION ALL
-    SELECT 821, 'transfer', 5, 1 UNION ALL
-    SELECT 318, 'transfer', 8, 4 UNION ALL
-    SELECT 972, 'transfer', 6, 9 UNION ALL
-    SELECT 507, 'transfer', 3, 2 UNION ALL
-    SELECT 439, 'transfer', 9, 7 UNION ALL
-    SELECT 771, 'transfer', 1, 6 UNION ALL
-    SELECT 295, 'transfer', 4, 3 UNION ALL
-    SELECT 628, 'transfer', 2, 8 UNION ALL
-    SELECT 413, 'transfer', 7, 5
-) AS source_data;
+WITH RECURSIVE numbers AS (
+    SELECT 1 AS n
+    UNION ALL
+    SELECT n + 1 FROM numbers WHERE n < 30
+),
+available_wallets AS (
+    -- Obtenemos pares de wallets válidos para transferencias
+    SELECT 
+        w1.id_wallet as wallet_from,
+        w2.id_wallet as wallet_to
+    FROM wallets w1
+    CROSS JOIN wallets w2
+    WHERE w1.id_user != w2.id_user  -- Asegura usuarios diferentes
+),
+random_transactions AS (
+    SELECT 
+        CONVERT_TZ(
+            TIMESTAMP(DATE_ADD(@start_date, INTERVAL FLOOR(RAND() * DATEDIFF(@end_date, @start_date)) DAY)) + 
+            INTERVAL FLOOR(RAND() * 24) HOUR + 
+            INTERVAL FLOOR(RAND() * 60) MINUTE + 
+            INTERVAL FLOOR(RAND() * 60) SECOND,
+            @@session.time_zone,
+            '-03:00'
+        ) as date,
+        FLOOR(@min_amount + RAND() * (@max_amount - @min_amount)) as amount,
+        'transfer' as type,
+        aw.wallet_from as id_wallet_of,
+        aw.wallet_to as id_wallet_to
+    FROM numbers n
+    JOIN available_wallets aw
+    ORDER BY RAND()  -- Ordenamos aleatoriamente los pares de wallets
+    LIMIT 30         -- Limitamos a 30 transacciones
+)
+SELECT * FROM random_transactions;
+
+-- Verificación del número de transacciones insertadas
+SELECT COUNT(*) as transactions_inserted FROM transactions
+WHERE date BETWEEN @start_date AND @end_date;
 
 -- Insertamos las categorías
 INSERT INTO `categories` (`id_category`, `name`) VALUES

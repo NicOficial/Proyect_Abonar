@@ -37,6 +37,7 @@
         <header>
             <bold>Iniciar sesión</bold>
         </header>
+        <br>
         <?php
         session_start();
         if(isset($_GET['error'])) {
