@@ -235,7 +235,7 @@ mysqli_close($conexion);
 
         </section>
 
-    <section id="perfil" style="display:none;">
+        <section id="perfil" style="display:none;">
     <h1>Perfil</h1>
     <p>Aquí puedes visualizar tu información personal y preferencias.</p>
     <form>
@@ -265,50 +265,20 @@ mysqli_close($conexion);
             <div style="flex: 1 1 48%;">
                 <div class="mb-3">
                     <label for="localidad" class="form-label">Localidad</label>
-                    <div class="editable-container">
-                        <div class="cuadro-texto">
-                        <span class="editable-text" id="locality-text"><?php echo htmlspecialchars($locality); ?></span>
-                        </div>
-                        <input type="text" class="editable-input" id="locality-input" style="display: none;" value="<?php echo htmlspecialchars($locality); ?>">
-                        <div class="edit-controls">
-                            <i class="fas fa-pencil-alt edit-icon" data-field="locality"></i>
-                            <div class="confirm-controls" style="display: none;">
-                                <i class="fas fa-check confirm-icon"></i>
-                                <i class="fas fa-times cancel-icon"></i>
-                            </div>
-                        </div>
+                    <div class="cuadro-texto">
+                        <?php echo htmlspecialchars($locality); ?>
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="calle" class="form-label">Calle</label>
-                    <div class="editable-container">
                     <div class="cuadro-texto">
-                        <span class="editable-text" id="street-text"><?php echo htmlspecialchars($street); ?></span>
-                    </div>
-                        <input type="text" class="editable-input" id="street-input" style="display: none;" value="<?php echo htmlspecialchars($street); ?>">
-                        <div class="edit-controls">
-                            <i class="fas fa-pencil-alt edit-icon" data-field="street"></i>
-                            <div class="confirm-controls" style="display: none;">
-                                <i class="fas fa-check confirm-icon"></i>
-                                <i class="fas fa-times cancel-icon"></i>
-                            </div>
-                        </div>
+                        <?php echo htmlspecialchars($street); ?>
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="numero" class="form-label">Número</label>
-                    <div class="editable-container">
                     <div class="cuadro-texto">
-                        <span class="editable-text" id="snumber-text"><?php echo htmlspecialchars($snumber); ?></span>
-                    </div>
-                        <input type="text" class="editable-input" id="snumber-input" style="display: none;" value="<?php echo htmlspecialchars($snumber); ?>">
-                        <div class="edit-controls">
-                            <i class="fas fa-pencil-alt edit-icon" data-field="snumber"></i>
-                            <div class="confirm-controls" style="display: none;">
-                                <i class="fas fa-check confirm-icon"></i>
-                                <i class="fas fa-times cancel-icon"></i>
-                            </div>
-                        </div>
+                        <?php echo htmlspecialchars($snumber); ?>
                     </div>
                 </div>
             </div>
@@ -318,143 +288,8 @@ mysqli_close($conexion);
     <div class="acciones-perfil">
         <button id="btn-eliminar-cuenta" class="btn btn-danger">Eliminar Cuenta</button>
     </div>
-
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const editableFields = ['locality', 'street', 'snumber'];
-        
-        editableFields.forEach(field => {
-            const container = document.querySelector(`#${field}-text`).closest('.editable-container');
-            const text = container.querySelector('.editable-text');
-            const input = container.querySelector('.editable-input');
-            const editIcon = container.querySelector('.edit-icon');
-            const confirmControls = container.querySelector('.confirm-controls');
-            const confirmIcon = container.querySelector('.confirm-icon');
-            const cancelIcon = container.querySelector('.cancel-icon');
-            
-            // Enable editing
-            editIcon.addEventListener('click', () => {
-                text.style.display = 'none';
-                input.style.display = 'block';
-                editIcon.style.display = 'none';
-                confirmControls.style.display = 'flex';
-                input.focus();
-                input.select();
-            });
-
-            // Confirm changes
-            confirmIcon.addEventListener('click', async () => {
-                const newValue = input.value.trim();
-                if (newValue !== '') {
-                    try {
-                        const response = await fetch('../Back-End/actualizar_perfil.php', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/x-www-form-urlencoded',
-                            },
-                            body: `field=${field}&value=${encodeURIComponent(newValue)}`
-                        });
-
-                        const data = await response.json();
-                        if (data.success) {
-                            text.textContent = newValue;
-                            exitEditMode();
-                        } else {
-                            alert('Error al actualizar el campo');
-                        }
-                    } catch (error) {
-                        console.error('Error:', error);
-                        alert('Error al actualizar el campo');
-                    }
-                }
-            });
-
-            // Cancel changes
-            cancelIcon.addEventListener('click', () => {
-                input.value = text.textContent;
-                exitEditMode();
-            });
-
-            function exitEditMode() {
-                text.style.display = 'block';
-                input.style.display = 'none';
-                editIcon.style.display = 'block';
-                confirmControls.style.display = 'none';
-            }
-        });
-    });
-
-    document.addEventListener('DOMContentLoaded', function() {
-    // Obtener el modal
-    const deleteModal = document.getElementById('deleteAccountModal');
-    const deleteAccountBtn = document.getElementById('btn-eliminar-cuenta');
-    const confirmCheckbox = document.getElementById('confirm-delete-checkbox');
-    const deleteAccountConfirmBtn = document.getElementById('btn-confirmar-eliminar');
-
-    // Mostrar el modal cuando se hace clic en el botón de eliminar cuenta
-    deleteAccountBtn.addEventListener('click', function() {
-        deleteModal.style.display = 'block';
-    });
-
-    // Función para cerrar el modal
-    function closeDeleteModal() {
-        deleteModal.style.display = 'none';
-        // Limpiar checkbox al cerrar
-        if(confirmCheckbox) {
-            confirmCheckbox.checked = false;
-        }
-        // Deshabilitar botón al cerrar
-        if(deleteAccountConfirmBtn) {
-            deleteAccountConfirmBtn.disabled = true;
-        }
-    }
-    
-    // Función para confirmar y eliminar la cuenta
-    function confirmDeleteAccount() {
-        fetch('../Back-End/eliminar_cuenta.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                alert('Tu cuenta ha sido eliminada correctamente.');
-                window.location.href = 'index.php';
-            } else {
-                alert('Error al eliminar la cuenta. Por favor, inténtalo de nuevo.');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('Error al eliminar la cuenta. Por favor, inténtalo de nuevo.');
-        });
-    }
-    
-    // Cerrar el modal si se hace clic fuera de él
-    window.addEventListener('click', function(event) {
-        if (event.target == deleteModal) {
-            closeDeleteModal();
-        }
-    });
-
-    // Agregar evento al botón de confirmar eliminación
-    if(deleteAccountConfirmBtn) {
-        deleteAccountConfirmBtn.addEventListener('click', confirmDeleteAccount);
-    }
-
-    // Agregar evento al checkbox para habilitar/deshabilitar el botón
-    if(confirmCheckbox) {
-        confirmCheckbox.addEventListener('change', function() {
-            if(deleteAccountConfirmBtn) {
-                deleteAccountConfirmBtn.disabled = !this.checked;
-            }
-        });
-    }
-});
-    </script>
 </section>
+
 </section>
 
 

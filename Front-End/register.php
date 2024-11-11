@@ -88,7 +88,7 @@
                 </div>
 
                 <div class="input-box">
-                    <label>Numero</label>
+                    <label>Numero de calle</label>
                     <input type="number" placeholder="Ingresá tu direccion" name="snumber" 
                            value="<?php echo htmlspecialchars($form_data['snumber'] ?? ''); ?>" required />
                 </div>
