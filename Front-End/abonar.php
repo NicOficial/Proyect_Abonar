@@ -122,7 +122,7 @@ mysqli_close($conexion);
             <div class="linea"></div>
 
             <div class="usuario">
-                <img src="../Img/unnamed2.jpg" alt="" />
+                <img src="../Img/ultimafotoabonar.png" alt="" />
                 <div class="info-usuario">
                     <div class="nombre-email">
                         <span class="nombre"><?php echo htmlspecialchars($name); ?></span>
